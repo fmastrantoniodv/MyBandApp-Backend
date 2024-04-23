@@ -3,13 +3,13 @@
     "projectName": "Primer proyecto",
     "createdDate": "2023-10-18 11:12:50",
     "savedDate": "2023-10-19 05:50:01",
-    "totalDuration": "654846",
+    "totalDuration": 654846,
     "soundsList": [
         {
             "id": "kick",
             "sampleName": "Kick God",
             "src": "http:fileserver.com/kick",
-            "duration": "6452",
+            "duration": 6452,
             "channelConfig": {
                 "states": {
                     "solo": false,
@@ -36,9 +36,9 @@
                 },
                 "volume": 0.7,
                 "EQ": {
-                    "low": 0.5,
-                    "mid": 0.5,
-                    "high": 0.5
+                    "low": 0,
+                    "mid": 0,
+                    "high": 0
                 }
             }
         },
@@ -55,9 +55,9 @@
                 },
                 "volume": 0.7,
                 "EQ": {
-                    "low": 0.5,
-                    "mid": 0.5,
-                    "high": 0.5
+                    "low": 0,
+                    "mid": 0,
+                    "high": 0
                 }
             }
         },
@@ -74,9 +74,9 @@
                 },
                 "volume": 0.7,
                 "EQ": {
-                    "low": 0.5,
-                    "mid": 0.5,
-                    "high": 0.5
+                    "low": 0,
+                    "mid": 0,
+                    "high": 0
                 }
             }
         }
