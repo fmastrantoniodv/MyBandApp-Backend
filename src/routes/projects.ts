@@ -1,9 +1,11 @@
 import express from 'express'
+import * as project from '../services/projectsServ'
 
 const router = express.Router()
 
 router.get('/', (_req, res) => {
-    res.send('Fetching all projects')
+    console.log(project.getProject())
+    res.send(project.getProject())
 })
 
 router.post('/', (_req, res) => {

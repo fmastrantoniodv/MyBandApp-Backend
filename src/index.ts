@@ -12,13 +12,8 @@ app.get('/ping', (_req, res) =>{
     res.send('pong')
 })
 
-app.use('/api/projects', projectsRouter)
+app.use('/api/project', projectsRouter)
 
 app.listen(PORT, () =>{
     console.log(`Server running on port ${PORT}`)
 })
-
-
-
-
-//probando git

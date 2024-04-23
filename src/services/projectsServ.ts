@@ -1,8 +1,8 @@
 import { Project } from '../types.js'
 import dataMock from './dataMock.json'
 
-const project: Array<Project> = dataMock as Array<Project>
+const project: Project = dataMock as Project
 
-export const getProjects = () => project
+export const getProject = (): Project => project
 
-export const addProject = () => null 
+export const addProject = (): undefined => undefined
