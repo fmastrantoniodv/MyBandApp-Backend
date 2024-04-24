@@ -1,88 +1,87 @@
-{
-    "id": 213,
-    "projectName": "Primer proyecto",
-    "createdDate": "2023-10-18 11:12:50",
-    "savedDate": "2023-10-19 05:50:01",
-    "totalDuration": 654846,
-    "soundsList": [
-        {
-            "id": "kick",
-            "sampleName": "Kick God",
-            "src": "http:fileserver.com/kick",
-            "duration": 6452,
-            "channelConfig": {
-                "states": {
-                    "solo": false,
-                    "muted": false
-                },
-                "volume": 0.7,
-                "EQ": {
-                    "low": 0,
-                    "mid": 0,
-                    "high": 0
+[
+    {
+        "id": 213,
+        "projectName": "Primer proyecto",
+        "createdDate": "2023-10-18 11:12:50",
+        "savedDate": "2023-10-19 05:50:01",
+        "totalDuration": 654846,
+        "soundsList": [
+            {
+                "id": "kick",
+                "sampleName": "Kick God",
+                "src": "http:fileserver.com/kick",
+                "duration": 6452,
+                "channelConfig": {
+                    "states": {
+                        "solo": false,
+                        "muted": false
+                    },
+                    "volume": 0.7,
+                    "EQ": {
+                        "low": 0,
+                        "mid": 0,
+                        "high": 0
+                    }
+                    
                 }
-                
+            },
+            {
+                "id": "clap",
+                "sampleName": "Aplauso",
+                "src": "http:fileserver.com/clap",
+                "duration": "6452",
+                "channelConfig": {
+                    "states": {
+                        "solo": false,
+                        "muted": false
+                    },
+                    "volume": 0.7,
+                    "EQ": {
+                        "low": 0,
+                        "mid": 0,
+                        "high": 0
+                    }
+                    
+                }
+            },
+            {
+                "id": "shake",
+                "sampleName": "Maracas",
+                "src": "http:fileserver.com/shake",
+                "duration": "6452",
+                "channelConfig": {
+                    "states": {
+                        "solo": false,
+                        "muted": false
+                    },
+                    "volume": 0.7,
+                    "EQ": {
+                        "low": 0,
+                        "mid": 0,
+                        "high": 0
+                    }
+                    
+                }
+            },
+            {
+                "id": "bass",
+                "sampleName": "Bajo pikado",
+                "src": "http:fileserver.com/bajo",
+                "duration": "6452",
+                "channelConfig": {
+                    "states": {
+                        "solo": false,
+                        "muted": false
+                    },
+                    "volume": 0.7,
+                    "EQ": {
+                        "low": 0,
+                        "mid": 0,
+                        "high": 0
+                    }
+                    
+                }   
             }
-        },
-        {
-            "id": "clap",
-            "sampleName": "Aplauso",
-            "src": "http:fileserver.com/clap",
-            "duration": "6452",
-            "channelConfig": {
-                "states": {
-                    "solo": false,
-                    "muted": false,
-                    "rec": false
-                },
-                "volume": 0.7,
-                "EQ": {
-                    "low": 0,
-                    "mid": 0,
-                    "high": 0
-                }
-                
-            }
-        },
-        {
-            "id": "shake",
-            "sampleName": "Maracas",
-            "src": "http:fileserver.com/shake",
-            "duration": "6452",
-            "channelConfig": {
-                "states": {
-                    "solo": false,
-                    "muted": false,
-                    "rec": false
-                },
-                "volume": 0.7,
-                "EQ": {
-                    "low": 0,
-                    "mid": 0,
-                    "high": 0
-                }
-                
-            }
-        },
-        {
-            "id": "bass",
-            "sampleName": "Bajo pikado",
-            "src": "http:fileserver.com/bajo",
-            "duration": "6452",
-            "channelConfig": {
-                "states": {
-                    "solo": false,
-                    "muted": false,
-                    "rec": false
-                },
-                "volume": 0.7,
-                "EQ": {
-                    "low": 0,
-                    "mid": 0,
-                    "high": 0
-                }
-                
-            }   
-        }
-    ]
-}
+        ]
+    }
+]

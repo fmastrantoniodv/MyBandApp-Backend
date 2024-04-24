@@ -15,16 +15,7 @@ export type ChannelConfig = {
         EQ: EqParams
 }
 
-export interface Project {
-    id: number,
-    projectName: string,
-    createdDate: string,
-    savedDate: string,
-    totalDuration: number,
-    soundList?: Array<soundListItem>
-}
-
-export type soundListItem =         
+export type SoundListItem =         
 {
     id: string,
     sampleName: string,
