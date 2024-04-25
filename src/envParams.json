@@ -1,0 +1,5 @@
+{
+    "dev": {
+        "front-endpoint-access-control": "http://localhost:3000"
+    }
+}
