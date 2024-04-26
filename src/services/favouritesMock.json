@@ -1,0 +1,52 @@
+{
+    "favouritesList": [
+        {
+            "id": "myBandAppCONGA1",
+            "displayName": "Conga",
+            "src": "",
+            "duration": 0
+        },
+        {
+            "id": "myBandAppGUITAR",
+            "displayName": "Guitarra",
+            "src": "",
+            "duration": 0
+        },
+        {
+            "id": "myBandAppHIHAT",
+            "displayName": "Hi Hat",
+            "src": "",
+            "duration": 0
+        },
+        {
+            "id": "myBandAppKICK",
+            "displayName": "Kick",
+            "src": "",
+            "duration": 0
+        },
+        {
+            "id": "myBandAppRYTHMBASS",
+            "displayName": "Bass Rythm",
+            "src": "",
+            "duration": 0
+        },
+        {
+            "id": "myBandAppSHAKECONGA",
+            "displayName": "Shaker",
+            "src": "",
+            "duration": 0
+        },
+        {
+            "id": "myBandAppSUBASSSHOT",
+            "displayName": "Bass SUB",
+            "src": "",
+            "duration": 0
+        },
+        {
+            "id": "myBandAppTOMSLOWS",
+            "displayName": "Toms",
+                    "src": "",
+            "duration": 0
+        }
+    ]
+}

@@ -1,17 +1,16 @@
 import express from 'express'
-import * as project from '../services/projectsServ'
+import * as favouritesSamplesServ from '../services/favouritesSamplesServ'
 import envParams from '../envParams.json'
-//import { EqParams, ChannelConfig, SoundListItem, States } from '../types'
 
 const router = express.Router()
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
 
-router.get('/:id', (req, res) => {
-    console.log('request project')
-    const resProject = project.getProject(+req.params.id)
+router.get('/', (_req, res) => {
+    console.log('request favs')
+    const resFavouritesList = favouritesSamplesServ.getFavouritesList()
     res.header("Access-Control-Allow-Origin", frontendEndpoint)
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    res.send(resProject)
+    res.send(resFavouritesList)
 })
 
 router.post('/', (_req, res) => {

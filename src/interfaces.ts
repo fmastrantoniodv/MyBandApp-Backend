@@ -8,3 +8,10 @@ export interface Project {
     totalDuration: number,
     soundList?: Array<SoundListItem>
 }
+
+export interface Favourite {
+    id: string,
+    displayName: string,
+    src: string,
+    duration: number
+}
