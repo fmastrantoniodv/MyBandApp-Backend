@@ -1,52 +1,36 @@
 {
     "favouritesList": [
         {
-            "id": "myBandAppCONGA1",
-            "displayName": "Conga",
-            "src": "",
-            "duration": 0
+            "sampleId": "myBandAppCONGA1",
+            "sampleName": "Conga"
         },
         {
-            "id": "myBandAppGUITAR",
-            "displayName": "Guitarra",
-            "src": "",
-            "duration": 0
+            "sampleId": "myBandAppGUITAR",
+            "sampleName": "Guitarra"
         },
         {
-            "id": "myBandAppHIHAT",
-            "displayName": "Hi Hat",
-            "src": "",
-            "duration": 0
+            "sampleId": "myBandAppHIHAT",
+            "sampleName": "Hi Hat"
         },
         {
-            "id": "myBandAppKICK",
-            "displayName": "Kick",
-            "src": "",
-            "duration": 0
+            "sampleId": "myBandAppKICK",
+            "sampleName": "Kick"
         },
         {
-            "id": "myBandAppRYTHMBASS",
-            "displayName": "Bass Rythm",
-            "src": "",
-            "duration": 0
+            "sampleId": "myBandAppRYTHMBASS",
+            "sampleName": "Bass Rythm"
         },
         {
-            "id": "myBandAppSHAKECONGA",
-            "displayName": "Shaker",
-            "src": "",
-            "duration": 0
+            "sampleId": "myBandAppSHAKECONGA",
+            "sampleName": "Shaker"
         },
         {
-            "id": "myBandAppSUBASSSHOT",
-            "displayName": "Bass SUB",
-            "src": "",
-            "duration": 0
+            "sampleId": "myBandAppSUBASSSHOT",
+            "sampleName": "Bass SUB"
         },
         {
-            "id": "myBandAppTOMSLOWS",
-            "displayName": "Toms",
-                    "src": "",
-            "duration": 0
+            "sampleId": "myBandAppTOMSLOWS",
+            "sampleName": "Toms"
         }
     ]
 }

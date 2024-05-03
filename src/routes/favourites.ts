@@ -1,6 +1,8 @@
 import express from 'express'
 import * as favouritesSamplesServ from '../services/favouritesSamplesServ'
 import envParams from '../envParams.json'
+import { SampleFav } from '../types'
+import {parseStringFromRequest, parseUserId} from '../utils'
 
 const router = express.Router()
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
@@ -13,9 +15,25 @@ router.get('/', (_req, res) => {
     res.send(resFavouritesList)
 })
 
-router.post('/', (_req, res) => {
-    //const { EqParams, ChannelConfig, SoundListItem, States } = req.body
-    res.send('Saving a project')
+router.post('/', (req, res) => {
+try{
+    const { userId, sampleId, sampleName } = req.body
+    parseUserId(userId)
+    const newFavEntry: SampleFav = {
+        sampleId: parseStringFromRequest(sampleId),
+        sampleName: parseStringFromRequest(sampleName)
+    }
+    const newFav = favouritesSamplesServ.addNewFav(
+        userId,
+        newFavEntry 
+    )
+
+    res.json(newFav)
+}catch (e) {
+    res.status(400)
+}
+
+
 })
 
 export default router

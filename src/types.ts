@@ -17,9 +17,29 @@ export type ChannelConfig = {
 
 export type SoundListItem =         
 {
+    sample: Sample,
+    channelConfig: ChannelConfig
+}
+
+export type SampleFav = {
+    sampleId: string,
+    sampleName: string
+}
+
+export type Sample = {
     id: string,
     sampleName: string,
     src: string,
     duration: number,
-    channelConfig: ChannelConfig
+    collectionId: number,
+    tempo: number
 }
+
+export enum PlanType {
+    Free = 'Free',
+    Trial = 'Trial',
+    Pro = 'Pro',
+    Admin = 'Admin'
+}
+
+export type SampleToChannel = Omit<Sample, 'collectionId'>
