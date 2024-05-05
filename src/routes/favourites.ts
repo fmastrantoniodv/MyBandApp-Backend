@@ -29,8 +29,8 @@ try{
     )
 
     res.json(newFav)
-}catch (e) {
-    res.status(400)
+}catch (e: any) {
+    res.status(400).send(e.message)
 }
 
 
