@@ -1,0 +1,34 @@
+{
+    "collectionId": "CONGA_VOL_1",
+    "collectionName": "Conga Hits Volumen 1",
+    "uploadDate": "07/05/2024",
+    "plan": "Free",
+    "samplesList": [
+        {
+            "sampleId": "CONGA_VOL_1_BONGO",
+            "sampleName": "Bongos",
+            "srcUrl": "",
+            "duration": 354,
+            "tempo": 120
+        },
+        {
+            "sampleId": "CONGA_VOL_1_KICK",
+            "sampleName": "Kick",
+            "srcUrl": "",
+            "duration": 354,
+            "tempo": 120
+        },
+        {
+            "sampleId": "CONGA_VOL_1_HIHATS",
+            "sampleName": "Hi Hats",
+            "srcUrl": "",
+            "duration": 354,
+            "tempo": 120
+        }
+    ],
+    "tags": [
+        "CONGA",
+        "SALSA",
+        "KICK"
+    ]
+}
