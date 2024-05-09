@@ -27,9 +27,9 @@ export type SampleFav = {
 }
 
 export type Sample = {
-    id: string,
+    sampleId: string,
     sampleName: string,
-    src: string,
+    srcUrl: string,
     duration: number,
     collectionId: number,
     tempo: number

@@ -1,34 +1,141 @@
 {
-    "collectionId": "CONGA_VOL_1",
-    "collectionName": "Conga Hits Volumen 1",
-    "uploadDate": "07/05/2024",
-    "plan": "Free",
-    "samplesList": [
+    "collectionsLibrary": [
         {
-            "sampleId": "CONGA_VOL_1_BONGO",
-            "sampleName": "Bongos",
-            "srcUrl": "",
-            "duration": 354,
-            "tempo": 120
-        },
-        {
-            "sampleId": "CONGA_VOL_1_KICK",
-            "sampleName": "Kick",
-            "srcUrl": "",
-            "duration": 354,
-            "tempo": 120
-        },
-        {
-            "sampleId": "CONGA_VOL_1_HIHATS",
-            "sampleName": "Hi Hats",
-            "srcUrl": "",
-            "duration": 354,
-            "tempo": 120
+            "collectionId": "CONGA_VOL_1",
+            "collectionName": "Conga Hits Volumen 1",
+            "uploadDate": "07/05/2024",
+            "plan": "Free",
+            "sampleList": [
+                {
+                    "sampleId": "CONGA_VOL_1_BONGO",
+                    "sampleName": "Bongos",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_KICK",
+                    "sampleName": "Kick",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_GUITAR",
+                    "sampleName": "Guitarra Riff",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_RYTHMBASS",
+                    "sampleName": "Bass Rythm",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_SHAKER",
+                    "sampleName": "Shaker",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_SUBBASS",
+                    "sampleName": "Bass Sub",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_TOMS",
+                    "sampleName": "Toms",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_HIHATS",
+                    "sampleName": "Hi Hats",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                }
+            ],
+            "tags": [
+                "CONGA",
+                "SALSA",
+                "KICK"
+            ]
+        },        {
+            "collectionId": "SALSA_VOL_1",
+            "collectionName": "Salsa Hits Volumen 1",
+            "uploadDate": "25/03/2024",
+            "plan": "Trial",
+            "sampleList": [
+                {
+                    "sampleId": "SALSA_VOL_1_BONGO",
+                    "sampleName": "Bongos",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "SALSA_VOL_1_KICK",
+                    "sampleName": "Kick",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "SALSA_VOL_1_GUITAR",
+                    "sampleName": "Guitarra Riff",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "SALSA_VOL_1_RYTHMBASS",
+                    "sampleName": "Bass Rythm",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "SALSA_VOL_1_SHAKER",
+                    "sampleName": "Shaker",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "SALSA_VOL_1_SUBBASS",
+                    "sampleName": "Bass Sub",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "SALSA_VOL_1_TOMS",
+                    "sampleName": "Toms",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                },
+                {
+                    "sampleId": "SALSA_VOL_1_HIHATS",
+                    "sampleName": "Hi Hats",
+                    "srcUrl": "",
+                    "duration": 354,
+                    "tempo": 120
+                }
+            ],
+            "tags": [
+                "CONGA",
+                "SALSA",
+                "KICK"
+            ]
         }
-    ],
-    "tags": [
-        "CONGA",
-        "SALSA",
-        "KICK"
     ]
 }

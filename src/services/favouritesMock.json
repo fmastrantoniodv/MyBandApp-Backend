@@ -1,35 +1,35 @@
 {
     "favouritesList": [
         {
-            "sampleId": "myBandAppCONGA1",
-            "sampleName": "Conga"
+            "sampleId": "CONGA_VOL_1_BONGO",
+            "sampleName": "Bongos"
         },
         {
-            "sampleId": "myBandAppGUITAR",
-            "sampleName": "Guitarra"
+            "sampleId": "CONGA_VOL_1_GUITAR",
+            "sampleName": "Guitarra Riff"
         },
         {
-            "sampleId": "myBandAppHIHAT",
-            "sampleName": "Hi Hat"
+            "sampleId": "CONGA_VOL_1_HIHATS",
+            "sampleName": "Hi Hats"
         },
         {
-            "sampleId": "myBandAppKICK",
+            "sampleId": "CONGA_VOL_1_KICK",
             "sampleName": "Kick"
         },
         {
-            "sampleId": "myBandAppRYTHMBASS",
+            "sampleId": "CONGA_VOL_1_RYTHMBASS",
             "sampleName": "Bass Rythm"
         },
         {
-            "sampleId": "myBandAppSHAKECONGA",
+            "sampleId": "CONGA_VOL_1_SHAKER",
             "sampleName": "Shaker"
         },
         {
-            "sampleId": "myBandAppSUBASSSHOT",
-            "sampleName": "Bass SUB"
+            "sampleId": "CONGA_VOL_1_SUBBASS",
+            "sampleName": "Bass Sub"
         },
         {
-            "sampleId": "myBandAppTOMSLOWS",
+            "sampleId": "CONGA_VOL_1_TOMS",
             "sampleName": "Toms"
         }
     ]

@@ -1,4 +1,4 @@
-import { SoundListItem, PlanType, Sample } from './types'
+import { SoundListItem, PlanType, SampleToChannel } from './types'
 
 export interface Project {
     id: number,
@@ -10,10 +10,10 @@ export interface Project {
 }
 
 export interface CollectionSampleLibrary {
-    collectionId: number,
+    collectionId: string,
     collectionName: string,
-    availablePlanList: PlanType | undefined,
-    tags: Array<string>,
     uploadDate: string,
-    sampleList: Array<Sample>
+    plan: PlanType | undefined,
+    sampleList: Array<SampleToChannel>
+    tags: Array<string>,
 }
