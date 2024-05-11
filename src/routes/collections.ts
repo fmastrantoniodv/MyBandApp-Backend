@@ -15,6 +15,34 @@ router.get('/', (_req, res) => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     res.send(resCollectionsList)
 })
+
+router.get('/:id', (req, res) => {
+    console.log('request collection by id:'+req.params.id)
+    res.header("Access-Control-Allow-Origin", frontendEndpoint)
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    const resCollection = collectionsServ.getCollectionByID(req.params.id)
+    if(resCollection === undefined){
+        res.send("No se encontraron collections con el id declarado")
+    }else{
+        res.send(resCollection)
+    }
+    
+})
+
+//get sample by id
+router.get('/:collectionId/sample/:sampleId', (req, res) => {
+    console.log('request collection by id:'+req.params.collectionId+" sampleid:"+req.params.sampleId)
+    res.header("Access-Control-Allow-Origin", frontendEndpoint)
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    const resSample = collectionsServ.getSampleByID(req.params.collectionId, req.params.sampleId)
+    if(resSample === undefined){
+        res.send("No se encontró ningun sample con ese ID")
+    }else{
+        res.send(resSample)
+    }
+    
+})
+
 /*
 router.post('/', (req, res) => {
 try{

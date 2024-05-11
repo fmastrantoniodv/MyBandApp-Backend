@@ -1,11 +1,27 @@
 //import favouritesMock from './favouritesMock.json'
 import { CollectionSampleLibrary } from '../interfaces'
+import { SampleToChannel } from '../types'
 import collectionsMock from './collectionSamplesMock.json'
 
 const collectionsLibrary: Array<CollectionSampleLibrary> = collectionsMock.collectionsLibrary as Array<CollectionSampleLibrary>
 
 export const getCollectionsLibrary = (): Array<CollectionSampleLibrary> | undefined => {
     return collectionsLibrary
+}
+
+export const getCollectionByID = (id: string): CollectionSampleLibrary | undefined => {
+    return collectionsLibrary.find(value => value.collectionId === id)
+}
+
+export const getSampleByID = (collectionId: string,sampleId: string): SampleToChannel | undefined => {
+    const collection = collectionsLibrary.find(value => value.collectionId === collectionId)
+    console.log(collection)
+    if(collection === undefined) return collection
+
+    const resSample = collection.sampleList.find(value=> value.sampleId === sampleId)
+    console.log(resSample)
+    
+    return resSample
 }
 /*
 export const addNewFav = (userId: number, favEntry: SampleFav): SampleFav | boolean => {
