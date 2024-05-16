@@ -1,6 +1,6 @@
 //import favouritesMock from './favouritesMock.json'
 import { CollectionSampleLibrary } from '../interfaces'
-import { SampleToChannel } from '../types'
+import { PlanType, SampleToChannel } from '../types'
 import collectionsMock from './collectionSamplesMock.json'
 
 const collectionsLibrary: Array<CollectionSampleLibrary> = collectionsMock.collectionsLibrary as Array<CollectionSampleLibrary>
@@ -22,6 +22,10 @@ export const getSampleByID = (collectionId: string,sampleId: string): SampleToCh
     console.log(resSample)
     
     return resSample
+}
+
+export const getCollectionsByPlan = (plan: PlanType): Array<CollectionSampleLibrary> | undefined => {
+    return collectionsLibrary.filter(col => col.plan === plan)
 }
 /*
 export const addNewFav = (userId: number, favEntry: SampleFav): SampleFav | boolean => {

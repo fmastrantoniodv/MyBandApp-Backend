@@ -1,5 +1,7 @@
 //aca van las validaciones de los inputs
 
+import { PlanType } from "./types"
+
 export const parseUserId = ( userIdFromRequest: any ): number => {
     if(!isNumber(userIdFromRequest)){
         throw new Error('Incorrect or missing id')
@@ -18,6 +20,17 @@ const isString = (str: string): boolean => {
 export const parseStringFromRequest = (str: any): string => {
     if(!isString(str)){
         throw new Error('Incorrect format or missing string')
+    }
+    return str
+}
+
+const isPlanType = (value: string): value is PlanType => {
+    return Object.values(PlanType).includes(value as PlanType);
+}
+
+export const parsePlanType = (str: any): PlanType => {
+    if(!isPlanType(str)){
+        throw new Error('Incorrect format or missing planType')
     }
     return str
 }

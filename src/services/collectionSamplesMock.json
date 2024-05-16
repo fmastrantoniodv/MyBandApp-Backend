@@ -4,7 +4,7 @@
             "collectionId": "CONGA_VOL_1",
             "collectionName": "Conga Hits Volumen 1",
             "uploadDate": "07/05/2024",
-            "plan": "Free",
+            "plan": "free",
             "sampleList": [
                 {
                     "sampleId": "CONGA_VOL_1_BONGO",
@@ -72,7 +72,7 @@
             "collectionId": "SALSA_VOL_1",
             "collectionName": "Salsa Hits Volumen 1",
             "uploadDate": "25/03/2024",
-            "plan": "Trial",
+            "plan": "trial",
             "sampleList": [
                 {
                     "sampleId": "SALSA_VOL_1_BONGO",

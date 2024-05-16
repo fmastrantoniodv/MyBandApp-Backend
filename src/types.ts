@@ -36,10 +36,10 @@ export type Sample = {
 }
 
 export enum PlanType {
-    Free = 'Free',
-    Trial = 'Trial',
-    Pro = 'Pro',
-    Admin = 'Admin'
+    Free = 'free',
+    Trial = 'trial',
+    Pro = 'pro',
+    Admin = 'admin'
 }
 
 export type SampleToChannel = Omit<Sample, 'collectionId'>
