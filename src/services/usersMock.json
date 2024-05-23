@@ -1,0 +1,22 @@
+{
+    "usersList": [
+        {
+            "userId": "1",
+            "email": "francomastrantonio@hotmail.com",
+            "usrName": "frankie",
+            "password": "elpasswordclaro",
+            "plan": "admin",
+            "expirationPlanDate": "2024-07-07",
+            "registerDate": "2024-05-23T01:19:20.031Z"
+        },
+        {
+            "userId": "2",
+            "email": "fff@hotmail.com",
+            "usrName": "jorge",
+            "password": "elpasswordclaro",
+            "plan": "free",
+            "expirationPlanDate": "2024-06-01",
+            "registerDate": "2024-05-23T01:19:20.031Z"
+        }
+    ]
+}

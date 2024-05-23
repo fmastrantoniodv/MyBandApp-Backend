@@ -34,6 +34,17 @@ export type Sample = {
     collectionId: number,
     tempo: number
 }
+export type User = {
+    userId: string,
+    email: string,
+    usrName: string,
+    password: string,
+    plan: PlanType,
+    expirationPlanDate: string,
+    registerDate: string
+}
+
+export type UserEntry = Pick<User, 'usrName' | 'email' | 'password' | 'plan'>
 
 export enum PlanType {
     Free = 'free',
