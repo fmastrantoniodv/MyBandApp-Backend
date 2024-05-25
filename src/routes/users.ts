@@ -1,8 +1,10 @@
 import express from 'express'
 import * as usersServ from '../services/usersServ'
+import * as project from '../services/projectsServ'
 import envParams from '../envParams.json'
-import { UserEntry } from '../types'
+import { User, UserEntry } from '../types'
 import {parsePlanType, parseStringFromRequest} from '../utils'
+import { getUserFavs } from '../services/favouritesSamplesServ'
 
 const router = express.Router()
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
@@ -30,6 +32,27 @@ router.post('/register', (req, res) => {
     }catch (e: any) {
         res.status(400).send(e.message)
 }
+})
+
+router.post('/login', (req, res) => {
+    resHeaderConfig(res, frontendEndpoint)
+    try{
+        const { email, password } = req.body
+        const userData: User | undefined = usersServ.userLogin(email, password)
+        if(userData === undefined){
+            throw new Error('Las credenciales no son validas')
+        }else{
+            const usrProjects = project.getUserProjects(userData.userId)
+            const usrFavs = getUserFavs(userData.userId)
+            res.json({
+                userData,
+                userProjects: usrProjects,
+                userFavs: usrFavs
+            })
+        }
+    }catch(e: any){
+        res.status(400).send(e.message)
+    }
 })
 /*
 router.delete('/', (req, res) => {

@@ -1,10 +1,13 @@
 [
-    {
-        "id": 213,
-        "projectName": "Primer proyecto",
-        "createdDate": "2023-10-18 11:12:50",
-        "savedDate": "2023-10-19 05:50:01",
-        "totalDuration": 654846,
+    {   
+        "projectInfo": {
+            "id": 213,
+            "userId": "1",
+            "projectName": "Primer proyecto",
+            "createdDate": "2023-10-18 11:12:50",
+            "savedDate": "2023-10-19 05:50:01",
+            "totalDuration": 654846
+        },
         "soundsList": [
             {
                 "id": "kick",

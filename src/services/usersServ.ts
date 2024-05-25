@@ -10,21 +10,27 @@ export const getUsersList = (): Array<User> | undefined => {
 export const addNewUser = ( newUserEntry: UserEntry ): User | boolean => {
     console.log('user data:',newUserEntry)
     var indexUser = usersList.findIndex(value => value.email === newUserEntry.email)
-    var newUser: User = {
-        userId: ""+usersList.length + 1,
-        email: newUserEntry.email,
-        usrName: newUserEntry.usrName,
-        password: newUserEntry.password,
-        plan: newUserEntry.plan,
-        expirationPlanDate: "2025-05-22",
-        registerDate: new Date().toLocaleDateString()
-    }
     if(indexUser < 0){
+        var newUser: User = {
+            userId: ""+usersList.length + 1,
+            email: newUserEntry.email,
+            usrName: newUserEntry.usrName,
+            password: newUserEntry.password,
+            plan: newUserEntry.plan,
+            expirationPlanDate: "2025-05-22",
+            registerDate: new Date().toLocaleDateString()
+        }
         usersList.push(newUser)    
         return newUser
     }else{
         return false
     }
+}
+
+export const userLogin = (email: string, pass: string): User | undefined=> {
+    console.log('login data: '+email+', '+pass)
+    var user = usersList.find(value => value.email === email && value.password === pass)
+    return user
 }
 /*
 export const deleteFav = (userId: number, sampleId: string): boolean => {

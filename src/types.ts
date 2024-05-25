@@ -44,6 +44,15 @@ export type User = {
     registerDate: string
 }
 
+export type ProjectInfo = {
+    id: number,
+    userId: string,
+    projectName: string,
+    createdDate: string,
+    savedDate: string,
+    totalDuration: number
+}
+
 export type UserEntry = Pick<User, 'usrName' | 'email' | 'password' | 'plan'>
 
 export enum PlanType {

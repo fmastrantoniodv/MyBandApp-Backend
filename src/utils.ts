@@ -1,6 +1,6 @@
 //aca van las validaciones de los inputs
 
-import { PlanType } from "./types"
+import { PlanType, User } from "./types"
 
 export const parseUserId = ( userIdFromRequest: any ): number => {
     if(!isNumber(userIdFromRequest)){
@@ -26,6 +26,13 @@ export const parseStringFromRequest = (str: any): string => {
 
 const isPlanType = (value: string): value is PlanType => {
     return Object.values(PlanType).includes(value as PlanType);
+}
+
+export const isUser = (obj: any): obj is User => {
+    return typeof obj === 'object' &&
+           obj !== null &&
+           typeof obj.name === 'string' &&
+           typeof obj.age === 'number';
 }
 
 export const parsePlanType = (str: any): PlanType => {

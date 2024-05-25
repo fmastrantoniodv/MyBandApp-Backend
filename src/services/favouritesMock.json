@@ -1,36 +1,40 @@
 {
-    "favouritesList": [
+    "favourites": [
         {
-            "sampleId": "CONGA_VOL_1_BONGO",
-            "sampleName": "Bongos"
-        },
-        {
-            "sampleId": "CONGA_VOL_1_GUITAR",
-            "sampleName": "Guitarra Riff"
-        },
-        {
-            "sampleId": "CONGA_VOL_1_HIHATS",
-            "sampleName": "Hi Hats"
-        },
-        {
-            "sampleId": "CONGA_VOL_1_KICK",
-            "sampleName": "Kick"
-        },
-        {
-            "sampleId": "CONGA_VOL_1_RYTHMBASS",
-            "sampleName": "Bass Rythm"
-        },
-        {
-            "sampleId": "CONGA_VOL_1_SHAKER",
-            "sampleName": "Shaker"
-        },
-        {
-            "sampleId": "CONGA_VOL_1_SUBBASS",
-            "sampleName": "Bass Sub"
-        },
-        {
-            "sampleId": "CONGA_VOL_1_TOMS",
-            "sampleName": "Toms"
-        }
-    ]
+            "userId": "1",
+            "favouritesList": [
+                {
+                    "sampleId": "CONGA_VOL_1_BONGO",
+                    "sampleName": "Bongos"
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_GUITAR",
+                    "sampleName": "Guitarra Riff"
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_HIHATS",
+                    "sampleName": "Hi Hats"
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_KICK",
+                    "sampleName": "Kick"
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_RYTHMBASS",
+                    "sampleName": "Bass Rythm"
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_SHAKER",
+                    "sampleName": "Shaker"
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_SUBBASS",
+                    "sampleName": "Bass Sub"
+                },
+                {
+                    "sampleId": "CONGA_VOL_1_TOMS",
+                    "sampleName": "Toms"
+                }
+            ]
+        }]
 }
