@@ -1,5 +1,4 @@
 import express from 'express'
-
 import projectsRouter from './routes/projects'
 import favouritesRouter from './routes/favourites'
 import collectionsRouter from './routes/collections'

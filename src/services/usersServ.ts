@@ -1,7 +1,16 @@
 import { UserEntry , User } from '../types'
-import usersMock from './usersMock.json'
+import mongoose from 'mongoose'
+const UserModel = require('../models/User.js')
 
-const usersList: Array<User> = usersMock.usersList as Array<User>
+//const usersList: Array<User> = usersMock.usersList as Array<User>
+var usersList: Array<User>
+UserModel.find({}).then((result: any) => {
+    console.log(result)
+    usersList = result
+    mongoose.connection.close()
+}).catch((err: any)=>{
+    console.error(err)
+})
 
 export const getUsersList = (): Array<User> | undefined => {
     return usersList
@@ -9,17 +18,31 @@ export const getUsersList = (): Array<User> | undefined => {
 
 export const addNewUser = ( newUserEntry: UserEntry ): User | boolean => {
     console.log('user data:',newUserEntry)
+    
     var indexUser = usersList.findIndex(value => value.email === newUserEntry.email)
     if(indexUser < 0){
+        var registerDate = new Date()
+        var calExpDate = registerDate.getFullYear() + 1;
+        var expDate = new Date(registerDate)
+        expDate.setFullYear(calExpDate)
         var newUser: User = {
             userId: ""+usersList.length + 1,
             email: newUserEntry.email,
             usrName: newUserEntry.usrName,
             password: newUserEntry.password,
             plan: newUserEntry.plan,
-            expirationPlanDate: "2025-05-22",
-            registerDate: new Date().toLocaleDateString()
+            expirationPlanDate: expDate,
+            registerDate: new Date()
         }
+        require('./mongo')
+        const userToDB = new UserModel(newUser)
+        userToDB.save()
+            .then(()=>{
+                console.log('new user saved:', newUser)
+            })
+            .catch((err:any)=>{
+            console.error(err.message)
+        })
         usersList.push(newUser)    
         return newUser
     }else{

@@ -1,9 +1,9 @@
 import express from 'express'
 import * as usersServ from '../services/usersServ'
-import * as project from '../services/projectsServ'
 import envParams from '../envParams.json'
 import { User, UserEntry } from '../types'
 import {parsePlanType, parseStringFromRequest} from '../utils'
+import { getUserProjects } from '../services/projectsServ'
 import { getUserFavs } from '../services/favouritesSamplesServ'
 
 const router = express.Router()
@@ -42,12 +42,10 @@ router.post('/login', (req, res) => {
         if(userData === undefined){
             throw new Error('Las credenciales no son validas')
         }else{
-            const usrProjects = project.getUserProjects(userData.userId)
-            const usrFavs = getUserFavs(userData.userId)
             res.json({
                 userData,
-                userProjects: usrProjects,
-                userFavs: usrFavs
+                userProjects: getUserProjects(userData.userId),
+                userFavs: getUserFavs(userData.userId)
             })
         }
     }catch(e: any){

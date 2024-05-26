@@ -40,8 +40,8 @@ export type User = {
     usrName: string,
     password: string,
     plan: PlanType,
-    expirationPlanDate: string,
-    registerDate: string
+    expirationPlanDate: Date,
+    registerDate: Date
 }
 
 export type ProjectInfo = {
