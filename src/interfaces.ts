@@ -1,4 +1,4 @@
-import { SoundListItem, PlanType, SampleToChannel, ProjectInfo, SampleFav } from './types'
+import { SoundListItem, PlanType, SampleToChannel, ProjectInfo, SampleFav, UserDataType } from './types'
 
 export interface Project {
     projectInfo: ProjectInfo,
@@ -17,4 +17,8 @@ export interface CollectionSampleLibrary {
 export interface Favourite {
     userId: string,
     favouritesList: Array<SampleFav>
+}
+
+export interface UserData extends UserDataType {
+    id: string,
 }

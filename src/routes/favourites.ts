@@ -20,8 +20,8 @@ try{
     const { userId, sampleId, sampleName } = req.body
     parseUserId(userId)
     const newFavEntry: SampleFav = {
-        sampleId: parseStringFromRequest(sampleId),
-        sampleName: parseStringFromRequest(sampleName)
+        sampleId: parseStringFromRequest(sampleId, 1, 100),
+        sampleName: parseStringFromRequest(sampleName, 1, 100)
     }
     const newFav = favouritesSamplesServ.addNewFav(
         userId,
@@ -40,7 +40,7 @@ router.delete('/', (req, res) => {
     try{
         const { userId, sampleId } = req.body
         parseUserId(userId)
-        parseStringFromRequest(sampleId)
+        parseStringFromRequest(sampleId, 1,100)
         if(!favouritesSamplesServ.deleteFav(userId, sampleId)){
             throw new Error('No se pudo borrar')
         }

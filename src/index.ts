@@ -3,6 +3,7 @@ import projectsRouter from './routes/projects'
 import favouritesRouter from './routes/favourites'
 import collectionsRouter from './routes/collections'
 import users from './routes/users'
+require('./mongo')
 
 const app = express()
 app.use(express.json())

@@ -35,7 +35,6 @@ export type Sample = {
     tempo: number
 }
 export type User = {
-    userId: string,
     email: string,
     usrName: string,
     password: string,
@@ -54,6 +53,8 @@ export type ProjectInfo = {
 }
 
 export type UserEntry = Pick<User, 'usrName' | 'email' | 'password' | 'plan'>
+
+export type UserDataType = Omit<User, 'password'>
 
 export enum PlanType {
     Free = 'free',

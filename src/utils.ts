@@ -13,12 +13,14 @@ const isNumber = (num: number): boolean => {
     return typeof num === 'number'
 }
 
-const isString = (str: string): boolean => {
+const isString = (str: string): boolean => { 
     return typeof str === 'string'
 }
 
-export const parseStringFromRequest = (str: any): string => {
-    if(!isString(str)){
+export const parseStringFromRequest = (str: string, minChars: number, maxChars: number): string => {
+    console.log('str='+str+', minChars='+minChars+', maxChars='+maxChars)
+    console.log('str.length='+str.length)
+    if(!isString(str) || str.length < minChars || str.length > maxChars){
         throw new Error('Incorrect format or missing string')
     }
     return str
@@ -40,4 +42,17 @@ export const parsePlanType = (str: any): PlanType => {
         throw new Error('Incorrect format or missing planType')
     }
     return str
+}
+
+export const calculateExpirationDate = (plan: PlanType, regDate: Date): Date =>{
+    var expDate = new Date(regDate)
+    if(plan === PlanType.Pro){
+        expDate.setFullYear(regDate.getFullYear() + 1)
+    }else if(plan === PlanType.Trial){
+        expDate.setMonth(expDate.getMonth() + 1);
+    }else{
+        expDate.setFullYear(regDate.getFullYear() + 100)
+    }
+    
+    return expDate
 }

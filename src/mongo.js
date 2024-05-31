@@ -1,10 +1,17 @@
 const mongoose = require('mongoose')
 const connectionString = 'mongodb+srv://MyBandApp-Frankie:070793bsas@mybandappcluster.l8yireb.mongodb.net/?retryWrites=true&w=majority&appName=MyBandAppCluster'
 
-mongoose.connect(connectionString)
-.then(()=>{
-    console.log("database connected")
-}).catch(err => {
-    console.error(err)
-})
+const connectToDatabase = async () => {
+    try {
+        await mongoose.connect(connectionString)
+        .then(()=>{
+            console.log("[mongo].[connectToDatabase].[MSG]=Database connected")
+        }).catch(err => {
+            console.error(err)
+        })        
+    } catch (error) {
+        console.error("[mongo].[connectToDatabase].[ERR].Error to connect database=", error);
+    }
+}
 
+module.exports = connectToDatabase

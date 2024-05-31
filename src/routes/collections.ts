@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
     console.log('request collection by id:'+req.params.id)
     res.header("Access-Control-Allow-Origin", frontendEndpoint)
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    const resCollection = collectionsServ.getCollectionByID(parseStringFromRequest(req.params.id))
+    const resCollection = collectionsServ.getCollectionByID(parseStringFromRequest(req.params.id, 1, 100))
     if(resCollection === undefined){
         res.send("No se encontraron collections con el id declarado")
     }else{
@@ -35,7 +35,7 @@ router.get('/:collectionId/sample/:sampleId', (req, res) => {
         console.log('request collection by id:'+req.params.collectionId+" sampleid:"+req.params.sampleId)
         res.header("Access-Control-Allow-Origin", frontendEndpoint)
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-        const resSample = collectionsServ.getSampleByID(parseStringFromRequest(req.params.collectionId), parseStringFromRequest(req.params.sampleId))
+        const resSample = collectionsServ.getSampleByID(parseStringFromRequest(req.params.collectionId, 1, 100), parseStringFromRequest(req.params.sampleId, 1, 100))
         if(resSample === undefined){
             res.send("No se encontró ningun sample con ese ID")
         }else{
