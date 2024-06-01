@@ -1,4 +1,4 @@
-import { UserEntry , User } from '../types'
+import { UserEntry , User, PlanType } from '../types'
 import mongoose from 'mongoose'
 import { calculateExpirationDate } from '../utils'
 import { UserData } from '../interfaces';
@@ -6,6 +6,38 @@ const connectToDatabase = require('../mongo.js');
 const UserModel = require('../models/User.js')
 
 console.log('####Init userServ#######')
+
+const changeUserPassDB = async (id: string, newPass: string) => {
+    console.log(`${new Date()}.[usersServ].[changeUserPassDB].[MSG].Init`)
+    console.log(`${new Date()}.[usersServ].[changeUserPassDB].[MSG].id=`,id)
+    console.log(`${new Date()}.[usersServ].[changeUserPassDB].[MSG].connectDB.pre`)
+    await connectToDatabase()
+    console.log(`${new Date()}.[usersServ].[changeUserPassDB].[MSG].connectDB.post`)
+    return await UserModel.findByIdAndUpdate(id, {password: newPass}, { new: true }).then((result: any)=>{
+        mongoose.connection.close()
+        console.log(`${new Date()}.[usersServ].[changeUserPassDB].[MSG].UserModel.findByIdAndUpdate.userUpdated=`,result)
+        return true
+    }).catch((err: any)=>{
+        console.error(`${new Date()}.[usersServ].[changeUserPassDB].[MSG].UserModel.findByIdAndUpdate.error=`, err.message);
+        return false
+    })    
+}
+
+const changeUserPlanDB = async (id: string, newPlan: PlanType) => {
+    console.log(`${new Date()}.[usersServ].[changeUserPlanDB].[MSG].Init`)
+    console.log(`${new Date()}.[usersServ].[changeUserPlanDB].[MSG].connectDB.pre`)
+    await connectToDatabase()
+    console.log(`${new Date()}.[usersServ].[changeUserPlanDB].[MSG].connectDB.post`)
+    console.log(`${new Date()}.[usersServ].[changeUserPlanDB].[MSG].UserModel.findByIdAndUpdate.pre`)
+    return await UserModel.findByIdAndUpdate(id, {plan: newPlan}, { new: true }).then((result: any)=>{
+        mongoose.connection.close()
+        console.log(`${new Date()}.[usersServ].[changeUserPlanDB].[MSG].UserModel.findByIdAndUpdate.userUpdated=`,result)
+        return result
+    }).catch((err: any)=>{
+        console.error(`${new Date()}.[usersServ].[changeUserPlanDB].[MSG].UserModel.findByIdAndUpdate.error=`, err.message);
+        return false
+    })
+};
 
 const validateLogin = async (email: string, pass: string): Promise<UserData | boolean> => {
     console.log(`${new Date()}.[usersServ].[validateLogin].[MSG].Init`)
@@ -110,3 +142,23 @@ export const userLogin = async (email: string, pass: string): Promise<UserData |
     return userData
 }
 
+export const changePlan = async (userId: string, newPlan: PlanType): Promise<UserData | boolean>=>{
+    console.log(`${new Date()}.[usersServ].[changePlan].[MSG].Init`)
+    console.log(`${new Date()}.[usersServ].[changePlan].[MSG].req data: userId=${userId}, newPlan=${newPlan}`)
+    const resultUpdate = await changeUserPlanDB(userId, newPlan)
+    return resultUpdate
+}
+
+export const changePass = async (email: string, password: string, newPass: string): Promise<boolean>=>{
+    console.log(`${new Date()}.[usersServ].[changePass].[MSG].Init`)
+    console.log(`${new Date()}.[usersServ].[changePass].[MSG].req data: email=${email}, password=${password}, newPass=${newPass}`)
+    console.log(`${new Date()}.[usersServ].[changePass].[MSG].validateLogin.pre`)
+    const userData = await validateLogin(email, password)
+    console.log(`${new Date()}.[usersServ].[changePass].[MSG].validateLogin.post`)
+    console.log(`${new Date()}.[usersServ].[changePass].[MSG].userData=`,userData)
+    if(typeof userData === 'boolean'){
+        throw new Error('Credenciales invalidas')
+    }
+    const resultUpdate = await changeUserPassDB(userData.id, newPass)
+    return resultUpdate
+}

@@ -3,12 +3,7 @@ import * as usersServ from '../services/usersServ'
 import envParams from '../envParams.json'
 import {parsePlanType, parseStringFromRequest} from '../utils'
 import { UserEntry } from '../types'
-//import { UserData } from '../interfaces'
-/*
-import { User, UserEntry } from '../types'
-import { getUserProjects } from '../services/projectsServ'
-import { getUserFavs } from '../services/favouritesSamplesServ'
-*/
+
 const router = express.Router()
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
 
@@ -46,33 +41,40 @@ router.post('/login', async (req, res) => {
             throw new Error('Las credenciales no son validas')
         }else{
             res.json(userDataRes)
-            /*
-            res.json({
-                userData,
-                userProjects: getUserProjects(userData.userId),
-                userFavs: getUserFavs(userData.userId)
-            })
-            */
         }
     }catch(e: any){
         res.status(400).send(e.message)
     }
 })
 
-
-/*
-router.delete('/', (req, res) => {
+router.post('/updatePlan', async (req, res) => {
+    resHeaderConfig(res, frontendEndpoint)
     try{
-        const { userId, sampleId } = req.body
-        parseUserId(userId)
-        parseStringFromRequest(sampleId)
-        if(!favouritesSamplesServ.deleteFav(userId, sampleId)){
-            throw new Error('No se pudo borrar')
+        const { userId, newPlan } = req.body
+        const userDataRes = await usersServ.changePlan(userId, newPlan)
+        if(userDataRes === false){
+            throw new Error('No se pudo actualizar el plan')
+        }else{
+            res.json(userDataRes)
         }
-        res.send("ok!")
-    }catch (e: any) {
+    }catch(e: any){
         res.status(400).send(e.message)
     }
 })
-*/
+
+router.post('/changePass', async (req, res) => {
+    resHeaderConfig(res, frontendEndpoint)
+    try{
+        const { email, password, newPass } = req.body
+        const userDataRes = await usersServ.changePass(email, password, newPass)
+        if(userDataRes === false){
+            throw new Error('No se pudo cambiar la password')
+        }else{
+            res.send("Se actualizó la password con exito")
+        }
+    }catch(e: any){
+        res.status(400).send(e.message)
+    }
+})
+
 export default router
