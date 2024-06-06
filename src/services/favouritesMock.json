@@ -5,35 +5,59 @@
             "favouritesList": [
                 {
                     "sampleId": "CONGA_VOL_1_BONGO",
-                    "sampleName": "Bongos"
+                    "sampleName": "Bongos",
+                    "pathFolder": "CONGA_VOL_1",
+                    "duration": 354,
+                    "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_GUITAR",
-                    "sampleName": "Guitarra Riff"
+                    "sampleName": "Guitarra Riff",
+                    "pathFolder": "CONGA_VOL_1",
+                    "duration": 354,
+                    "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_HIHATS",
-                    "sampleName": "Hi Hats"
+                    "sampleName": "Hi Hats",
+                    "pathFolder": "CONGA_VOL_1",
+                    "duration": 354,
+                    "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_KICK",
-                    "sampleName": "Kick"
+                    "sampleName": "Kick",
+                    "pathFolder": "CONGA_VOL_1",
+                    "duration": 354,
+                    "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_RYTHMBASS",
-                    "sampleName": "Bass Rythm"
+                    "sampleName": "Bass Rythm",
+                    "pathFolder": "CONGA_VOL_1",
+                    "duration": 354,
+                    "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_SHAKER",
-                    "sampleName": "Shaker"
+                    "sampleName": "Shaker",
+                    "pathFolder": "CONGA_VOL_1",
+                    "duration": 354,
+                    "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_SUBBASS",
-                    "sampleName": "Bass Sub"
+                    "sampleName": "Bass Sub",
+                    "pathFolder": "CONGA_VOL_1",
+                    "duration": 354,
+                    "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_TOMS",
-                    "sampleName": "Toms"
+                    "sampleName": "Toms",
+                    "pathFolder": "CONGA_VOL_1",
+                    "duration": 354,
+                    "tempo": 120
                 }
             ]
         }]

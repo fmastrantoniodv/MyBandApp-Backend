@@ -1,16 +1,11 @@
 import express from 'express'
 import * as usersServ from '../services/usersServ'
 import envParams from '../envParams.json'
-import {parsePlanType, parseStringFromRequest} from '../utils'
+import {parsePlanType, parseStringFromRequest, resHeaderConfig} from '../utils'
 import { UserEntry } from '../types'
 
 const router = express.Router()
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
-
-const resHeaderConfig = (res: any, endpoint: string) => {
-    res.header("Access-Control-Allow-Origin", endpoint)
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-}
 
 router.post('/register', async (req, res) => {
     resHeaderConfig(res, frontendEndpoint)

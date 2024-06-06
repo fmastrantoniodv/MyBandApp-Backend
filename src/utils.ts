@@ -56,3 +56,8 @@ export const calculateExpirationDate = (plan: PlanType, regDate: Date): Date =>{
     
     return expDate
 }
+
+export const resHeaderConfig = (res: any, endpoint: string) => {
+    res.header("Access-Control-Allow-Origin", endpoint)
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+}

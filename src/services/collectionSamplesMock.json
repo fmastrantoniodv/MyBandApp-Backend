@@ -2,6 +2,7 @@
     "collectionsLibrary": [
         {
             "collectionId": "CONGA_VOL_1",
+            "collectionCode": "CONGA_VOL_1",
             "collectionName": "Conga Hits Volumen 1",
             "uploadDate": "07/05/2024",
             "plan": "free",
@@ -9,56 +10,56 @@
                 {
                     "sampleId": "CONGA_VOL_1_BONGO",
                     "sampleName": "Bongos",
-                    "srcUrl": "",
+                    "pathFolder": "CONGA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_KICK",
                     "sampleName": "Kick",
-                    "srcUrl": "",
+                    "pathFolder": "CONGA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_GUITAR",
                     "sampleName": "Guitarra Riff",
-                    "srcUrl": "",
+                    "pathFolder": "CONGA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_RYTHMBASS",
                     "sampleName": "Bass Rythm",
-                    "srcUrl": "",
+                    "pathFolder": "CONGA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_SHAKER",
                     "sampleName": "Shaker",
-                    "srcUrl": "",
+                    "pathFolder": "CONGA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_SUBBASS",
                     "sampleName": "Bass Sub",
-                    "srcUrl": "",
+                    "pathFolder": "CONGA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_TOMS",
                     "sampleName": "Toms",
-                    "srcUrl": "",
+                    "pathFolder": "CONGA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "CONGA_VOL_1_HIHATS",
                     "sampleName": "Hi Hats",
-                    "srcUrl": "",
+                    "pathFolder": "CONGA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 }
@@ -77,56 +78,56 @@
                 {
                     "sampleId": "SALSA_VOL_1_BONGO",
                     "sampleName": "Bongos",
-                    "srcUrl": "",
+                    "pathFolder": "SALSA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "SALSA_VOL_1_KICK",
                     "sampleName": "Kick",
-                    "srcUrl": "",
+                    "pathFolder": "SALSA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "SALSA_VOL_1_GUITAR",
                     "sampleName": "Guitarra Riff",
-                    "srcUrl": "",
+                    "pathFolder": "SALSA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "SALSA_VOL_1_RYTHMBASS",
                     "sampleName": "Bass Rythm",
-                    "srcUrl": "",
+                    "pathFolder": "SALSA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "SALSA_VOL_1_SHAKER",
                     "sampleName": "Shaker",
-                    "srcUrl": "",
+                    "pathFolder": "SALSA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "SALSA_VOL_1_SUBBASS",
                     "sampleName": "Bass Sub",
-                    "srcUrl": "",
+                    "pathFolder": "SALSA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "SALSA_VOL_1_TOMS",
                     "sampleName": "Toms",
-                    "srcUrl": "",
+                    "pathFolder": "SALSA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 },
                 {
                     "sampleId": "SALSA_VOL_1_HIHATS",
                     "sampleName": "Hi Hats",
-                    "srcUrl": "",
+                    "pathFolder": "SALSA_VOL_1",
                     "duration": 354,
                     "tempo": 120
                 }
