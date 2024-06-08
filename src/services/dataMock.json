@@ -1,20 +1,14 @@
 [
     {   
-        "projectInfo": {
-            "id": 213,
-            "userId": "1",
-            "projectName": "Primer proyecto",
-            "createdDate": "2023-10-18 11:12:50",
-            "savedDate": "2023-10-19 05:50:01",
-            "totalDuration": 654846
-        },
-        "soundsList": [
+        "projectId": "sgf8g4d84813a2sd48",
+        "userId": "1",
+        "projectName": "Primer proyecto",
+        "createdDate": "2023-10-18 11:12:50",
+        "savedDate": "2023-10-19 05:50:01",
+        "totalDuration": 654846,
+        "channelList": [
             {
                 "sampleId": "CONGA_VOL_1_BONGO",
-                "sampleName": "Bongos",
-                "pathFolder": "CONGA_VOL_1",
-                "duration": 354,
-                "tempo": 120,
                 "channelConfig": {
                     "states": {
                         "solo": false,
@@ -32,7 +26,7 @@
             {
                 "sampleId": "CONGA_VOL_1_KICK",
                 "sampleName": "Kick",
-                "pathFolder": "CONGA_VOL_1",
+                "collectionCode": "CONGA_VOL_1",
                 "duration": 354,
                 "tempo": 120,
                 "channelConfig": {
@@ -52,7 +46,7 @@
             {
                 "sampleId": "CONGA_VOL_1_GUITAR",
                 "sampleName": "Guitarra Riff",
-                "pathFolder": "CONGA_VOL_1",
+                "collectionCode": "CONGA_VOL_1",
                 "duration": 354,
                 "tempo": 120,
                 "channelConfig": {
@@ -72,7 +66,7 @@
             {
                 "sampleId": "CONGA_VOL_1_RYTHMBASS",
                 "sampleName": "Bass Rythm",
-                "pathFolder": "CONGA_VOL_1",
+                "collectionCode": "CONGA_VOL_1",
                 "duration": 354,
                 "tempo": 120,
                 "channelConfig": {

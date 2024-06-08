@@ -2,6 +2,7 @@ import express from 'express'
 import * as collectionsServ from '../services/collectionsServ'
 import envParams from '../envParams.json'
 import {parseStringFromRequest, parsePlanType} from '../utils'
+import { CollectionItemEntry } from '../interfaces'
 
 const router = express.Router()
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
@@ -65,28 +66,32 @@ router.get('/plan/:plan', (req, res) => {
 })
 
 
-/*
-router.post('/', (req, res) => {
-try{
-    const { userId, sampleId, sampleName } = req.body
-    parseUserId(userId)
-    const newFavEntry: SampleFav = {
-        sampleId: parseStringFromRequest(sampleId),
-        sampleName: parseStringFromRequest(sampleName)
-    }
-    const newFav = favouritesSamplesServ.addNewFav(
-        userId,
-        newFavEntry 
-    )
-    if(newFav === false){
-        throw new Error('No se agregar el nuevo fav porque ya existe')
-    }
-    res.json(newFav)
-}catch (e: any) {
-    res.status(400).send(e.message)
-}
-})
+router.post('/addCollection', async (req, res) => {
+    try{
+        const { collectionCode, collectionName, plan, sampleList, tags } = req.body
+        const samplesIdList = await collectionsServ.getSamplesIdList(sampleList)
+        const newCollectionEntry: CollectionItemEntry = {
+            collectionCode: parseStringFromRequest(collectionCode, 0, 100),
+            collectionName: parseStringFromRequest(collectionName, 0, 100),
+            uploadDate: new Date(),
+            plan: parsePlanType(plan),
+            sampleList: samplesIdList,
+            tags: tags
+        }
 
+        await collectionsServ.addNewCollection(newCollectionEntry)
+        /*
+        if(newCollection === false){
+            throw new Error('No se agregar el nuevo fav porque ya existe')
+        }
+            */
+        res.send('Collection creada con exito')
+    }catch (e: any) {
+        res.status(400).send(e.message)
+    }
+})
+                        
+/*
 router.delete('/', (req, res) => {
     try{
         const { userId, sampleId } = req.body

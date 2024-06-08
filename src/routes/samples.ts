@@ -1,9 +1,11 @@
 import express from 'express'
 import path from 'path'
+import * as samplesServ from '../services/samplesServ'
 const cors = require('cors')
-import { parseStringFromRequest
+import { parseNumberFromRequest, parseStringFromRequest
 //  resHeaderConfig
 } from '../utils'
+import { SampleEntry } from '../types'
 //import envParams from '../envParams.json'
 
 const router = express.Router()
@@ -47,5 +49,21 @@ router.get('/:collectionId/:sampleId', async (req, res) => {
         throw new Error('No se pudo obtener el audio')
     }
 });
+
+router.post('/addSample', async (req, res)=>{
+  try {
+    const { sampleName, collectionCode, duration, tempo } = req.body
+    const newSampleEntry: SampleEntry = {
+      sampleName: parseStringFromRequest(sampleName, 1, 50),
+      collectionCode: parseStringFromRequest(collectionCode, 1, 100),
+      duration: parseNumberFromRequest(duration, 0,600000),
+      tempo: parseNumberFromRequest(tempo, 0, 999)
+  }
+  const newSample = await samplesServ.addNewSample(newSampleEntry)
+  res.json(newSample)
+  } catch (e: any) {
+    res.status(400).send(e.message)
+  }
+}) 
 
 export default router

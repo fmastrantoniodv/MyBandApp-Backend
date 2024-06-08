@@ -15,25 +15,21 @@ export type ChannelConfig = {
         EQ: EqParams
 }
 
-export type SoundListItem =         
-{
+export type SoundListItem = {
     sample: Sample,
     channelConfig: ChannelConfig
-}
-
-export type SampleFav = {
-    sampleId: string,
-    sampleName: string
 }
 
 export type Sample = {
     sampleId: string,
     sampleName: string,
-    srcUrl: string,
+    collectionCode: string,
     duration: number,
-    collectionId: number,
     tempo: number
 }
+
+export type SampleEntry = Omit<Sample, 'sampleId'>
+
 export type User = {
     email: string,
     usrName: string,
@@ -43,18 +39,16 @@ export type User = {
     registerDate: Date
 }
 
+export type UserDataType = Omit<User, 'password'>
+export type UserEntry = Pick<User, 'usrName' | 'email' | 'password' | 'plan'>
+
 export type ProjectInfo = {
-    id: number,
     userId: string,
     projectName: string,
     createdDate: string,
     savedDate: string,
     totalDuration: number
 }
-
-export type UserEntry = Pick<User, 'usrName' | 'email' | 'password' | 'plan'>
-
-export type UserDataType = Omit<User, 'password'>
 
 export enum PlanType {
     Free = 'free',
@@ -63,4 +57,13 @@ export enum PlanType {
     Admin = 'admin'
 }
 
-export type SampleToChannel = Omit<Sample, 'collectionId'>
+export type Collection = {
+    collectionId: string,
+    collectionCode: string,
+    collectionName: string,
+    uploadDate: Date,
+    plan: PlanType
+    tags: Array<string>
+}
+
+export type CollectionEntry = Omit<Collection, 'collectionId'>

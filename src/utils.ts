@@ -26,6 +26,15 @@ export const parseStringFromRequest = (str: string, minChars: number, maxChars: 
     return str
 }
 
+export const parseNumberFromRequest = (num: number, minNumber: number, maxNumber: number): number => {
+    console.log('num='+num+', minNumber='+minNumber+', maxNumber='+maxNumber)
+    console.log('num.length='+num.toString().length)
+    if(!isNumber(num) || num < minNumber || num > maxNumber){
+        throw new Error('Incorrect format or missing number')
+    }
+    return num
+}
+
 const isPlanType = (value: string): value is PlanType => {
     return Object.values(PlanType).includes(value as PlanType);
 }

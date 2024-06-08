@@ -1,12 +1,14 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
-const favSchema = new Schema({
-    userId: String,
-    favSampleList: { type: Schema.Types.ObjectId, ref: 'Sample', required: true },
+const sampleSchema = new Schema({
+    sampleName: String,
+    collectionCode: String,
+    duration: Number,
+    tempo: Number,
 })
 
-favSchema.set('toJSON', {
+sampleSchema.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id
         delete returnedObject._id
@@ -14,6 +16,6 @@ favSchema.set('toJSON', {
     }
 })
 
-const FavouriteModel = model('Favourite', userSchema)
+const SampleModel = model('Sample', sampleSchema)
 
-module.exports = FavouriteModel
+module.exports = SampleModel

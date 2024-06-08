@@ -8,7 +8,7 @@ const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] 
 
 router.get('/:id', (req, res) => {
     console.log('request project')
-    const resProject = project.getProject(+req.params.id)
+    const resProject = project.getProject(req.params.id)
     res.header("Access-Control-Allow-Origin", frontendEndpoint)
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     res.send(resProject)

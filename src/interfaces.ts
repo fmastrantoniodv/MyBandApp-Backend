@@ -1,7 +1,7 @@
-import { SoundListItem, PlanType, SampleToChannel, ProjectInfo, SampleFav, UserDataType } from './types'
+import { SoundListItem, PlanType, ProjectInfo, Sample, UserDataType, ChannelConfig, Collection, CollectionEntry } from './types'
 
-export interface Project {
-    projectInfo: ProjectInfo,
+export interface Project extends ProjectInfo{
+    projectId: string,
     soundList?: Array<SoundListItem>
 }
 
@@ -10,15 +10,27 @@ export interface CollectionSampleLibrary {
     collectionName: string,
     uploadDate: string,
     plan: PlanType | undefined,
-    sampleList: Array<SampleToChannel>
+    sampleList: Array<Sample>
     tags: Array<string>,
 }
 
-export interface Favourite {
+export interface UserFavourites {
     userId: string,
-    favouritesList: Array<SampleFav>
+    favouritesList: Array<Sample>
 }
 
 export interface UserData extends UserDataType {
     id: string,
+}
+
+export interface ChannelObj extends Sample{
+    channelConfig: ChannelConfig
+}
+
+export interface CollectionItem extends Collection{
+    sampleList: Array<Sample>
+}
+
+export interface CollectionItemEntry extends CollectionEntry{
+    sampleList: Array<string>
 }

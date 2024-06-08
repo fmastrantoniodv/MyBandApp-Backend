@@ -1,8 +1,8 @@
 import express from 'express'
 import * as favouritesSamplesServ from '../services/favouritesSamplesServ'
 import envParams from '../envParams.json'
-import { SampleFav } from '../types'
-import {parseStringFromRequest, parseUserId} from '../utils'
+import { Sample } from '../types'
+import {parseStringFromRequest, parseUserId, parseNumberFromRequest} from '../utils'
 
 const router = express.Router()
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
@@ -17,11 +17,14 @@ router.get('/', (_req, res) => {
 
 router.post('/', (req, res) => {
 try{
-    const { userId, sampleId, sampleName } = req.body
+    const { userId, sampleId, sampleName, collectionCode, duration, tempo } = req.body
     parseUserId(userId)
-    const newFavEntry: SampleFav = {
+    const newFavEntry: Sample = {
         sampleId: parseStringFromRequest(sampleId, 1, 100),
-        sampleName: parseStringFromRequest(sampleName, 1, 100)
+        sampleName: parseStringFromRequest(sampleName, 1, 100),
+        collectionCode: parseStringFromRequest(collectionCode, 1, 100),
+        duration: parseNumberFromRequest(duration, 0, 600000),
+        tempo: parseNumberFromRequest(tempo, 0, 999)
     }
     const newFav = favouritesSamplesServ.addNewFav(
         userId,

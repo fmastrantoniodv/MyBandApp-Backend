@@ -1,7 +1,11 @@
 //import favouritesMock from './favouritesMock.json'
-import { CollectionSampleLibrary } from '../interfaces'
-import { PlanType, SampleToChannel } from '../types'
+import { CollectionItem, CollectionItemEntry, CollectionSampleLibrary } from '../interfaces'
+import { PlanType, Sample, SampleEntry } from '../types'
 import collectionsMock from './collectionSamplesMock.json'
+import { checkArrayOfSamplesExistDB, addSamplesListToDB } from './samplesServ'
+import mongoose from 'mongoose'
+const connectToDatabase = require('../mongo.js');
+const CollectionModel = require('../models/Collections')
 
 const collectionsLibrary: Array<CollectionSampleLibrary> = collectionsMock.collectionsLibrary as Array<CollectionSampleLibrary>
 
@@ -13,7 +17,7 @@ export const getCollectionByID = (id: string): CollectionSampleLibrary | undefin
     return collectionsLibrary.find(value => value.collectionId === id)
 }
 
-export const getSampleByID = (collectionId: string,sampleId: string): SampleToChannel | undefined => {
+export const getSampleByID = (collectionId: string,sampleId: string): Sample | undefined => {
 
     const collection = collectionsLibrary.find(value => value.collectionId === collectionId)
     console.log(collection)
@@ -27,6 +31,40 @@ export const getSampleByID = (collectionId: string,sampleId: string): SampleToCh
 
 export const getCollectionsByPlan = (plan: PlanType): Array<CollectionSampleLibrary> | undefined => {
     return collectionsLibrary.filter(col => col.plan === plan)
+}
+
+export const getSamplesIdList = async (sampleList: Array<SampleEntry>): Promise<Array<string>> =>{
+    console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].Init`)
+    console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].sampleList=`,sampleList)
+    console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].checkArrayOfSamplesExistDB.pre`)
+    const samplesExist = await checkArrayOfSamplesExistDB(sampleList)
+    console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].checkArrayOfSamplesExistDB.post`)
+    if(samplesExist === false){
+        console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].addSamplesListToDB.pre`)
+        const result = await addSamplesListToDB(sampleList)
+        console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].addSamplesListToDB.post`)
+        console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].addSamplesListToDB.return=${result}`)
+        return result
+    }else{
+        console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].Resp=Sample ya existe en la db`)
+        throw new Error('Sample ya existe')
+    }
+}
+
+export const addNewCollection = async (newCollectionEntry: CollectionItemEntry): Promise<CollectionItem> => {
+    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].Init`)
+    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].connectDB.pre`)
+    await connectToDatabase()
+    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].connectDB.post`)
+    const collectionToDB = new CollectionModel(newCollectionEntry)
+    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].collectionToDB.save.pre`)
+    return await collectionToDB.save().then((res: any)=>{
+        console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].collectionToDB.save.res=`, res)
+        mongoose.connection.close()
+    })
+    .catch((err:any)=>{
+        console.error(`${new Date()}.[collectionsServ].[addUserToDB].[ERR].Error=`, err.message)
+    })
 }
 /*
 export const addNewFav = (userId: number, favEntry: SampleFav): SampleFav | boolean => {
