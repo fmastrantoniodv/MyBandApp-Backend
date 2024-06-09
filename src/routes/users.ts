@@ -1,14 +1,12 @@
 import express from 'express'
 import * as usersServ from '../services/usersServ'
-import envParams from '../envParams.json'
 import {parsePlanType, parseStringFromRequest, resHeaderConfig} from '../utils'
 import { UserEntry } from '../types'
 
 const router = express.Router()
-const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
 
 router.post('/register', async (req, res) => {
-    resHeaderConfig(res, frontendEndpoint)
+    resHeaderConfig(res)
     try{
         const { email, usrName, password, plan } = req.body
         const newUserEntry: UserEntry = {
@@ -28,7 +26,7 @@ router.post('/register', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-    resHeaderConfig(res, frontendEndpoint)
+    resHeaderConfig(res)
     try{
         const { email, password } = req.body
         const userDataRes = await usersServ.userLogin(email, password)
@@ -43,7 +41,7 @@ router.post('/login', async (req, res) => {
 })
 
 router.post('/updatePlan', async (req, res) => {
-    resHeaderConfig(res, frontendEndpoint)
+    resHeaderConfig(res)
     try{
         const { userId, newPlan } = req.body
         const userDataRes = await usersServ.changePlan(userId, newPlan)
@@ -58,7 +56,7 @@ router.post('/updatePlan', async (req, res) => {
 })
 
 router.post('/changePass', async (req, res) => {
-    resHeaderConfig(res, frontendEndpoint)
+    resHeaderConfig(res)
     try{
         const { email, password, newPass } = req.body
         const userDataRes = await usersServ.changePass(email, password, newPass)

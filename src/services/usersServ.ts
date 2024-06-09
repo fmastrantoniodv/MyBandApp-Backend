@@ -1,7 +1,7 @@
 import { UserEntry , User, PlanType } from '../types'
-import mongoose from 'mongoose'
 import { calculateExpirationDate } from '../utils'
 import { UserData } from '../interfaces';
+import mongoose from 'mongoose'
 const connectToDatabase = require('../mongo.js');
 const UserModel = require('../models/User.js')
 

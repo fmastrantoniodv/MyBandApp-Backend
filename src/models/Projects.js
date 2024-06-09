@@ -1,12 +1,10 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
-const types = require('../types')
-const { States, EqParams } = types
 
 const channelConfig = new Schema({
     volume: Number,
-    states: States,
-    EQ: EqParams
+    states: Object,
+    EQ: Object
 })
 
 const channelListItem = new Schema({
@@ -15,7 +13,7 @@ const channelListItem = new Schema({
 })
 
 const projectSchema = new Schema({
-    userId: String,
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     projectName: String,
     createdDate: String,
     savedDate: String,

@@ -16,7 +16,7 @@ export type ChannelConfig = {
 }
 
 export type SoundListItem = {
-    sample: Sample,
+    sampleId: string,
     channelConfig: ChannelConfig
 }
 
@@ -45,8 +45,8 @@ export type UserEntry = Pick<User, 'usrName' | 'email' | 'password' | 'plan'>
 export type ProjectInfo = {
     userId: string,
     projectName: string,
-    createdDate: string,
-    savedDate: string,
+    createdDate: Date,
+    savedDate: Date,
     totalDuration: number
 }
 

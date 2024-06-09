@@ -1,26 +1,22 @@
 import express from 'express'
 import * as collectionsServ from '../services/collectionsServ'
-import envParams from '../envParams.json'
-import {parseStringFromRequest, parsePlanType} from '../utils'
+import {parseStringFromRequest, parsePlanType, resHeaderConfig} from '../utils'
 import { CollectionItemEntry } from '../interfaces'
 
 const router = express.Router()
-const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
 
 //#### Get collections
 router.get('/', (_req, res) => {
     console.log('request collections')
     const resCollectionsList = collectionsServ.getCollectionsLibrary()
-    res.header("Access-Control-Allow-Origin", frontendEndpoint)
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    resHeaderConfig(res)
     res.send(resCollectionsList)
 })
 
 //#### Get collection by id
 router.get('/:id', (req, res) => {
     console.log('request collection by id:'+req.params.id)
-    res.header("Access-Control-Allow-Origin", frontendEndpoint)
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    resHeaderConfig(res)
     const resCollection = collectionsServ.getCollectionByID(parseStringFromRequest(req.params.id, 1, 100))
     if(resCollection === undefined){
         res.send("No se encontraron collections con el id declarado")
@@ -34,8 +30,7 @@ router.get('/:id', (req, res) => {
 router.get('/:collectionId/sample/:sampleId', (req, res) => {
     try {
         console.log('request collection by id:'+req.params.collectionId+" sampleid:"+req.params.sampleId)
-        res.header("Access-Control-Allow-Origin", frontendEndpoint)
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+        resHeaderConfig(res)
         const resSample = collectionsServ.getSampleByID(parseStringFromRequest(req.params.collectionId, 1, 100), parseStringFromRequest(req.params.sampleId, 1, 100))
         if(resSample === undefined){
             res.send("No se encontró ningun sample con ese ID")
@@ -52,8 +47,7 @@ router.get('/:collectionId/sample/:sampleId', (req, res) => {
 router.get('/plan/:plan', (req, res) => {
     try{
         console.log('request collections by plan:'+req.params.plan)
-        res.header("Access-Control-Allow-Origin", frontendEndpoint)
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+        resHeaderConfig(res)
         const resCollection = collectionsServ.getCollectionsByPlan(parsePlanType(req.params.plan))
         if(resCollection === undefined){
             res.send("No se encontraron collections con el plan declarado")
@@ -69,6 +63,7 @@ router.get('/plan/:plan', (req, res) => {
 router.post('/addCollection', async (req, res) => {
     try{
         const { collectionCode, collectionName, plan, sampleList, tags } = req.body
+        resHeaderConfig(res)
         const samplesIdList = await collectionsServ.getSamplesIdList(sampleList)
         const newCollectionEntry: CollectionItemEntry = {
             collectionCode: parseStringFromRequest(collectionCode, 0, 100),

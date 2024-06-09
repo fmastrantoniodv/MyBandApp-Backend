@@ -1,6 +1,6 @@
-//aca van las validaciones de los inputs
-
 import { PlanType, User } from "./types"
+import envParams from './envParams.json'
+const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
 
 export const parseUserId = ( userIdFromRequest: any ): number => {
     if(!isNumber(userIdFromRequest)){
@@ -66,7 +66,7 @@ export const calculateExpirationDate = (plan: PlanType, regDate: Date): Date =>{
     return expDate
 }
 
-export const resHeaderConfig = (res: any, endpoint: string) => {
-    res.header("Access-Control-Allow-Origin", endpoint)
+export const resHeaderConfig = (res: any) => {
+    res.header("Access-Control-Allow-Origin", frontendEndpoint)
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 }
