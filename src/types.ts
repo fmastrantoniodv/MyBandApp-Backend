@@ -50,6 +50,8 @@ export type ProjectInfo = {
     totalDuration: number
 }
 
+export type ProjectInfoSave = Omit<ProjectInfo, 'createdDate'>
+
 export enum PlanType {
     Free = 'free',
     Trial = 'trial',

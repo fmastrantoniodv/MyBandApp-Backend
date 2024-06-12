@@ -1,4 +1,4 @@
-import { SoundListItem, PlanType, ProjectInfo, Sample, UserDataType, ChannelConfig, Collection, CollectionEntry } from './types'
+import { SoundListItem, PlanType, ProjectInfo, Sample, UserDataType, ChannelConfig, Collection, CollectionEntry, ProjectInfoSave } from './types'
 
 export interface Project extends ProjectInfo {
     projectId: string,
@@ -6,6 +6,11 @@ export interface Project extends ProjectInfo {
 }
 
 export interface ProjectEntry extends ProjectInfo {
+    channelList?: Array<SoundListItem>
+}
+
+export interface ProjectSave extends ProjectInfoSave {
+    projectId: string,
     channelList?: Array<SoundListItem>
 }
 

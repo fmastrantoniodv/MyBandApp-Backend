@@ -1,4 +1,4 @@
-import { PlanType, User } from "./types"
+import { ChannelConfig, PlanType, SoundListItem, User } from "./types"
 import envParams from './envParams.json'
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
 
@@ -15,6 +15,34 @@ const isNumber = (num: number): boolean => {
 
 const isString = (str: string): boolean => { 
     return typeof str === 'string'
+}
+
+const isChannelListItemType = (soundListItem: SoundListItem): soundListItem is SoundListItem => {
+    return typeof soundListItem === 'object' &&
+    typeof soundListItem.sampleId === 'string' &&
+    isChannelConfigType(soundListItem.channelConfig)
+}
+
+const isChannelConfigType = (channelConfig: ChannelConfig): channelConfig is ChannelConfig => {
+    return typeof channelConfig === 'object' &&
+    typeof channelConfig.volume === 'number' &&
+    typeof channelConfig.EQ === 'object' &&
+    typeof channelConfig.EQ.high === 'number' &&
+    typeof channelConfig.EQ.mid === 'number' &&
+    typeof channelConfig.EQ.low === 'number' &&
+    typeof channelConfig.states === 'object' &&
+    typeof channelConfig.states.muted === 'boolean' &&
+    typeof channelConfig.states.solo === 'boolean'
+}
+
+export const parseChannelList = (channelList: Array<SoundListItem>): Array<SoundListItem> =>{
+    console.log('channelList', channelList)
+    channelList.forEach((channel: SoundListItem)=>{
+        if(!isChannelListItemType(channel)){
+            throw new Error('Incorrect format data from channelList')
+        }
+    })
+    return channelList
 }
 
 export const parseStringFromRequest = (str: string, minChars: number, maxChars: number): string => {

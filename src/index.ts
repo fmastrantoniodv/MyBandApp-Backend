@@ -24,5 +24,9 @@ app.use('/api/users', users)
 app.use('/api/samples', samples)
 
 app.listen(PORT, () =>{
+    const today = new Date(); // Fecha y hora actual
+    const normalizedToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     console.log(`Server running on port ${PORT}`)
+    console.log('today=', today)
+    console.log('normalizedToday=', normalizedToday)
 })
