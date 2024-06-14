@@ -1,6 +1,6 @@
 import express from 'express'
 import * as collectionsServ from '../services/collectionsServ'
-import {parseStringFromRequest, parsePlanType, resHeaderConfig} from '../utils'
+import {parseStringFromRequest, parsePlanType, resHeaderConfig, parseDBObjectId} from '../utils'
 import { CollectionItemEntry } from '../interfaces'
 
 const router = express.Router()
@@ -17,7 +17,7 @@ router.get('/', (_req, res) => {
 router.get('/:id', (req, res) => {
     console.log('request collection by id:'+req.params.id)
     resHeaderConfig(res)
-    const resCollection = collectionsServ.getCollectionByID(parseStringFromRequest(req.params.id, 1, 100))
+    const resCollection = collectionsServ.getCollectionByID(parseDBObjectId(req.params.id))
     if(resCollection === undefined){
         res.send("No se encontraron collections con el id declarado")
     }else{
@@ -31,7 +31,7 @@ router.get('/:collectionId/sample/:sampleId', (req, res) => {
     try {
         console.log('request collection by id:'+req.params.collectionId+" sampleid:"+req.params.sampleId)
         resHeaderConfig(res)
-        const resSample = collectionsServ.getSampleByID(parseStringFromRequest(req.params.collectionId, 1, 100), parseStringFromRequest(req.params.sampleId, 1, 100))
+        const resSample = collectionsServ.getSampleByID(parseDBObjectId(req.params.collectionId), parseDBObjectId(req.params.sampleId))
         if(resSample === undefined){
             res.send("No se encontró ningun sample con ese ID")
         }else{
@@ -59,7 +59,6 @@ router.get('/plan/:plan', (req, res) => {
     }
 })
 
-
 router.post('/addCollection', async (req, res) => {
     try{
         const { collectionCode, collectionName, plan, sampleList, tags } = req.body
@@ -73,32 +72,16 @@ router.post('/addCollection', async (req, res) => {
             sampleList: samplesIdList,
             tags: tags
         }
+        const success = await collectionsServ.createCollection(newCollectionEntry)
+        console.log('success=', success)
+        if(success){
+            res.send('Collection creada con exito')
+        }else{
+            res.status(400).send('La collection no se creo correctamente')
+        }
+    }catch (e: any) {
+        res.status(400).send(e.message)
+    }
+})
 
-        await collectionsServ.addNewCollection(newCollectionEntry)
-        /*
-        if(newCollection === false){
-            throw new Error('No se agregar el nuevo fav porque ya existe')
-        }
-            */
-        res.send('Collection creada con exito')
-    }catch (e: any) {
-        res.status(400).send(e.message)
-    }
-})
-                        
-/*
-router.delete('/', (req, res) => {
-    try{
-        const { userId, sampleId } = req.body
-        parseUserId(userId)
-        parseStringFromRequest(sampleId)
-        if(!favouritesSamplesServ.deleteFav(userId, sampleId)){
-            throw new Error('No se pudo borrar')
-        }
-        res.send("ok!")
-    }catch (e: any) {
-        res.status(400).send(e.message)
-    }
-})
-*/
 export default router

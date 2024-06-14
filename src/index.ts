@@ -5,8 +5,6 @@ import collectionsRouter from './routes/collections'
 import users from './routes/users'
 import samples from './routes/samples'
 
-require('./mongo')
-
 const app = express()
 app.use(express.json())
 

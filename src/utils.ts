@@ -2,13 +2,6 @@ import { ChannelConfig, PlanType, SoundListItem, User } from "./types"
 import envParams from './envParams.json'
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
 
-export const parseUserId = ( userIdFromRequest: any ): number => {
-    if(!isNumber(userIdFromRequest)){
-        throw new Error('Incorrect or missing id')
-    }
-    return userIdFromRequest
-}
-
 const isNumber = (num: number): boolean => {
     return typeof num === 'number'
 }
@@ -92,6 +85,13 @@ export const calculateExpirationDate = (plan: PlanType, regDate: Date): Date =>{
     }
     
     return expDate
+}
+
+export const parseDBObjectId = (str: string) => {
+    if(str.length !== 24){
+        throw new Error('Incorrect format or missing planType')
+    }
+    return str
 }
 
 export const resHeaderConfig = (res: any) => {

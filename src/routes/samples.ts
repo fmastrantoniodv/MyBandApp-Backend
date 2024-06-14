@@ -2,9 +2,7 @@ import express from 'express'
 import path from 'path'
 import * as samplesServ from '../services/samplesServ'
 const cors = require('cors')
-import { parseNumberFromRequest, parseStringFromRequest
-//  resHeaderConfig
-} from '../utils'
+import { parseNumberFromRequest, parseStringFromRequest, parseDBObjectId } from '../utils'
 import { SampleEntry } from '../types'
 //import envParams from '../envParams.json'
 
@@ -18,7 +16,7 @@ router.get('/:collectionId/:sampleId', async (req, res) => {
         console.log(`${new Date()}.[samples].[get].[MSG].sampleId=`, req.params.sampleId)
         console.log(`${new Date()}.[samples].[get].[MSG].collectionId=`, req.params.collectionId)
         const collectionId = req.params.collectionId
-        const filename = parseStringFromRequest(req.params.sampleId, 1,50);
+        const filename = parseDBObjectId(req.params.sampleId);
         const firstPath = path.resolve('./src')
         const audioPath = path.join(firstPath, '/collections/',collectionId+'/', filename+'.mp3');
         console.log(`${new Date()}.[samples].[get].[MSG].filename=${filename}, audioPath=${audioPath}`)

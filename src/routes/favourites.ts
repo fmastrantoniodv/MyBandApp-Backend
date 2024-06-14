@@ -2,7 +2,7 @@ import express from 'express'
 import * as favouritesSamplesServ from '../services/favouritesSamplesServ'
 import envParams from '../envParams.json'
 import { Sample } from '../types'
-import {parseStringFromRequest, parseUserId, parseNumberFromRequest} from '../utils'
+import {parseStringFromRequest, parseNumberFromRequest, parseDBObjectId} from '../utils'
 
 const router = express.Router()
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
@@ -18,9 +18,9 @@ router.get('/', (_req, res) => {
 router.post('/', (req, res) => {
 try{
     const { userId, sampleId, sampleName, collectionCode, duration, tempo } = req.body
-    parseUserId(userId)
+    parseDBObjectId(userId)
     const newFavEntry: Sample = {
-        sampleId: parseStringFromRequest(sampleId, 1, 100),
+        sampleId: parseDBObjectId(sampleId),
         sampleName: parseStringFromRequest(sampleName, 1, 100),
         collectionCode: parseStringFromRequest(collectionCode, 1, 100),
         duration: parseNumberFromRequest(duration, 0, 600000),
@@ -42,7 +42,7 @@ try{
 router.delete('/', (req, res) => {
     try{
         const { userId, sampleId } = req.body
-        parseUserId(userId)
+        parseDBObjectId(userId)
         parseStringFromRequest(sampleId, 1,100)
         if(!favouritesSamplesServ.deleteFav(userId, sampleId)){
             throw new Error('No se pudo borrar')

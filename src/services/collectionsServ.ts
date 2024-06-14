@@ -1,11 +1,8 @@
-//import favouritesMock from './favouritesMock.json'
-import { CollectionItem, CollectionItemEntry, CollectionSampleLibrary } from '../interfaces'
+import { CollectionSampleLibrary, CollectionItemEntry } from '../interfaces'
 import { PlanType, Sample, SampleEntry } from '../types'
 import collectionsMock from './collectionSamplesMock.json'
-import { checkArrayOfSamplesExistDB, addSamplesListToDB } from './samplesServ'
-import mongoose from 'mongoose'
-const connectToDatabase = require('../mongo.js');
-const CollectionModel = require('../models/Collections')
+import { addNewCollectionToDB } from './db/collectionsDBManager'
+import { checkArrayOfSamplesExistDB, addSamplesListToDB } from './db/samplesDBManager'
 
 const collectionsLibrary: Array<CollectionSampleLibrary> = collectionsMock.collectionsLibrary as Array<CollectionSampleLibrary>
 
@@ -51,44 +48,11 @@ export const getSamplesIdList = async (sampleList: Array<SampleEntry>): Promise<
     }
 }
 
-export const addNewCollection = async (newCollectionEntry: CollectionItemEntry): Promise<CollectionItem> => {
-    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].Init`)
-    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].connectDB.pre`)
-    await connectToDatabase()
-    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].connectDB.post`)
-    const collectionToDB = new CollectionModel(newCollectionEntry)
-    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].collectionToDB.save.pre`)
-    return await collectionToDB.save().then((res: any)=>{
-        console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].collectionToDB.save.res=`, res)
-        mongoose.connection.close()
-    })
-    .catch((err:any)=>{
-        console.error(`${new Date()}.[collectionsServ].[addUserToDB].[ERR].Error=`, err.message)
-    })
+export const createCollection = async (newCollectionEntry: CollectionItemEntry): Promise<boolean> =>{
+    console.log(`${new Date()}.[collectionsServ].[createCollection].[MSG].Init`)
+    console.log(`${new Date()}.[collectionsServ].[createCollection].[MSG].checkArrayOfSamplesExistDB.pre`)
+    const dbResponse = await addNewCollectionToDB(newCollectionEntry)
+    console.log(`${new Date()}.[collectionsServ].[createCollection].[MSG].checkArrayOfSamplesExistDB.post`)
+    return dbResponse
 }
-/*
-export const addNewFav = (userId: number, favEntry: SampleFav): SampleFav | boolean => {
-    console.log('fav from userId:',userId)
-    console.log('fav:', favEntry)
-    var indexFav = favouritesList.findIndex(value => value.sampleId === favEntry.sampleId)
-    if(indexFav < 0){
-        favouritesList.push(favEntry)    
-        return favEntry
-    }else{
-        return false
-    }
-}
-*/
-/*
-export const deleteFav = (userId: number, sampleId: string): boolean => {
-    console.log('fav from userId:',userId)
-    console.log('fav sampleId:', sampleId)
-    var indexDeleteFav = favouritesList.findIndex(value => value.sampleId === sampleId)
-    if(indexDeleteFav >= 0){
-        favouritesList.splice(indexDeleteFav, 1)
-        return true
-    }else{
-        return false
-    }
-}
-*/
+

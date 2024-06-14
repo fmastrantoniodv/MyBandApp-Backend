@@ -1,6 +1,6 @@
 import express from 'express'
 import * as usersServ from '../services/usersServ'
-import {parsePlanType, parseStringFromRequest, resHeaderConfig} from '../utils'
+import {parsePlanType, parseStringFromRequest, resHeaderConfig, parseDBObjectId} from '../utils'
 import { UserEntry } from '../types'
 
 const router = express.Router()
@@ -44,7 +44,7 @@ router.post('/updatePlan', async (req, res) => {
     resHeaderConfig(res)
     try{
         const { userId, newPlan } = req.body
-        const userDataRes = await usersServ.changePlan(userId, newPlan)
+        const userDataRes = await usersServ.changePlan(parseDBObjectId(userId), parsePlanType(newPlan))
         if(userDataRes === false){
             throw new Error('No se pudo actualizar el plan')
         }else{
