@@ -1,6 +1,6 @@
 import { CollectionSampleLibrary, CollectionItemEntry } from '../interfaces'
 import { PlanType, Sample, SampleEntry } from '../types'
-import collectionsMock from './collectionSamplesMock.json'
+import collectionsMock from '../mocks/collectionSamplesMock.json'
 import { addNewCollectionToDB } from './db/collectionsDBManager'
 import { checkArrayOfSamplesExistDB, addSamplesListToDB } from './db/samplesDBManager'
 

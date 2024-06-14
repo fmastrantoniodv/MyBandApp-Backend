@@ -4,10 +4,8 @@ import * as samplesServ from '../services/samplesServ'
 const cors = require('cors')
 import { parseNumberFromRequest, parseStringFromRequest, parseDBObjectId } from '../utils'
 import { SampleEntry } from '../types'
-//import envParams from '../envParams.json'
 
 const router = express.Router()
-//const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
 router.use(cors())
 
 router.get('/:collectionId/:sampleId', async (req, res) => {

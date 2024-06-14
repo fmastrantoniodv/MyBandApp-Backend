@@ -1,6 +1,6 @@
 import { Sample } from '../types'
 import { UserFavourites } from '../interfaces'
-import favouritesMockup from './favouritesMock.json'
+import favouritesMockup from '../mocks/favouritesMock.json'
 
 const globalFavouritesList: Array<UserFavourites> = favouritesMockup.favourites as Array<UserFavourites>
 
