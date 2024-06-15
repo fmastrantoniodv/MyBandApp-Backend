@@ -1,7 +1,7 @@
-import { CollectionSampleLibrary, CollectionItemEntry } from '../interfaces'
+import { CollectionSampleLibrary, CollectionItemEntry, CollectionItem } from '../interfaces'
 import { PlanType, Sample, SampleEntry } from '../types'
 import collectionsMock from '../mocks/collectionSamplesMock.json'
-import { addNewCollectionToDB } from './db/collectionsDBManager'
+import { addNewCollectionToDB, getCollectionByIDFromDB } from './db/collectionsDBManager'
 import { checkArrayOfSamplesExistDB, addSamplesListToDB } from './db/samplesDBManager'
 
 const collectionsLibrary: Array<CollectionSampleLibrary> = collectionsMock.collectionsLibrary as Array<CollectionSampleLibrary>
@@ -10,8 +10,14 @@ export const getCollectionsLibrary = (): Array<CollectionSampleLibrary> | undefi
     return collectionsLibrary
 }
 
-export const getCollectionByID = (id: string): CollectionSampleLibrary | undefined => {
-    return collectionsLibrary.find(value => value.collectionId === id)
+export const getCollectionByID = async (collectionId: string): Promise<CollectionItem | boolean> => {
+    console.log(`${new Date()}.[collectionsServ].[getCollectionByID].[MSG].Init`)
+    console.log(`${new Date()}.[collectionsServ].[getCollectionByID].[MSG].collectionId=`,collectionId)
+    console.log(`${new Date()}.[collectionsServ].[getCollectionByID].[MSG].getCollectionByIDFromDB.pre`)
+    const collectionFromDB: CollectionItem | boolean = await getCollectionByIDFromDB(collectionId)
+    console.log(`${new Date()}.[collectionsServ].[getCollectionByID].[MSG].getCollectionByIDFromDB.post`)
+    console.log(`${new Date()}.[collectionsServ].[getCollectionByID].[MSG].getCollectionByIDFromDB.collectionFromDB=${collectionFromDB}`)
+    return collectionFromDB
 }
 
 export const getSampleByID = (collectionId: string,sampleId: string): Sample | undefined => {

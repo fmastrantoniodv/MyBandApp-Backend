@@ -6,23 +6,33 @@ import { CollectionItemEntry } from '../interfaces'
 const router = express.Router()
 
 //#### Get collections
-router.get('/', (_req, res) => {
-    console.log('request collections')
-    const resCollectionsList = collectionsServ.getCollectionsLibrary()
-    resHeaderConfig(res)
-    res.send(resCollectionsList)
+router.get('/', async (_req, res) => {
+    try {
+        console.log('request collections')
+        const resCollectionsList = collectionsServ.getCollectionsLibrary()
+        resHeaderConfig(res)
+        res.send(resCollectionsList)
+        
+    } catch (error) {
+        
+    }
 })
 
 //#### Get collection by id
-router.get('/:id', (req, res) => {
-    console.log('request collection by id:'+req.params.id)
-    resHeaderConfig(res)
-    const resCollection = collectionsServ.getCollectionByID(parseDBObjectId(req.params.id))
-    if(resCollection === undefined){
-        res.send("No se encontraron collections con el id declarado")
-    }else{
-        res.send(resCollection)
+router.get('/:id', async (req, res) => {
+    try {
+        console.log('request collection by id:'+req.params.id)
+        resHeaderConfig(res)
+        const resCollection = await collectionsServ.getCollectionByID(parseDBObjectId(req.params.id))
+        if(resCollection === false){
+            res.status(404).send("No se encontraron collections con el id declarado")
+        }else{
+            res.status(200).json(resCollection)
+        }
+    } catch (error) {
+        res.status(500)
     }
+    
     
 })
 

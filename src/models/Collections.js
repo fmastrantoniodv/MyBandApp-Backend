@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
-const types = require('../types')
-const { States, EqParams } = types
+const sampleSchema = require('./Samples')
 
 const collectionSchema = new Schema({
     collectionCode: String,
