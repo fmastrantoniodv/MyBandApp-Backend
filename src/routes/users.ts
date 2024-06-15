@@ -5,6 +5,11 @@ import { UserEntry } from '../types'
 
 const router = express.Router()
 
+router.options('/register', (_, res) => {
+    resHeaderConfig(res)
+    res.sendStatus(200)
+})
+
 router.post('/register', async (req, res) => {
     resHeaderConfig(res)
     try{
