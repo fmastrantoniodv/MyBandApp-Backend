@@ -3,7 +3,9 @@ import { PlanType, Sample, SampleEntry } from '../types'
 import collectionsMock from '../mocks/collectionSamplesMock.json'
 import { addNewCollectionToDB, getCollectionByIDFromDB } from './db/collectionsDBManager'
 import { checkArrayOfSamplesExistDB, addSamplesListToDB } from './db/samplesDBManager'
+import { dbgConsoleLog, getStackFileName } from '../utils'
 
+const FILENAME = getStackFileName()
 const collectionsLibrary: Array<CollectionSampleLibrary> = collectionsMock.collectionsLibrary as Array<CollectionSampleLibrary>
 
 export const getCollectionsLibrary = (): Array<CollectionSampleLibrary> | undefined => {
@@ -11,12 +13,12 @@ export const getCollectionsLibrary = (): Array<CollectionSampleLibrary> | undefi
 }
 
 export const getCollectionByID = async (collectionId: string): Promise<CollectionItem | boolean> => {
-    console.log(`${new Date()}.[collectionsServ].[getCollectionByID].[MSG].Init`)
-    console.log(`${new Date()}.[collectionsServ].[getCollectionByID].[MSG].collectionId=`,collectionId)
-    console.log(`${new Date()}.[collectionsServ].[getCollectionByID].[MSG].getCollectionByIDFromDB.pre`)
+    dbgConsoleLog(FILENAME, `[getCollectionByID].Init`)
+    dbgConsoleLog(FILENAME, `[getCollectionByID].collectionId=`,collectionId)
+    dbgConsoleLog(FILENAME, `[getCollectionByID].getCollectionByIDFromDB.pre`)
     const collectionFromDB: CollectionItem | boolean = await getCollectionByIDFromDB(collectionId)
-    console.log(`${new Date()}.[collectionsServ].[getCollectionByID].[MSG].getCollectionByIDFromDB.post`)
-    console.log(`${new Date()}.[collectionsServ].[getCollectionByID].[MSG].getCollectionByIDFromDB.collectionFromDB=${collectionFromDB}`)
+    dbgConsoleLog(FILENAME, `[getCollectionByID].getCollectionByIDFromDB.post`)
+    dbgConsoleLog(FILENAME, `[getCollectionByID].getCollectionByIDFromDB.collectionFromDB=${collectionFromDB}`)
     return collectionFromDB
 }
 
@@ -37,28 +39,28 @@ export const getCollectionsByPlan = (plan: PlanType): Array<CollectionSampleLibr
 }
 
 export const getSamplesIdList = async (sampleList: Array<SampleEntry>): Promise<Array<string>> =>{
-    console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].Init`)
-    console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].sampleList=`,sampleList)
-    console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].checkArrayOfSamplesExistDB.pre`)
+    dbgConsoleLog(FILENAME, `[getSamplesIdList].Init`)
+    dbgConsoleLog(FILENAME, `[getSamplesIdList].sampleList=`,sampleList)
+    dbgConsoleLog(FILENAME, `[getSamplesIdList].checkArrayOfSamplesExistDB.pre`)
     const samplesExist = await checkArrayOfSamplesExistDB(sampleList)
-    console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].checkArrayOfSamplesExistDB.post`)
+    dbgConsoleLog(FILENAME, `[getSamplesIdList].checkArrayOfSamplesExistDB.post`)
     if(samplesExist === false){
-        console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].addSamplesListToDB.pre`)
+        dbgConsoleLog(FILENAME, `[getSamplesIdList].addSamplesListToDB.pre`)
         const result = await addSamplesListToDB(sampleList)
-        console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].addSamplesListToDB.post`)
-        console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].addSamplesListToDB.return=${result}`)
+        dbgConsoleLog(FILENAME, `[getSamplesIdList].addSamplesListToDB.post`)
+        dbgConsoleLog(FILENAME, `[getSamplesIdList].addSamplesListToDB.return=${result}`)
         return result
     }else{
-        console.log(`${new Date()}.[collectionsServ].[getSamplesIdList].[MSG].Resp=Sample ya existe en la db`)
+        dbgConsoleLog(FILENAME, `[getSamplesIdList].Resp=Sample ya existe en la db`)
         throw new Error('Sample ya existe')
     }
 }
 
 export const createCollection = async (newCollectionEntry: CollectionItemEntry): Promise<boolean> =>{
-    console.log(`${new Date()}.[collectionsServ].[createCollection].[MSG].Init`)
-    console.log(`${new Date()}.[collectionsServ].[createCollection].[MSG].checkArrayOfSamplesExistDB.pre`)
+    dbgConsoleLog(FILENAME, `[createCollection].Init`)
+    dbgConsoleLog(FILENAME, `[createCollection].checkArrayOfSamplesExistDB.pre`)
     const dbResponse = await addNewCollectionToDB(newCollectionEntry)
-    console.log(`${new Date()}.[collectionsServ].[createCollection].[MSG].checkArrayOfSamplesExistDB.post`)
+    dbgConsoleLog(FILENAME, `[createCollection].checkArrayOfSamplesExistDB.post`)
     return dbResponse
 }
 

@@ -99,3 +99,31 @@ export const resHeaderConfig = (res: any) => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
 }
+
+export const dbgConsoleLog = (location: string, message: string, obj?: Object) => {
+    if(obj === undefined){
+        console.log(`${new Date().toISOString()}.[${location}].[DBG].${message}`)
+    }else{
+        console.log(`${new Date().toISOString()}.${location}.[DBG].${message}`, obj)
+    }
+}
+
+export const getStackFileName = () => {
+    const error = new Error();
+    var nombreArchivo
+    if(error.stack !== undefined){
+        const stack = error.stack.split('\n');   
+        const llamada = stack[2];
+        const match = llamada.match(/(?:\()?(.*?):(\d+):\d+(?:\))?/);
+        if (match && match[1]) {
+            const rutaArchivo = match[1];
+            nombreArchivo = rutaArchivo.split('\\').pop();
+        }
+    }
+
+    if(nombreArchivo === undefined){
+        nombreArchivo = ''
+    }
+
+    return nombreArchivo
+}

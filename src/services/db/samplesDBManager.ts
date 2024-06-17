@@ -2,18 +2,20 @@ import mongoose from 'mongoose'
 const connectToDatabase = require('./mongo.js');
 const SampleModel = require('../../models/Projects')
 import { Sample, SampleEntry } from '../../types';
+import { dbgConsoleLog, getStackFileName } from '../../utils';
+const FILENAME = getStackFileName()
 
 export const checkSampleExistDB = async ( sampleName: string, collectionCode: string): Promise<boolean> => {
-    console.log(`${new Date()}.[samplesServ].[checkSampleExistDB].[MSG].Init`)
-    console.log(`${new Date()}.[samplesServ].[checkSampleExistDB].[MSG].sampleName=${sampleName}, collectionCode=${collectionCode}`)
-    console.log(`${new Date()}.[samplesServ].[checkSampleExistDB].[MSG].connectDB.pre`)
+    dbgConsoleLog(FILENAME, `[checkSampleExistDB].[MSG].Init`)
+    dbgConsoleLog(FILENAME, `[checkSampleExistDB].[MSG].sampleName=${sampleName}, collectionCode=${collectionCode}`)
+    dbgConsoleLog(FILENAME, `[checkSampleExistDB].[MSG].connectDB.pre`)
     await connectToDatabase()
-    console.log(`${new Date()}.[samplesServ].[checkSampleExistDB].[MSG].connectDB.post`)
+    dbgConsoleLog(FILENAME, `[checkSampleExistDB].[MSG].connectDB.post`)
     return await SampleModel.find({sampleName: sampleName, collectionCode: collectionCode}).then((result: any) => {
         mongoose.connection.close()
-        console.log(`${new Date()}.[samplesServ].[checkSampleExistDB].[MSG].SampleModel.result=`,result[0])
+        dbgConsoleLog(FILENAME, `[checkSampleExistDB].[MSG].SampleModel.result=`,result[0])
         if(result[0] === undefined){
-            console.log(`${new Date()}.[samplesServ].[checkSampleExistDB].[MSG].SampleModel.No existe sample con las caracteristicas ingresadas`)
+            dbgConsoleLog(FILENAME, `[checkSampleExistDB].[MSG].SampleModel.No existe sample con las caracteristicas ingresadas`)
             return false
         }else{
             return true
@@ -25,23 +27,23 @@ export const checkSampleExistDB = async ( sampleName: string, collectionCode: st
 }
 
 export const checkArrayOfSamplesExistDB = async ( sampleList: Array<SampleEntry>): Promise<boolean> => {
-    console.log(`${new Date()}.[samplesServ].[checkArrayOfSamplesExistDB].[MSG].Init`)
-    console.log(`${new Date()}.[samplesServ].[checkArrayOfSamplesExistDB].[MSG].sampleList=`, sampleList)
-    console.log(`${new Date()}.[samplesServ].[checkArrayOfSamplesExistDB].[MSG].connectDB.pre`)
+    dbgConsoleLog(FILENAME, `[checkArrayOfSamplesExistDB].[MSG].Init`)
+    dbgConsoleLog(FILENAME, `[checkArrayOfSamplesExistDB].[MSG].sampleList=`, sampleList)
+    dbgConsoleLog(FILENAME, `[checkArrayOfSamplesExistDB].[MSG].connectDB.pre`)
     await connectToDatabase()
-    console.log(`${new Date()}.[samplesServ].[checkArrayOfSamplesExistDB].[MSG].connectDB.post`)
+    dbgConsoleLog(FILENAME, `[checkArrayOfSamplesExistDB].[MSG].connectDB.post`)
     const query = sampleList.map(sample => ({
         sampleName: sample.sampleName,
         collectionCode: sample.collectionCode
       }));
     return await SampleModel.find({ $or: query }).then((result: any) => {
         mongoose.connection.close()
-        console.log(`${new Date()}.[samplesServ].[checkArrayOfSamplesExistDB].[MSG].SampleModel.result=`,result[0])
+        dbgConsoleLog(FILENAME, `[checkArrayOfSamplesExistDB].[MSG].SampleModel.result=`,result[0])
         if(result[0] === undefined){
-            console.log(`${new Date()}.[samplesServ].[checkArrayOfSamplesExistDB].[MSG].SampleModel.No existen samples con las caracteristicas ingresadas`)
+            dbgConsoleLog(FILENAME, `[checkArrayOfSamplesExistDB].[MSG].SampleModel.No existen samples con las caracteristicas ingresadas`)
             return false
         }else{
-            console.log(`${new Date()}.[samplesServ].[checkArrayOfSamplesExistDB].[MSG].SampleModel.Existen samples con las caracteristicas ingresadas`)
+            dbgConsoleLog(FILENAME, `[checkArrayOfSamplesExistDB].[MSG].SampleModel.Existen samples con las caracteristicas ingresadas`)
             var sampleExistList: string = "";
             result.forEach((sampleExist: Sample) => {
                 sampleExistList =+ ', '+sampleExist.sampleName
@@ -55,13 +57,13 @@ export const checkArrayOfSamplesExistDB = async ( sampleList: Array<SampleEntry>
 }
 
 export const addSamplesListToDB = async (newSamplesList: Array<SampleEntry>): Promise<Array<string>> => {
-    console.log(`${new Date()}.[samplesServ].[addSamplesListToDB].[MSG].Init`)
-    console.log(`${new Date()}.[samplesServ].[addSamplesListToDB].[MSG].connectDB.pre`)
+    dbgConsoleLog(FILENAME, `[addSamplesListToDB].[MSG].Init`)
+    dbgConsoleLog(FILENAME, `[addSamplesListToDB].[MSG].connectDB.pre`)
     await connectToDatabase()
-    console.log(`${new Date()}.[samplesServ].[addSamplesListToDB].[MSG].connectDB.post`)
-    console.log(`${new Date()}.[samplesServ].[addSamplesListToDB].[MSG].SampleModel.insertMany.pre`)
+    dbgConsoleLog(FILENAME, `[addSamplesListToDB].[MSG].connectDB.post`)
+    dbgConsoleLog(FILENAME, `[addSamplesListToDB].[MSG].SampleModel.insertMany.pre`)
     return await SampleModel.insertMany(newSamplesList).then((res: any)=>{
-        console.log(`${new Date()}.[samplesServ].[addSamplesListToDB].[MSG].SampleModel.insertMany.res=`, res)
+        dbgConsoleLog(FILENAME, `[addSamplesListToDB].[MSG].SampleModel.insertMany.res=`, res)
         mongoose.connection.close()
         var arraySamplesId: Array<string> = []
         res.forEach((item: any) => {
@@ -75,18 +77,18 @@ export const addSamplesListToDB = async (newSamplesList: Array<SampleEntry>): Pr
 }
 
 export const addSampleToDB = async (newSample: SampleEntry) => {
-    console.log(`${new Date()}.[samplesServ].[addSampleToDB].[MSG].Init`)
-    console.log(`${new Date()}.[samplesServ].[addSampleToDB].[MSG].connectDB.pre`)
+    dbgConsoleLog(FILENAME, `[addSampleToDB].[MSG].Init`)
+    dbgConsoleLog(FILENAME, `[addSampleToDB].[MSG].connectDB.pre`)
     await connectToDatabase()
-    console.log(`${new Date()}.[samplesServ].[addSampleToDB].[MSG].connectDB.post`)
+    dbgConsoleLog(FILENAME, `[addSampleToDB].[MSG].connectDB.post`)
     const sampleToDB = new SampleModel(newSample)
-    console.log(`${new Date()}.[samplesServ].[addSampleToDB].[MSG].SampleModel.save.pre`)
+    dbgConsoleLog(FILENAME, `[addSampleToDB].[MSG].SampleModel.save.pre`)
     await sampleToDB.save().then((res: any)=>{
-        console.log(`${new Date()}.[samplesServ].[addSampleToDB].[MSG].SampleModel.save.res=`, res)
+        dbgConsoleLog(FILENAME, `[addSampleToDB].[MSG].SampleModel.save.res=`, res)
         mongoose.connection.close()
     })
     .catch((err:any)=>{
         console.error(`${new Date()}.[samplesServ].[addUserToDB].[ERR].Error=`, err.message)
     })
-    console.log(`${new Date()}.[samplesServ].[addUserToDB].[MSG].SampleModel.save.post`)
+    dbgConsoleLog(FILENAME, `[addUserToDB].[MSG].SampleModel.save.post`)
 }

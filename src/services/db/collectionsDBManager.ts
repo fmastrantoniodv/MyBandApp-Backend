@@ -2,16 +2,19 @@ import mongoose from 'mongoose'
 const connectToDatabase = require('./mongo.js');
 const CollectionModel = require('../../models/Collections')
 import { CollectionItem, CollectionItemEntry} from '../../interfaces'
+import { dbgConsoleLog, getStackFileName } from '../../utils';
+
+const FILENAME = getStackFileName()
 
 export const addNewCollectionToDB = async (newCollectionEntry: CollectionItemEntry): Promise<boolean> => {
-    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].Init`)
-    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].connectDB.pre`)
+    dbgConsoleLog(FILENAME, `[addNewCollection].Init`)
+    dbgConsoleLog(FILENAME, `[addNewCollection].connectDB.pre`)
     await connectToDatabase()
-    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].connectDB.post`)
+    dbgConsoleLog(FILENAME, `[addNewCollection].connectDB.post`)
     const collectionToDB = new CollectionModel(newCollectionEntry)
-    console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].collectionToDB.save.pre`)
+    dbgConsoleLog(FILENAME, `[addNewCollection].collectionToDB.save.pre`)
     return await collectionToDB.save().then((res: any)=>{
-        console.log(`${new Date()}.[collectionsServ].[addNewCollection].[MSG].collectionToDB.save.res=`, res)
+        dbgConsoleLog(FILENAME, `[addNewCollection].collectionToDB.save.res=`, res)
         mongoose.connection.close()
         return true
     })
@@ -22,14 +25,14 @@ export const addNewCollectionToDB = async (newCollectionEntry: CollectionItemEnt
 }
 
 export const getCollectionByIDFromDB = async (collectionId: string): Promise<CollectionItem | boolean> =>{
-    console.log(`${new Date()}.[collectionsServ].[getCollectionByIDFromDB].[MSG].Init`)
-    console.log(`${new Date()}.[collectionsServ].[getCollectionByIDFromDB].[MSG].connectDB.pre`)
+    dbgConsoleLog(FILENAME, `[getCollectionByIDFromDB].Init`)
+    dbgConsoleLog(FILENAME, `[getCollectionByIDFromDB].connectDB.pre`)
     await connectToDatabase()
-    console.log(`${new Date()}.[collectionsServ].[getCollectionByIDFromDB].[MSG].connectDB.post`)
-    console.log(`${new Date()}.[collectionsServ].[getCollectionByIDFromDB].[MSG].CollectionModel.find.pre`)
+    dbgConsoleLog(FILENAME, `[getCollectionByIDFromDB].connectDB.post`)
+    dbgConsoleLog(FILENAME, `[getCollectionByIDFromDB].CollectionModel.find.pre`)
     return await CollectionModel.findOne({ _id: collectionId}).populate('sampleList').then((res: any)=>{
         mongoose.connection.close()
-        console.log(`${new Date()}.[collectionsServ].[getCollectionByIDFromDB].[MSG].CollectionModel.find.res=`, res)
+        dbgConsoleLog(FILENAME, `[getCollectionByIDFromDB].CollectionModel.find.res=`, res)
         if(res === null){
             return false
         }

@@ -1,7 +1,9 @@
 import { Sample } from '../types'
 import { UserFavourites } from '../interfaces'
 import favouritesMockup from '../mocks/favouritesMock.json'
+//import { dbgConsoleLog , getStackFileName } from '../utils'
 
+//const FILENAME = getStackFileName()
 const globalFavouritesList: Array<UserFavourites> = favouritesMockup.favourites as Array<UserFavourites>
 
 export const getFavouritesList = (): Object | undefined => {
