@@ -43,3 +43,13 @@ export interface CollectionItem extends Collection{
 export interface CollectionItemEntry extends CollectionEntry{
     sampleList: Array<string>
 }
+
+export interface DBResponse {
+    success: boolean,
+    result?: Array<Object> | string
+}
+
+export interface ServResponse {
+    success: boolean,
+    result?: any
+}

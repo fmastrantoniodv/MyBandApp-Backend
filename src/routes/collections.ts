@@ -24,10 +24,10 @@ router.get('/:id', async (req, res) => {
         console.log('request collection by id:'+req.params.id)
         resHeaderConfig(res)
         const resCollection = await collectionsServ.getCollectionByID(parseDBObjectId(req.params.id))
-        if(resCollection === false){
-            res.status(404).send("No se encontraron collections con el id declarado")
+        if(resCollection.success === false){
+            res.status(404).send(resCollection.result)
         }else{
-            res.status(200).json(resCollection)
+            res.status(200).json(resCollection.result)
         }
     } catch (error) {
         res.status(500)
@@ -79,15 +79,15 @@ router.post('/addCollection', async (req, res) => {
             collectionName: parseStringFromRequest(collectionName, 0, 100),
             uploadDate: new Date(),
             plan: parsePlanType(plan),
-            sampleList: samplesIdList,
+            sampleList: samplesIdList.result,
             tags: tags
         }
-        const success = await collectionsServ.createCollection(newCollectionEntry)
-        console.log('success=', success)
-        if(success){
+        const result = await collectionsServ.createCollection(newCollectionEntry)
+        console.log('success=', result.success)
+        if(result.success){
             res.send('Collection creada con exito')
         }else{
-            res.status(400).send('La collection no se creo correctamente')
+            res.status(400).send(result.result)
         }
     }catch (e: any) {
         res.status(400).send(e.message)
