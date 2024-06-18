@@ -2,29 +2,30 @@ import express from 'express'
 import path from 'path'
 import * as samplesServ from '../services/samplesServ'
 const cors = require('cors')
-import { parseNumberFromRequest, parseStringFromRequest, parseDBObjectId } from '../utils'
+import { parseNumberFromRequest, parseStringFromRequest, parseDBObjectId, dbgConsoleLog, getStackFileName } from '../utils'
 import { SampleEntry } from '../types'
+const FILENAME = getStackFileName()
 
 const router = express.Router()
 router.use(cors())
 
 router.get('/:collectionId/:sampleId', async (req, res) => {
     try {
-        console.log(`${new Date()}.[samples].[get].[MSG].Init`)
-        console.log(`${new Date()}.[samples].[get].[MSG].sampleId=`, req.params.sampleId)
-        console.log(`${new Date()}.[samples].[get].[MSG].collectionId=`, req.params.collectionId)
+        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].Init`)
+        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].sampleId=`, req.params.sampleId)
+        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].collectionId=`, req.params.collectionId)
         const collectionId = req.params.collectionId
         const filename = parseDBObjectId(req.params.sampleId);
         const firstPath = path.resolve('./src')
         const audioPath = path.join(firstPath, '/collections/',collectionId+'/', filename+'.mp3');
-        console.log(`${new Date()}.[samples].[get].[MSG].filename=${filename}, audioPath=${audioPath}`)
+        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].filename=${filename}, audioPath=${audioPath}`)
         const headerOpts = {
           headers: {
             "x-timestamp": Date.now(),
             "x-sent": true
           }
         };
-        console.log(`${new Date()}.[samples].[get].[MSG].sendFile.pre`)
+        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].sendFile.pre`)
         res.sendFile(audioPath, headerOpts, (err) => {
             if (err) {
               if (res.headersSent) {
@@ -38,9 +39,9 @@ router.get('/:collectionId/:sampleId', async (req, res) => {
                 }
               }
             }
-            console.log(`${new Date()}.[samples].[get].[MSG].sendFile.se devuelve archivo=`,audioPath)
+            dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].sendFile.se devuelve archivo=`,audioPath)
           });
-          console.log(`${new Date()}.[samples].[get].[MSG].sendFile.post`)
+          dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].sendFile.post`)
     } catch (error) {
         throw new Error('No se pudo obtener el audio')
     }
@@ -60,6 +61,25 @@ router.post('/addSample', async (req, res)=>{
   } catch (e: any) {
     res.status(400).send(e.message)
   }
-}) 
+})
+/*
+//#### Get sample by id
+router.get('/:collectionId/:sampleId', (req, res) => {
+  try {
+      const { collectionId, sampleId } = req.params
+      dbgConsoleLog(FILENAME, `[GET]/collectionId=${collectionId}/sampleId=${sampleId}.Init`)
+      resHeaderConfig(res)
+      const resSample = collectionsServ.getSampleByID(parseDBObjectId(req.params.collectionId), parseDBObjectId(req.params.sampleId))
+      if(resSample === undefined){
+          res.send("No se encontró ningun sample con ese ID")
+      }else{
+          res.send(resSample)
+      }
+  } catch (e: any) {
+      res.status(400).send(e.message)
+  }
+  
+})
+*/
 
 export default router

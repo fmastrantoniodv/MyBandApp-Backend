@@ -1,9 +1,9 @@
 import mongoose from 'mongoose'
 const connectToDatabase = require('./mongo.js');
-const SampleModel = require('../../models/Projects')
-import { Sample, SampleEntry } from '../../types';
-import { dbgConsoleLog, getStackFileName } from '../../utils';
-import { DBResponse } from '../../interfaces';
+const SampleModel = require('../models/Projects')
+import { Sample, SampleEntry } from '../types';
+import { dbgConsoleLog, getStackFileName } from '../utils';
+import { DBResponse } from '../interfaces';
 const FILENAME = getStackFileName()
 
 export const checkSampleExistDB = async ( sampleName: string, collectionCode: string): Promise<boolean> => {

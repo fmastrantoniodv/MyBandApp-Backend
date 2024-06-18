@@ -102,9 +102,9 @@ export const resHeaderConfig = (res: any) => {
 
 export const dbgConsoleLog = (location: string, message: string, obj?: Object) => {
     if(obj === undefined){
-        console.log(`${new Date().toISOString()}.[${location}].[DBG].${message}`)
+        console.log(`[${new Date().toISOString()}].[${location}].[DBG].${message}`)
     }else{
-        console.log(`${new Date().toISOString()}.${location}.[DBG].${message}`, obj)
+        console.log(`[${new Date().toISOString()}].[${location}].[DBG].${message}`, obj)
     }
 }
 
@@ -120,7 +120,6 @@ export const getStackFileName = () => {
             nombreArchivo = rutaArchivo.split('\\').pop();
         }
     }
-
     if(nombreArchivo === undefined){
         nombreArchivo = ''
     }

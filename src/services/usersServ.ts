@@ -1,7 +1,7 @@
 import { UserEntry , User, PlanType } from '../types'
 import { calculateExpirationDate } from '../utils'
 import { UserData } from '../interfaces';
-import { changeUserPassDB, changeUserPlanDB, validateLogin, getUserDB, addUserToDB  } from './db/usersDBManager'
+import { changeUserPassDB, changeUserPlanDB, validateLogin, getUserDB, addUserToDB  } from '../db/usersDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 console.log('####Init userServ#######')

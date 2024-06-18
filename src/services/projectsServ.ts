@@ -1,6 +1,6 @@
 import { Project, ProjectEntry, ProjectSave } from '../interfaces'
 import { SoundListItem } from '../types';
-import { addProjectToDB, saveProjectToDB, deleteProjectDB } from './db/projectsDBManager'
+import { addProjectToDB, saveProjectToDB, deleteProjectDB } from '../db/projectsDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils';
 
 const FILENAME = getStackFileName()

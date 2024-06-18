@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 const connectToDatabase = require('./mongo.js');
-const ProjectModel = require('../../models/Projects')
-import { Project, ProjectEntry, ProjectSave} from '../../interfaces'
-import { dbgConsoleLog, getStackFileName } from '../../utils';
+const ProjectModel = require('../models/Projects')
+import { Project, ProjectEntry, ProjectSave} from '../interfaces'
+import { dbgConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 
 export const saveProjectToDB = async (updatedProjectData: ProjectSave): Promise<Project>  => {

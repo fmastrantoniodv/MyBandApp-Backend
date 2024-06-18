@@ -1,9 +1,9 @@
 import mongoose from 'mongoose'
 const connectToDatabase = require('./mongo.js');
-const UserModel = require('../../models/User.js')
-import { PlanType, User } from '../../types'
-import { UserData } from '../../interfaces'
-import { dbgConsoleLog, getStackFileName } from '../../utils';
+const UserModel = require('../models/User.js')
+import { PlanType, User } from '../types'
+import { UserData } from '../interfaces'
+import { dbgConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 
 export const changeUserPassDB = async (id: string, newPass: string) => {
