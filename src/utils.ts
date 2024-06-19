@@ -89,7 +89,7 @@ export const calculateExpirationDate = (plan: PlanType, regDate: Date): Date =>{
 
 export const parseDBObjectId = (str: string) => {
     if(str.length !== 24){
-        throw new Error('Incorrect format or missing planType')
+        throw new Error('Incorrect format input id')
     }
     return str
 }
@@ -98,6 +98,7 @@ export const resHeaderConfig = (res: any) => {
     res.header("Access-Control-Allow-Origin", frontendEndpoint)
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+    //res.set('Allow', 'GET, POST, OPTIONS');    
 }
 
 export const dbgConsoleLog = (location: string, message: string, obj?: Object) => {

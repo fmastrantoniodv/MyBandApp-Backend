@@ -5,6 +5,8 @@ import { Sample } from '../types'
 import {parseStringFromRequest, parseNumberFromRequest, parseDBObjectId} from '../utils'
 
 const router = express.Router()
+const cors = require('cors')
+router.use(cors())
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
 
 router.get('/', (_req, res) => {

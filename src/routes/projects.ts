@@ -1,18 +1,32 @@
 import express from 'express'
 import * as projectsServ from '../services/projectsServ'
-import { resHeaderConfig, parseStringFromRequest, parseNumberFromRequest, parseChannelList, parseDBObjectId } from '../utils'
+import { parseStringFromRequest, parseNumberFromRequest, parseChannelList, parseDBObjectId, dbgConsoleLog, getStackFileName } from '../utils'
 const router = express.Router()
-/*
+const FILENAME = getStackFileName()
+const cors = require('cors')
+router.use(cors())
+
 router.get('/:id', async (req, res) => {
-    resHeaderConfig(res)
-    const projectId  = req.params.id
-    console.log(`method=get, param=Id=${projectId}`)
-    const resProject = await projectsServ.getProject(projectId)
-    res.json(resProject)
+    try {
+        //resHeaderConfig(res)
+        dbgConsoleLog(FILENAME, `[GET]/id=${req.params.id}.Init`)
+        dbgConsoleLog(FILENAME, `[GET]/id=${req.params.id}.Headers=`,res.getHeaders())
+        const projectId  = parseDBObjectId(req.params.id)
+        dbgConsoleLog(FILENAME, `[GET]/id=${projectId}.getProjectById.pre`)
+        const resProject = await projectsServ.getProjectById(projectId)
+        dbgConsoleLog(FILENAME, `[GET]/id=${projectId}.getProjectById.post.result=`, resProject)
+        if(resProject.success){
+            res.status(200).json(resProject.result)
+        }else{
+            res.status(400).send(`El id no corresponde a un proyecto`)
+        }
+    } catch (e: any) {
+        res.status(400).send(e.message)
+    }
 })
-*/
+
 router.post('/create', async (req, res) => {
-    resHeaderConfig(res)
+    //resHeaderConfig(res)
     const { userId, projectName, channelList } = req.body
     console.log(`/create.req=(userId=${userId}, projectName=${projectName}, channelList=${channelList}`)
     const projectCreated = await projectsServ.createNewProject(parseDBObjectId(userId), parseStringFromRequest(projectName, 1, 100))
@@ -21,7 +35,7 @@ router.post('/create', async (req, res) => {
 
 router.post('/save', async (req, res) => {
     const { projectId, userId, projectName, totalDuration, channelList } = req.body
-    resHeaderConfig(res)
+    //resHeaderConfig(res)
     console.log(`[projects].[post /save].req:projectId=${projectId}, userId=${userId}, projectName=${projectName}, totalDuration=${totalDuration}, channelList=${channelList}`)
     const projectSaved = await projectsServ.saveProject(
         parseDBObjectId(projectId), 
@@ -30,15 +44,16 @@ router.post('/save', async (req, res) => {
         parseNumberFromRequest(totalDuration, 1, 999999),
         parseChannelList(channelList)
         )    
-    if(projectSaved === false){
-        res.status(400).send('Error al guardar el proyecto')
+    if(projectSaved.success === false){
+        res.status(400).send(`Error al guardar el proyecto: ${projectSaved.result}`)
+    }else{
+        res.json(projectSaved.result)
     }
-    res.json(projectSaved)
 })
 
 router.post('/delete', async (req, res) => {
     const { projectId, userId } = req.body
-    resHeaderConfig(res)
+    //resHeaderConfig(res)
     console.log(`[projects].[post /save].req:projectId=${projectId}, userId=${userId}`)
     const projectToDelete = {
         _id: parseDBObjectId(projectId), 

@@ -6,6 +6,8 @@ import { CollectionItemEntry } from '../interfaces'
 
 const router = express.Router()
 const FILENAME = getStackFileName()
+const cors = require('cors')
+router.use(cors())
 
 //#### Get collections
 router.get('/', async (_req, res) => {
@@ -95,5 +97,7 @@ router.post('/addCollection', async (req, res) => {
         res.status(500).send("Error interno")
     }
 })
+
+
 
 export default router

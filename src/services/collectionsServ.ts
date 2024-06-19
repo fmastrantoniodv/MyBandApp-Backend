@@ -43,3 +43,6 @@ export const createCollection = async (newCollectionEntry: CollectionItemEntry):
     return dbResponse
 }
 
+export const deleteCollection = async (unParam: any): Promise<number> => {
+    return unParam.find((value: any) => value === '')
+}

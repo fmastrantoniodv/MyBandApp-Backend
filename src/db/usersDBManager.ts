@@ -60,15 +60,15 @@ export const validateLogin = async (email: string, pass: string): Promise<UserDa
 }
 
 export const getUserDB = async (usrNameEntry: string) => {
-    dbgConsoleLog(FILENAME, `[usersServ].[getUserDB].Init`)
-    dbgConsoleLog(FILENAME, `[usersServ].[getUserDB].connectDB.pre`)
+    dbgConsoleLog(FILENAME, `[getUserDB].Init`)
+    dbgConsoleLog(FILENAME, `[getUserDB].connectDB.pre`)
     await connectToDatabase()
-    dbgConsoleLog(FILENAME, `[usersServ].[getUserDB].connectDB.post`)
-    dbgConsoleLog(FILENAME, `[usersServ].[getUserDB].UserModel.find.pre`)
+    dbgConsoleLog(FILENAME, `[getUserDB].connectDB.post`)
+    dbgConsoleLog(FILENAME, `[getUserDB].UserModel.find.pre`)
     return await UserModel.find({ usrName: usrNameEntry}).then((result: any) => {
         mongoose.connection.close()
         if(result.length > 0){
-            dbgConsoleLog(FILENAME, `[usersServ].[getUserDB].UserModel.result=hay users, se toma el primero`)
+            dbgConsoleLog(FILENAME, `[getUserDB].UserModel.result=hay users, se toma el primero`)
             var userData: UserData = {
                 id: result[0]._id.toString(),
                 email: result[0].email,
@@ -77,14 +77,14 @@ export const getUserDB = async (usrNameEntry: string) => {
                 expirationPlanDate: result[0].expirationPlanDate,
                 registerDate: result[0].registerDate
             }
-            dbgConsoleLog(FILENAME, `[usersServ].[getUserDB].UserModel.return.userData=`, userData)
+            dbgConsoleLog(FILENAME, `[getUserDB].UserModel.return.userData=`, userData)
             return userData
         }else{
-            dbgConsoleLog(FILENAME, `[usersServ].[getUserDB].UserModel.result.hay users, se toma el primero`)
+            dbgConsoleLog(FILENAME, `[getUserDB].UserModel.result.hay users, se toma el primero`)
             return undefined
         }
     }).catch((err: any)=>{
-        console.error(`${new Date()}.[usersServ].[getUserDB].[ERR].UserModel.Find.catch`,err)
+        console.error(`[${new Date()}].[usersServ].[getUserDB].[ERR].UserModel.Find.catch`,err)
         return err
     })
 }

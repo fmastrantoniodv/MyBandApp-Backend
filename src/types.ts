@@ -10,9 +10,9 @@ export type States = {
 }
 
 export type ChannelConfig = {
-        states: States,
-        volume: number,
-        EQ: EqParams
+    states: States,
+    volume: number,
+    EQ: EqParams
 }
 
 export type SoundListItem = {
