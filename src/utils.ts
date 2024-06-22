@@ -16,6 +16,29 @@ const isChannelListItemType = (soundListItem: SoundListItem): soundListItem is S
     isChannelConfigType(soundListItem.channelConfig)
 }
 
+const setThrowError = (codeError:string, messageError: string): Error => {
+    const returnError = new Error()
+    returnError.name = codeError
+    returnError.message = messageError
+    return returnError
+}
+
+export const setErrorResponse = (res: any, errorCode: string, errorDetail: string) => {
+    res.json({
+        errorCode: errorCode,
+        errorDetail: errorDetail
+    })
+}
+
+export const catchErrorResponse = (res: any, e: Error) => {
+    if(e.name === 'INPUT_VALIDATION'){
+        res.status(400)
+        setErrorResponse(res, e.name, e.message)
+    }else{
+        res.status(500).send('Internal server error')
+    }
+}
+
 const isChannelConfigType = (channelConfig: ChannelConfig): channelConfig is ChannelConfig => {
     return typeof channelConfig === 'object' &&
     typeof channelConfig.volume === 'number' &&
@@ -31,8 +54,8 @@ const isChannelConfigType = (channelConfig: ChannelConfig): channelConfig is Cha
 export const parseChannelList = (channelList: Array<SoundListItem>): Array<SoundListItem> =>{
     console.log('channelList', channelList)
     channelList.forEach((channel: SoundListItem)=>{
-        if(!isChannelListItemType(channel)){
-            throw new Error('Incorrect format data from channelList')
+        if(!isChannelListItemType(channel)){            
+            throw setThrowError('INPUT_VALIDATION', 'Incorrect format data from channelList')
         }
     })
     return channelList
@@ -42,7 +65,7 @@ export const parseStringFromRequest = (str: string, minChars: number, maxChars: 
     console.log('str='+str+', minChars='+minChars+', maxChars='+maxChars)
     console.log('str.length='+str.length)
     if(!isString(str) || str.length < minChars || str.length > maxChars){
-        throw new Error('Incorrect format or missing string')
+        throw setThrowError('INPUT_VALIDATION', 'Incorrect format or missing string')
     }
     return str
 }
@@ -51,7 +74,7 @@ export const parseNumberFromRequest = (num: number, minNumber: number, maxNumber
     console.log('num='+num+', minNumber='+minNumber+', maxNumber='+maxNumber)
     console.log('num.length='+num.toString().length)
     if(!isNumber(num) || num < minNumber || num > maxNumber){
-        throw new Error('Incorrect format or missing number')
+        throw setThrowError('INPUT_VALIDATION', 'Incorrect format or missing number')
     }
     return num
 }
@@ -69,7 +92,7 @@ export const isUser = (obj: any): obj is User => {
 
 export const parsePlanType = (str: any): PlanType => {
     if(!isPlanType(str)){
-        throw new Error('Incorrect format or missing planType')
+        throw setThrowError('INPUT_VALIDATION', 'Incorrect format or missing planType')
     }
     return str
 }
@@ -83,13 +106,12 @@ export const calculateExpirationDate = (plan: PlanType, regDate: Date): Date =>{
     }else{
         expDate.setFullYear(regDate.getFullYear() + 100)
     }
-    
     return expDate
 }
 
 export const parseDBObjectId = (str: string) => {
     if(str.length !== 24){
-        throw new Error('Incorrect format input id')
+        throw setThrowError('INPUT_VALIDATION', 'Incorrect format input id')
     }
     return str
 }

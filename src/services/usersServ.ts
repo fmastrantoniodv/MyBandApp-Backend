@@ -1,12 +1,15 @@
 import { UserEntry , User, PlanType } from '../types'
 import { calculateExpirationDate } from '../utils'
-import { UserData } from '../interfaces';
-import { changeUserPassDB, changeUserPlanDB, validateLogin, getUserDB, addUserToDB  } from '../db/usersDBManager'
+import { ServResponse } from '../interfaces';
+import { changeUserPlanDB, validateLoginDB, changeUserPassDB,
+    //, getUserDB, 
+    addUserToDB  } from '../db/usersDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 console.log('####Init userServ#######')
 
-export const addNewUser = async ( newUserEntry: UserEntry ): Promise<boolean>  => {
+export const addNewUser = async ( newUserEntry: UserEntry ): Promise<ServResponse>  => {
+    const resp: ServResponse = { success: false }
     dbgConsoleLog(FILENAME, `[addNewUser].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[addNewUser].[MSG].user data entry:`,newUserEntry)
     var registerDate = new Date()
@@ -18,46 +21,64 @@ export const addNewUser = async ( newUserEntry: UserEntry ): Promise<boolean>  =
         expirationPlanDate: calculateExpirationDate(newUserEntry.plan, registerDate),
         registerDate: registerDate
     }
-    dbgConsoleLog(FILENAME, `[addNewUser].[MSG].getUserDB.pre`)
-    const userData = await getUserDB(newUserEntry.usrName)
-    dbgConsoleLog(FILENAME, `[addNewUser].[MSG].getUserDB.post`)
-    dbgConsoleLog(FILENAME, `[addNewUser].[MSG].getUserDB.userData=`, userData)
-    if(userData === undefined){
-        dbgConsoleLog(FILENAME, `[addNewUser].[MSG].addUserToDB.pre`)
-        await addUserToDB(newUser)
-        dbgConsoleLog(FILENAME, `[addNewUser].[MSG].addUserToDB.post`)
-        dbgConsoleLog(FILENAME, `[addNewUser].[MSG].addUserToDB.return=true`)
-        return true
+    dbgConsoleLog(FILENAME, `[addNewUser].[MSG].addUserToDB.pre`)
+    const resAddUser = await addUserToDB(newUser)
+    dbgConsoleLog(FILENAME, `[addNewUser].[MSG].addUserToDB.post`)
+    dbgConsoleLog(FILENAME, `[addNewUser].[MSG].addUserToDB.resAddUser=${resAddUser}`)
+    if(resAddUser.success){
+        //Set respuesta que se pudo agregar el usuario
+        dbgConsoleLog(FILENAME, `[addNewUser].[MSG].Resp=Usuario agregado a la db`)
+        resp.success = true
+        resp.result = resAddUser.result
     }else{
-        dbgConsoleLog(FILENAME, `[addNewUser].[MSG].Resp=Usuario ya existe en la db`)
-        throw new Error('Usuario ya existe')
+        //Set respuesta generica que NO se pudo agregar el usuario
+        dbgConsoleLog(FILENAME, `[addNewUser].[MSG].Resp=No se pudo agregar usuario`)
+        resp.result = resAddUser.result
     }
+    return resp    
 }
 
-export const userLogin = async (email: string, pass: string): Promise<UserData | boolean>=> {
+export const userLogin = async (email: string, pass: string): Promise<ServResponse>=> {
+    const resp: ServResponse = { success: false }
     dbgConsoleLog(FILENAME, `[userLogin].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[userLogin].[MSG].login data: email=${email}, pass=${pass}`)
-    const userData = await validateLogin(email, pass)
+    dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.pre`)
+    const userData = await validateLoginDB(email, pass)
+    dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.post.result=`, userData)
+    if(userData.success){
+        dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.se valido el login ok`)
+        resp.success = true
+    }else{
+        dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.credenciales invalidas`)
+    }
+    resp.result = userData.result
     return userData
 }
 
-export const changePlan = async (userId: string, newPlan: PlanType): Promise<UserData | boolean>=>{
+export const changePlan = async (userId: string, newPlan: PlanType): Promise<ServResponse>=>{
+    const resp: ServResponse = { success: false }
     dbgConsoleLog(FILENAME, `[changePlan].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[changePlan].[MSG].req data: userId=${userId}, newPlan=${newPlan}`)
+    dbgConsoleLog(FILENAME, `[changePlan].[MSG].changeUserPlanDB.pre`)
     const resultUpdate = await changeUserPlanDB(userId, newPlan)
-    return resultUpdate
+    dbgConsoleLog(FILENAME, `[changePlan].[MSG].changeUserPlanDB.post.result=`, resultUpdate)
+    if(resultUpdate.success){
+        resp.success = true
+    }
+    resp.result = resultUpdate.result
+    return resp
 }
 
-export const changePass = async (email: string, password: string, newPass: string): Promise<boolean>=>{
+export const changePass = async (email: string, password: string, newPass: string): Promise<ServResponse>=>{
+    const resp: ServResponse = { success: false }
     dbgConsoleLog(FILENAME, `[changePass].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[changePass].[MSG].req data: email=${email}, password=${password}, newPass=${newPass}`)
-    dbgConsoleLog(FILENAME, `[changePass].[MSG].validateLogin.pre`)
-    const userData = await validateLogin(email, password)
-    dbgConsoleLog(FILENAME, `[changePass].[MSG].validateLogin.post`)
-    dbgConsoleLog(FILENAME, `[changePass].[MSG].userData=`,userData)
-    if(typeof userData === 'boolean'){
-        throw new Error('Credenciales invalidas')
+    dbgConsoleLog(FILENAME, `[changePass].[MSG].changeUserPassDB.pre`)
+    const resultUpdate = await changeUserPassDB(email, password, newPass)
+    dbgConsoleLog(FILENAME, `[changePass].[MSG].changeUserPassDB.post.result=`, resultUpdate)
+    if(resultUpdate.success){
+        resp.success = true
     }
-    const resultUpdate = await changeUserPassDB(userData.id, newPass)
-    return resultUpdate
+    resp.result = resultUpdate.result
+    return resp
 }

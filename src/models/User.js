@@ -18,6 +18,7 @@ userSchema.set('toJSON', {
     }
 })
 
+userSchema.index({ usrName: 1}, { unique: true })
 const UserModel = model('User', userSchema)
 
 module.exports = UserModel

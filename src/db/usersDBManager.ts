@@ -2,27 +2,36 @@ import mongoose from 'mongoose'
 const connectToDatabase = require('./mongo.js');
 const UserModel = require('../models/User.js')
 import { PlanType, User } from '../types'
-import { UserData } from '../interfaces'
+import { DBResponse } from '../interfaces'
 import { dbgConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 
-export const changeUserPassDB = async (id: string, newPass: string) => {
+export const changeUserPassDB = async (email: string, password: string, newPass: string): Promise<DBResponse> => {
+    const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[usersServ].[changeUserPassDB].Init`)
-    dbgConsoleLog(FILENAME, `[usersServ].[changeUserPassDB].id=`,id)
+    dbgConsoleLog(FILENAME, `[usersServ].[changeUserPassDB].email=${email}, password=${password}, newPass=${newPass},`)
     dbgConsoleLog(FILENAME, `[usersServ].[changeUserPassDB].connectDB.pre`)
     await connectToDatabase()
     dbgConsoleLog(FILENAME, `[usersServ].[changeUserPassDB].connectDB.post`)
-    return await UserModel.findByIdAndUpdate(id, {password: newPass}, { new: true }).then((result: any)=>{
+    return await UserModel.findOneAndUpdate({ email, password }, {password: newPass}, { new: true }).then((result: any)=>{
         mongoose.connection.close()
-        dbgConsoleLog(FILENAME, `[usersServ].[changeUserPassDB].UserModel.findByIdAndUpdate.userUpdated=`,result)
-        return true
+        dbgConsoleLog(FILENAME, `[usersServ].[changeUserPassDB].UserModel.findOneAndUpdate.userUpdated=`,result)
+        if(result === null){
+            resp.result = 'INVALID_MAIL_PASSWORD'
+        }else{
+            resp.success = true
+            resp.result = result
+        }
+        return resp
     }).catch((err: any)=>{
-        console.error(`${new Date()}.[usersServ].[changeUserPassDB].UserModel.findByIdAndUpdate.error=`, err.message);
-        return false
+        console.error(`${new Date()}.[usersServ].[changeUserPassDB].UserModel.findOneAndUpdate.error=`, err.message);
+        resp.result = err.message
+        return resp
     })    
 }
 
-export const changeUserPlanDB = async (id: string, newPlan: PlanType) => {
+export const changeUserPlanDB = async (id: string, newPlan: PlanType): Promise<DBResponse> => {
+    const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[usersServ].[changeUserPlanDB].Init`)
     dbgConsoleLog(FILENAME, `[usersServ].[changeUserPlanDB].connectDB.pre`)
     await connectToDatabase()
@@ -31,14 +40,22 @@ export const changeUserPlanDB = async (id: string, newPlan: PlanType) => {
     return await UserModel.findByIdAndUpdate(id, {plan: newPlan}, { new: true }).then((result: any)=>{
         mongoose.connection.close()
         dbgConsoleLog(FILENAME, `[usersServ].[changeUserPlanDB].UserModel.findByIdAndUpdate.userUpdated=`,result)
-        return result
+        if(result === null){
+            resp.result = 'USR_NOT_FOUND'
+        }else{
+            resp.success = true
+            resp.result = result
+        }
+        return resp
     }).catch((err: any)=>{
         console.error(`${new Date()}.[usersServ].[changeUserPlanDB].UserModel.findByIdAndUpdate.error=`, err.message);
-        return false
+        resp.result = err.message
+        return resp
     })
 };
 
-export const validateLogin = async (email: string, pass: string): Promise<UserData | boolean> => {
+export const validateLoginDB = async (email: string, pass: string): Promise<DBResponse> => {
+    const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[usersServ].[validateLogin].Init`)
     dbgConsoleLog(FILENAME, `[usersServ].[validateLogin].connectDB.pre`)
     await connectToDatabase()
@@ -49,47 +66,21 @@ export const validateLogin = async (email: string, pass: string): Promise<UserDa
         dbgConsoleLog(FILENAME, `[usersServ].[validateLogin].UserModel.result=`,result[0])
         if(result[0] === undefined){
             dbgConsoleLog(FILENAME, `[usersServ].[validateLogin].UserModel.credenciales invalidas`)
-            return false
+            resp.result = 'INVALID_MAIL_PASSWORD'
         }else{
-            return result[0]
+            resp.success = true
+            resp.result = result[0]
         }
+        return resp
     }).catch((err: any) => {
         console.error(`${new Date()}.[usersServ].[validateLogin].[ERR].UserModel.Find.catch`,err)
-        return err
+        resp.result = err.message
+        return resp
     })
 }
 
-export const getUserDB = async (usrNameEntry: string) => {
-    dbgConsoleLog(FILENAME, `[getUserDB].Init`)
-    dbgConsoleLog(FILENAME, `[getUserDB].connectDB.pre`)
-    await connectToDatabase()
-    dbgConsoleLog(FILENAME, `[getUserDB].connectDB.post`)
-    dbgConsoleLog(FILENAME, `[getUserDB].UserModel.find.pre`)
-    return await UserModel.find({ usrName: usrNameEntry}).then((result: any) => {
-        mongoose.connection.close()
-        if(result.length > 0){
-            dbgConsoleLog(FILENAME, `[getUserDB].UserModel.result=hay users, se toma el primero`)
-            var userData: UserData = {
-                id: result[0]._id.toString(),
-                email: result[0].email,
-                usrName: result[0].usrName,
-                plan: result[0].plan,
-                expirationPlanDate: result[0].expirationPlanDate,
-                registerDate: result[0].registerDate
-            }
-            dbgConsoleLog(FILENAME, `[getUserDB].UserModel.return.userData=`, userData)
-            return userData
-        }else{
-            dbgConsoleLog(FILENAME, `[getUserDB].UserModel.result.hay users, se toma el primero`)
-            return undefined
-        }
-    }).catch((err: any)=>{
-        console.error(`[${new Date()}].[usersServ].[getUserDB].[ERR].UserModel.Find.catch`,err)
-        return err
-    })
-}
-
-export const addUserToDB = async (newUser: User) => {
+export const addUserToDB = async (newUser: User): Promise<DBResponse> => {
+    const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[usersServ].[addUserToDB].Init`)
     dbgConsoleLog(FILENAME, `[usersServ].[addUserToDB].connectDB.pre`)
     await connectToDatabase()
@@ -99,9 +90,18 @@ export const addUserToDB = async (newUser: User) => {
     await userToDB.save().then((res: any)=>{
         dbgConsoleLog(FILENAME, `[usersServ].[addUserToDB].UserModel.save.res=`, res)
         mongoose.connection.close()
+        resp.result = res
+        resp.success = true
     })
     .catch((err:any)=>{
-        console.error(`${new Date()}.[usersServ].[addUserToDB].[ERR].Error=`, err.message)
+        console.error(`${new Date()}.[usersServ].[addUserToDB].[ERR].Error.message=`, err.message)
+        //catcheo el error especifico de indice duplicado y manejo la respuesta de "usuario existente"
+        if(err.errorResponse.code === 11000){
+            resp.result = 'USR_EXIST'    
+        }else{
+            resp.result = err.message
+        }
     })
     dbgConsoleLog(FILENAME, `[usersServ].[addUserToDB].UserModel.save.post`)
+    return resp
 }
