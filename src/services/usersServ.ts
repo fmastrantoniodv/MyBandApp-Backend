@@ -29,12 +29,11 @@ export const addNewUser = async ( newUserEntry: UserEntry ): Promise<ServRespons
         //Set respuesta que se pudo agregar el usuario
         dbgConsoleLog(FILENAME, `[addNewUser].[MSG].Resp=Usuario agregado a la db`)
         resp.success = true
-        resp.result = resAddUser.result
     }else{
         //Set respuesta generica que NO se pudo agregar el usuario
         dbgConsoleLog(FILENAME, `[addNewUser].[MSG].Resp=No se pudo agregar usuario`)
-        resp.result = resAddUser.result
     }
+    resp.result = resAddUser.result
     return resp    
 }
 
@@ -48,11 +47,9 @@ export const userLogin = async (email: string, pass: string): Promise<ServRespon
     if(userData.success){
         dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.se valido el login ok`)
         resp.success = true
-    }else{
-        dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.credenciales invalidas`)
     }
     resp.result = userData.result
-    return userData
+    return resp
 }
 
 export const changePlan = async (userId: string, newPlan: PlanType): Promise<ServResponse>=>{
