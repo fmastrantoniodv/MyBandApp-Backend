@@ -10,7 +10,6 @@ router.use(cors())
 
 router.post('/register', async (req, res) => {
     dbgConsoleLog(FILENAME, `[POST]/register.REQ=`, req.body)
-    //resHeaderConfig(res)
     try{
         const { email, usrName, password, plan } = req.body
         const newUserEntry: UserEntry = {
@@ -38,7 +37,6 @@ router.post('/register', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-    //resHeaderConfig(res)
     dbgConsoleLog(FILENAME, `[POST]/login.REQ=`, req.body)
     try{
         const { email, password } = req.body
@@ -63,7 +61,6 @@ router.post('/login', async (req, res) => {
 })
 
 router.post('/updatePlan', async (req, res) => {
-    //resHeaderConfig(res)
     dbgConsoleLog(FILENAME, `[POST]/updatePlan.REQ=`, req.body)
     try{
         const { userId, newPlan } = req.body
@@ -86,7 +83,6 @@ router.post('/updatePlan', async (req, res) => {
 })
 
 router.post('/changePass', async (req, res) => {
-    //resHeaderConfig(res)
     dbgConsoleLog(FILENAME, `[POST]/changePass.REQ=`, req.body)
     try{
         const { email, password, newPass } = req.body
@@ -111,5 +107,50 @@ router.post('/changePass', async (req, res) => {
         catchErrorResponse(res, e)
     }
 })
+
+router.get('/getUserFavsList/:id', async (req, res) => {
+    dbgConsoleLog(FILENAME, `[GET]/getUserFavsList.REQ=`, req.params)
+    try{
+        const userId = req.params.id
+        dbgConsoleLog(FILENAME, `[GET]/getUserFavsList.pre`)
+        const userDataRes = await usersServ.getUserFavList(parseDBObjectId(userId))
+        dbgConsoleLog(FILENAME, `[GET]/getUserFavsList.post.result=`, userDataRes)
+        if(!userDataRes.success){
+            res.status(400)
+            var message = 'Hubo un error al intentar obtener los favoritos del usuario en la db' //Default
+            if(userDataRes.result === 'USR_NOT_FOUND'){
+                message = 'No se encontro usuario con ese id'
+            }
+            setErrorResponse(res, userDataRes.result , message)
+        }else{
+            res.status(200).json(userDataRes.result)
+        }
+    }catch(e: any){
+        catchErrorResponse(res, e)
+    }
+})
+
+router.post('/updateFav', async (req, res) => {
+    dbgConsoleLog(FILENAME, `[POST]/updateFav.REQ=`, req.body)
+    try{
+        const { userId, sampleId, actionCode } = req.body
+        dbgConsoleLog(FILENAME, `[POST]/updateFav.pre`)
+        const userDataRes = await usersServ.updateFav(parseDBObjectId(userId), parseDBObjectId(sampleId), parseStringFromRequest(actionCode, 3, 5))
+        dbgConsoleLog(FILENAME, `[POST]/updateFav.post.result`, userDataRes)
+        if(!userDataRes.success){
+            res.status(400)
+            var message = 'Hubo un error al intentar actualizar favs del usuario en la db' //Default
+            if(userDataRes.result === 'ACTION_CODE_INVALID'){
+                message = 'El actionCode es invalido, debe ser FAV o UNFAV'
+            }
+            setErrorResponse(res, userDataRes.result, message)
+        }else{
+            res.status(200).send(userDataRes.result)
+        }
+    }catch(e: any){
+        catchErrorResponse(res, e)
+    }
+})
+
 
 export default router

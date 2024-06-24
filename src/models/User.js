@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
+const sampleSchema = require('./Samples')
 
 const userSchema = new Schema({
     email: String,
@@ -7,7 +8,8 @@ const userSchema = new Schema({
     password: String,
     plan: String,
     expirationPlanDate: Date,
-    registerDate: Date
+    registerDate: Date,
+    favList: [{ type: Schema.Types.ObjectId, ref: 'Sample', required: true }]
 })
 
 userSchema.set('toJSON', {

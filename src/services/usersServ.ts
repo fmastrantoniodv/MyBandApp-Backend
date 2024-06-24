@@ -1,9 +1,7 @@
 import { UserEntry , User, PlanType } from '../types'
 import { calculateExpirationDate } from '../utils'
 import { ServResponse } from '../interfaces';
-import { changeUserPlanDB, validateLoginDB, changeUserPassDB,
-    //, getUserDB, 
-    addUserToDB  } from '../db/usersDBManager'
+import { changeUserPlanDB, validateLoginDB, changeUserPassDB, getFavouritesListDB, addUserToDB, updateUserFavsDB } from '../db/usersDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 console.log('####Init userServ#######')
@@ -77,5 +75,38 @@ export const changePass = async (email: string, password: string, newPass: strin
         resp.success = true
     }
     resp.result = resultUpdate.result
+    return resp
+}
+
+export const getUserFavList = async (userId: string): Promise<ServResponse>=> {
+    const resp: ServResponse = { success: false }
+    dbgConsoleLog(FILENAME, `[getUserFavList].[MSG].Init`)
+    dbgConsoleLog(FILENAME, `[getUserFavList].[MSG].userId=${userId}`)
+    dbgConsoleLog(FILENAME, `[getUserFavList].[MSG].getFavouritesListDB.pre`)
+    const userData = await getFavouritesListDB(userId)
+    dbgConsoleLog(FILENAME, `[getUserFavList].[MSG].getFavouritesListDB.post.result=`, userData)
+    if(userData.success){
+        dbgConsoleLog(FILENAME, `[getUserFavList].[MSG].getFavouritesListDB.se valido el login ok`)
+        resp.success = true
+    }
+    resp.result = userData.result
+    return resp
+}
+
+export const updateFav = async (userId: string, sampleId: string, action: string): Promise<ServResponse>=>{
+    const resp: ServResponse = { success: false }
+    dbgConsoleLog(FILENAME, `[updateFav].[MSG].Init`)
+    dbgConsoleLog(FILENAME, `[updateFav].[MSG].req data: userId=${userId}, sampleId=${sampleId}, action=${action}`)
+    dbgConsoleLog(FILENAME, `[updateFav].[MSG].updateUserFavsDB.pre`)
+    const resultUpdate = await updateUserFavsDB(userId, sampleId, action)
+    dbgConsoleLog(FILENAME, `[updateFav].[MSG].updateUserFavsDB.post.result=`, resultUpdate)
+    if(resultUpdate.success){
+        resp.success = true
+    }
+    if(action === "FAV"){
+        resp.result = 'Sample agregado a favoritos con exito'
+    }else{
+        resp.result = 'Sample eliminado de favoritos con exito'
+    }
     return resp
 }
