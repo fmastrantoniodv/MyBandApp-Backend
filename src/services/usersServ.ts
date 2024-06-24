@@ -102,11 +102,13 @@ export const updateFav = async (userId: string, sampleId: string, action: string
     dbgConsoleLog(FILENAME, `[updateFav].[MSG].updateUserFavsDB.post.result=`, resultUpdate)
     if(resultUpdate.success){
         resp.success = true
-    }
-    if(action === "FAV"){
-        resp.result = 'Sample agregado a favoritos con exito'
+        if(action === "FAV"){
+            resp.result = 'Sample agregado a favoritos con exito'
+        }else{
+            resp.result = 'Sample eliminado de favoritos con exito'
+        }
     }else{
-        resp.result = 'Sample eliminado de favoritos con exito'
+        resp.result = resultUpdate.result
     }
     return resp
 }

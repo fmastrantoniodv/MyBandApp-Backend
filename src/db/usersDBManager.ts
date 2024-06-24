@@ -25,7 +25,7 @@ export const changeUserPassDB = async (email: string, password: string, newPass:
         return resp
     }).catch((err: any)=>{
         console.error(`${new Date()}.[changeUserPassDB].UserModel.findOneAndUpdate.error=`, err.message);
-        resp.result = err.message
+        resp.result = err.name
         return resp
     })    
 }
@@ -49,7 +49,7 @@ export const changeUserPlanDB = async (id: string, newPlan: PlanType): Promise<D
         return resp
     }).catch((err: any)=>{
         console.error(`${new Date()}.[changeUserPlanDB].UserModel.findByIdAndUpdate.error=`, err.message);
-        resp.result = err.message
+        resp.result = err.name
         return resp
     })
 };
@@ -74,7 +74,7 @@ export const validateLoginDB = async (email: string, pass: string): Promise<DBRe
         return resp
     }).catch((err: any) => {
         console.error(`${new Date()}.[validateLoginDB].[ERR].UserModel.Find.catch`,err)
-        resp.result = err.message
+        resp.result = err.name
         return resp
     })
 }
@@ -99,7 +99,7 @@ export const addUserToDB = async (newUser: User): Promise<DBResponse> => {
         if(err.errorResponse.code === 11000){
             resp.result = 'USR_EXIST'    
         }else{
-            resp.result = err.message
+            resp.result = err.name
         }
     })
     dbgConsoleLog(FILENAME, `[addUserToDB].UserModel.save.post`)
@@ -126,7 +126,7 @@ export const getFavouritesListDB = async (userId: string): Promise<DBResponse> =
         return resp
     }).catch((err: any) => {
         console.error(`${new Date()}.[getFavouritesListDB].[ERR].UserModel.findById.catch`,err)
-        resp.result = err.message
+        resp.result = err.name
         return resp
     })
     dbgConsoleLog(FILENAME, `[getFavouritesList].UserModel.findById.post`)
@@ -161,7 +161,7 @@ export const updateUserFavsDB = async (userId: string, sampleId: string, action:
         return resp
     }).catch((err: any)=>{
         console.error(`${new Date()}.[updateUserFavsDB].UserModel.findByIdAndUpdate.error=`, err.message);
-        resp.result = err.message
+        resp.result = err.name
         return resp
     })
 }
