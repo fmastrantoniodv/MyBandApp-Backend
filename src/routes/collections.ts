@@ -76,6 +76,9 @@ router.post('/addCollection', async (req, res) => {
         dbgConsoleLog(FILENAME, `[POST]/addCollection.getSamplesIdList.pre`)
         const samplesIdList = await samplesServ.getSamplesIdList(sampleList)
         dbgConsoleLog(FILENAME, `[POST]/addCollection.getSamplesIdList.post`)
+        if(!samplesIdList.success){
+            return res.status(400).send(`Ya exiten los samples: ${samplesIdList.result}`)
+        }
         const newCollectionEntry: CollectionItemEntry = {
             collectionCode: parseStringFromRequest(collectionCode, 0, 100),
             collectionName: parseStringFromRequest(collectionName, 0, 100),
@@ -88,13 +91,13 @@ router.post('/addCollection', async (req, res) => {
         const result = await collectionsServ.createCollection(newCollectionEntry)
         dbgConsoleLog(FILENAME, `[POST]/addCollection.createCollection.post.result=${result}`)
         if(result.success){
-            res.status(200).send('Collection creada con exito')
+            return res.status(200).send('Collection creada con exito')
         }else{
-            res.status(400).send(result.result)
+            return res.status(400).send(result.result)
         }
     }catch (e: any) {
         console.error(`[${FILENAME}].[ERROR]./addCollection.error=${e.message}`)
-        res.status(500).send("Error interno")
+        return res.status(500).send("Error interno")
     }
 })
 

@@ -2,6 +2,7 @@ import { CollectionItemEntry, ServResponse } from '../interfaces'
 import { PlanType } from '../types'
 import { addNewCollectionToDB, getAllCollectionsFromDB, getCollectionByIDFromDB, getCollectionsByPlanFromDB } from '../db/collectionsDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils'
+const planList: Array<string> = require('../envParams.json').planList
 
 const FILENAME = getStackFileName()
 
@@ -10,7 +11,7 @@ export const getCollections = async (plan?: PlanType): Promise<ServResponse> => 
     dbgConsoleLog(FILENAME, `[getCollections].Init`)
     dbgConsoleLog(FILENAME, `[getCollections].plan=${plan}`)
     var collectionsFromDB 
-    if(plan === undefined){
+    if(plan === undefined || plan === planList.at(-1)){
         dbgConsoleLog(FILENAME, `[getCollections].getAllCollectionsFromDB.pre`)
         collectionsFromDB = await getAllCollectionsFromDB()
         dbgConsoleLog(FILENAME, `[getCollections].getAllCollectionsFromDB.post`)
@@ -41,8 +42,4 @@ export const createCollection = async (newCollectionEntry: CollectionItemEntry):
     const dbResponse = await addNewCollectionToDB(newCollectionEntry)
     dbgConsoleLog(FILENAME, `[createCollection].checkArrayOfSamplesExistDB.post`)
     return dbResponse
-}
-
-export const deleteCollection = async (unParam: any): Promise<number> => {
-    return unParam.find((value: any) => value === '')
 }

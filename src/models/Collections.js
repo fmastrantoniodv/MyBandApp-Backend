@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
-const sampleSchema = require('./Samples')
+//const sampleSchema = require('./Samples')
 
 const collectionSchema = new Schema({
     collectionCode: String,

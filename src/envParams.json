@@ -1,5 +1,6 @@
 {
     "dev": {
         "front-endpoint-access-control": "http://localhost:3000"
-    }
+    },
+    "planList": ["free", "trial", "pro", "admin"]
 }

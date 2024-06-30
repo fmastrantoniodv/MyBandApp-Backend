@@ -1,6 +1,7 @@
 import { ChannelConfig, PlanType, SoundListItem, User } from "./types"
 import envParams from './envParams.json'
 const frontendEndpoint: string = envParams.dev['front-endpoint-access-control'] as string
+const planList: Array<string> = require('./envParams.json').planList
 
 const isNumber = (num: number): boolean => {
     return typeof num === 'number'
@@ -149,3 +150,14 @@ export const getStackFileName = () => {
 
     return nombreArchivo
 }
+
+export const getScopePlan = (plan: PlanType) => {
+    const indexPlan = planList.indexOf(plan);
+    if (indexPlan === -1) {
+      return [];
+    }
+  
+    // Retornar todos los elementos con un índice menor al índice de referencia
+    return planList.slice(0, indexPlan+1);
+  }
+  

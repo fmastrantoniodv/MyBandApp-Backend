@@ -19,4 +19,3 @@ sampleSchema.set('toJSON', {
 const SampleModel = model('Sample', sampleSchema)
 
 module.exports = SampleModel
-module.exports = sampleSchema
