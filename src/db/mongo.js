@@ -6,15 +6,33 @@ const FILENAME = getStackFileName()
 const connectToDatabase = async () => {
     try {
         dbgConsoleLog(FILENAME, `[connectToDatabase].Init`)
+        dbgConsoleLog(FILENAME, `[connectToDatabase].preConnect`)
+        checkConnection(mongoose.connection)
         await mongoose.connect(connectionString)
-        .then(()=>{
-            dbgConsoleLog(FILENAME, `[connectToDatabase].[MSG]=Database connected`)
-        }).catch(err => {
-            console.error(err)
-        })        
+        checkConnection(mongoose.connection)
+        dbgConsoleLog(FILENAME, `[connectToDatabase].[MSG]=Database connected`)
+        console.error(err)
     } catch (error) {
         console.error(`[${FILENAME}].[connectToDatabase].[ERR].Error to connect database=`, error);
     }
 }
 
+const checkConnection = (dbConnection) => {
+    switch (dbConnection.readyState) {
+        case 0:
+            console.log('Desconectado');
+            break;
+        case 1:
+            console.log('Conectado');
+            break;
+        case 2:
+            console.log('Conectando');
+            break;
+        case 3:
+            console.log('Desconectando');
+            break;
+        default:
+            console.log('Estado desconocido');
+    }
+};
 module.exports = connectToDatabase

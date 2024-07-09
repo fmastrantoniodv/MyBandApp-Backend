@@ -2,22 +2,23 @@ import express from 'express'
 import path from 'path'
 import * as samplesServ from '../services/samplesServ'
 const cors = require('cors')
-import { parseNumberFromRequest, parseStringFromRequest, parseDBObjectId, dbgConsoleLog, getStackFileName } from '../utils'
+import { parseNumberFromRequest, parseStringFromRequest, dbgConsoleLog, getStackFileName } from '../utils'
 import { SampleEntry } from '../types'
 const FILENAME = getStackFileName()
 
 const router = express.Router()
 router.use(cors())
 
-router.get('/:collectionId/:sampleId', async (req, res) => {
+router.get('/:collectionId/:sampleName', async (req, res) => {
     try {
         dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].Init`)
-        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].sampleId=`, req.params.sampleId)
+        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].sampleName=`, req.params.sampleName)
         dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].collectionId=`, req.params.collectionId)
         const collectionId = req.params.collectionId
-        const filename = parseDBObjectId(req.params.sampleId);
+        const filename = parseStringFromRequest(req.params.sampleName, 1, 100);
         const firstPath = path.resolve('./src')
-        const audioPath = path.join(firstPath, '/collections/',collectionId+'/', filename+'.mp3');
+        const audioPath = `${firstPath}/collections/${collectionId}/${collectionId+'_'+filename.toUpperCase().replace(' ','_')}.mp3`
+        
         dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].filename=${filename}, audioPath=${audioPath}`)
         const headerOpts = {
           headers: {
