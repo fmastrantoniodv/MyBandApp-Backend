@@ -1,5 +1,3 @@
-import mongoose from 'mongoose'
-const connectToDatabase = require('./mongo.js');
 const SampleModel = require('../models/Samples')
 import { SampleEntry } from '../types';
 import { dbgConsoleLog, getStackFileName } from '../utils';
@@ -9,11 +7,7 @@ const FILENAME = getStackFileName()
 export const checkSampleExistDB = async ( sampleName: string, collectionCode: string): Promise<boolean> => {
     dbgConsoleLog(FILENAME, `[checkSampleExistDB].Init`)
     dbgConsoleLog(FILENAME, `[checkSampleExistDB].sampleName=${sampleName}, collectionCode=${collectionCode}`)
-    dbgConsoleLog(FILENAME, `[checkSampleExistDB].connectDB.pre`)
-    await connectToDatabase()
-    dbgConsoleLog(FILENAME, `[checkSampleExistDB].connectDB.post`)
     return await SampleModel.find({sampleName: sampleName, collectionCode: collectionCode}).then((result: any) => {
-        mongoose.connection.close()
         dbgConsoleLog(FILENAME, `[checkSampleExistDB].SampleModel.result=`,result[0])
         if(result[0] === undefined){
             dbgConsoleLog(FILENAME, `[checkSampleExistDB].SampleModel.No existe sample con las caracteristicas ingresadas`)
@@ -30,13 +24,9 @@ export const checkSampleExistDB = async ( sampleName: string, collectionCode: st
 export const addSamplesListToDB = async (newSamplesList: Array<SampleEntry>): Promise<DBResponse> => {
     const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[addSamplesListToDB].Init`)
-    dbgConsoleLog(FILENAME, `[addSamplesListToDB].connectDB.pre`)
-    await connectToDatabase()
-    dbgConsoleLog(FILENAME, `[addSamplesListToDB].connectDB.post`)
     dbgConsoleLog(FILENAME, `[addSamplesListToDB].SampleModel.insertMany.pre`)
     return await SampleModel.insertMany(newSamplesList).then((res: any)=>{
         dbgConsoleLog(FILENAME, `[addSamplesListToDB].SampleModel.insertMany.res=`, res)
-        mongoose.connection.close()
         var arraySamplesId: Array<string> = []
         res.forEach((item: any) => {
             arraySamplesId.push(item._id)
@@ -55,14 +45,10 @@ export const addSamplesListToDB = async (newSamplesList: Array<SampleEntry>): Pr
 
 export const addSampleToDB = async (newSample: SampleEntry) => {
     dbgConsoleLog(FILENAME, `[addSampleToDB].Init`)
-    dbgConsoleLog(FILENAME, `[addSampleToDB].connectDB.pre`)
-    await connectToDatabase()
-    dbgConsoleLog(FILENAME, `[addSampleToDB].connectDB.post`)
     const sampleToDB = new SampleModel(newSample)
     dbgConsoleLog(FILENAME, `[addSampleToDB].SampleModel.save.pre`)
     await sampleToDB.save().then((res: any)=>{
         dbgConsoleLog(FILENAME, `[addSampleToDB].SampleModel.save.res=`, res)
-        mongoose.connection.close()
     })
     .catch((err:any)=>{
         console.error(`${new Date()}.[samplesServ].[addUserToDB].[ERR].Error=`, err.message)
@@ -75,9 +61,6 @@ export const checkExistsAndSaveToDB = async (newSamplesList: Array<SampleEntry>)
     const arraySamplesExist = []
     dbgConsoleLog(FILENAME, `[checkExistsAndSaveToDB].Init`)
     dbgConsoleLog(FILENAME, `[checkExistsAndSaveToDB].newSamplesList=`,newSamplesList)
-    dbgConsoleLog(FILENAME, `[checkExistsAndSaveToDB].connectDB.pre`)
-    await connectToDatabase()
-    dbgConsoleLog(FILENAME, `[checkExistsAndSaveToDB].connectDB.post`)
     const query = newSamplesList.map(sample => ({
         sampleName: sample.sampleName,
         collectionCode: sample.collectionCode
@@ -99,7 +82,6 @@ export const checkExistsAndSaveToDB = async (newSamplesList: Array<SampleEntry>)
         dbgConsoleLog(FILENAME, `[checkExistsAndSaveToDB].insertMany.pre`)
         await SampleModel.insertMany(newSamplesList).then((res: any)=>{
         dbgConsoleLog(FILENAME, `[addSamplesListToDB].SampleModel.insertMany.res=`, res)
-        mongoose.connection.close()
         var arraySamplesId: Array<string> = []
         res.forEach((item: any) => {
             arraySamplesId.push(item._id)

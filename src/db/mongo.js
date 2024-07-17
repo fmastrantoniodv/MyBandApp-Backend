@@ -11,7 +11,6 @@ const connectToDatabase = async () => {
         await mongoose.connect(connectionString)
         checkConnection(mongoose.connection)
         dbgConsoleLog(FILENAME, `[connectToDatabase].[MSG]=Database connected`)
-        console.error(err)
     } catch (error) {
         console.error(`[${FILENAME}].[connectToDatabase].[ERR].Error to connect database=`, error);
     }
@@ -35,4 +34,10 @@ const checkConnection = (dbConnection) => {
             console.log('Estado desconocido');
     }
 };
-module.exports = connectToDatabase
+
+const closeDatabaseConnection = () => {
+    mongoose.connection.close(() => {
+        dbgConsoleLog(FILENAME, `[connectToDatabase].[MSG]=Mongoose connection closed`)
+    });
+}
+module.exports = {connectToDatabase, closeDatabaseConnection}
