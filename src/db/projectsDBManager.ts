@@ -92,7 +92,7 @@ export const getUserProjectsFromDB = async (userId: string): Promise<DBResponse>
     dbgConsoleLog(FILENAME, `[getUserProjectsFromDB].id=${userId}`)
     return await ProjectModel.find({ userId: userId }).then((result: any) => {       
         dbgConsoleLog(FILENAME, `[getUserProjectsFromDB].ProjectModel.result=`,result)
-        if(result[0] !== undefined){
+        if(result !== undefined){
             resp.success = true
             resp.result = result
         }else{

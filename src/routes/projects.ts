@@ -8,7 +8,6 @@ const cors = require('cors')
 router.use(cors())
 
 router.get('/:id', async (req, res) => {
-    //resHeaderConfig(res)
     dbgConsoleLog(FILENAME, `[GET]/id=${req.params.id}.Init`)
     try {
         const projectId  = parseDBObjectId(req.params.id)
@@ -30,8 +29,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.post('/create', async (req, res) => {
-    //resHeaderConfig(res)
+router.post('/create', async (req, res) => {    
     dbgConsoleLog(FILENAME, `[POST]/create.REQ=`, req.body)
     try {
         const { userId, projectName } = req.body
@@ -52,7 +50,6 @@ router.post('/create', async (req, res) => {
 
 router.post('/save', async (req, res) => {
     dbgConsoleLog(FILENAME, `[POST]/save.REQ=`, req.body)
-    //resHeaderConfig(res)
     try {
         const { projectId, userId, projectName, totalDuration, channelList } = req.body
         dbgConsoleLog(FILENAME, `[POST]/save.saveProject.pre`)
@@ -60,7 +57,7 @@ router.post('/save', async (req, res) => {
             parseDBObjectId(projectId), 
             parseDBObjectId(userId), 
             parseStringFromRequest(projectName, 1, 100),
-            parseNumberFromRequest(totalDuration, 1, 999999),
+            parseNumberFromRequest(totalDuration, 0, 999999),
             parseChannelList(channelList)
             )
         dbgConsoleLog(FILENAME, `[POST]/save.saveProject.post.result=`, projectSaved)
@@ -81,7 +78,6 @@ router.post('/save', async (req, res) => {
 
 router.post('/delete', async (req, res) => {
     dbgConsoleLog(FILENAME, `[POST]/delete.REQ=`, req.body)
-    //resHeaderConfig(res)
     try {
         const { projectId, userId } = req.body
         const projectToDelete = {
@@ -108,7 +104,6 @@ router.post('/delete', async (req, res) => {
 
 router.get('/getUserProjects/:id', async (req, res) => {
     dbgConsoleLog(FILENAME, `[GET]/getUserProjects/=${req.params.id}`)
-    //resHeaderConfig(res)
     try {
         const userId = parseDBObjectId(req.params.id)
         dbgConsoleLog(FILENAME, `[GET]/getUserProjects.getUserProjects.pre`)
