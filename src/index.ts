@@ -26,7 +26,9 @@ app.listen(PORT, async () =>{
 
 process.on('SIGINT', () => {
     dbgConsoleLog(FILENAME, `SIGINT signal received.`)
+    dbgConsoleLog(FILENAME, `closeDatabaseConnection.pre`)
     closeDatabaseConnection();
+    dbgConsoleLog(FILENAME, `closeDatabaseConnection.post`)
     process.exit(0);
 });
 

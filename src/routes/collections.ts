@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 import * as collectionsServ from '../services/collectionsServ'
 import * as samplesServ from '../services/samplesServ'
 import {parseStringFromRequest, parsePlanType, resHeaderConfig, parseDBObjectId, dbgConsoleLog, getStackFileName} from '../utils'
@@ -27,6 +28,44 @@ router.get('/', async (_req, res) => {
         res.status(500).send("Error interno")
     }
 })
+
+router.get('/src/:collectionCode', async (req, res) => {
+    try {
+        dbgConsoleLog(FILENAME, `.[get].[MSG].Init`)
+        dbgConsoleLog(FILENAME, `.[get].[MSG].collectionCode=`, req.params.collectionCode)
+        const collectionCode = req.params.collectionCode
+        const firstPath = path.resolve('./src')
+        const audioPath = `${firstPath}/collections/${collectionCode}/avatar.png`
+        
+        dbgConsoleLog(FILENAME, `.[get].[MSG].audioPath=${audioPath}`)
+        const headerOpts = {
+          headers: {
+            "x-timestamp": Date.now(),
+            "x-sent": true
+          }
+        };
+        dbgConsoleLog(FILENAME, `.[get].[MSG].sendFile.pre`)
+        res.sendFile(audioPath, headerOpts, (err) => {
+            if (err) {
+              if (res.headersSent) {
+                console.error('Error al enviar el archivo después de que los encabezados fueron enviados:', err);
+              } else {
+                console.error('Error al enviar el archivo:', err);
+                if (err.name === 'ECANCELED') {
+                  res.status(408).send('La solicitud fue cancelada por el cliente');
+                } else {
+                  res.status(500).send('Error al enviar el archivo');
+                }
+              }
+            }
+            dbgConsoleLog(FILENAME, `.[get].[MSG].sendFile.se devuelve archivo=`,audioPath)
+          });
+          dbgConsoleLog(FILENAME, `.[get].[MSG].sendFile.post`)
+    } catch (error) {
+        throw new Error('No se pudo obtener la imagen')
+    }
+});
+
 
 //#### Get collection by id
 router.get('/:id', async (req, res) => {
