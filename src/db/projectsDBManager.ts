@@ -90,11 +90,20 @@ export const getUserProjectsFromDB = async (userId: string): Promise<DBResponse>
     const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[getUserProjectsFromDB].Init`)
     dbgConsoleLog(FILENAME, `[getUserProjectsFromDB].id=${userId}`)
-    return await ProjectModel.find({ userId: userId }).then((result: any) => {       
+    return await ProjectModel.find({ userId: userId }).then((result: Array<Object>) => {       
         dbgConsoleLog(FILENAME, `[getUserProjectsFromDB].ProjectModel.result=`,result)
+        var listToReturn: Array<Object> = []
         if(result !== undefined){
+            result.map((project: any) => {
+                var projectValue = {
+                    id: project['id'],
+                    projectName: project['projectName'],
+                    savedDate: project['savedDate']
+                }
+                listToReturn.push(projectValue)
+            })
             resp.success = true
-            resp.result = result
+            resp.result = listToReturn
         }else{
             resp.result = 'PROJECTS_NOT_FOUND'
         }

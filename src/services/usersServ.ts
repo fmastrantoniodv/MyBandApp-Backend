@@ -2,6 +2,7 @@ import { UserEntry , User, PlanType } from '../types'
 import { calculateExpirationDate } from '../utils'
 import { ServResponse } from '../interfaces';
 import { changeUserPlanDB, validateLoginDB, changeUserPassDB, getFavouritesListDB, addUserToDB, updateUserFavsDB } from '../db/usersDBManager'
+import { getUserProjectsFromDB } from '../db/projectsDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 console.log('####Init userServ#######')
@@ -40,13 +41,31 @@ export const userLogin = async (email: string, pass: string): Promise<ServRespon
     dbgConsoleLog(FILENAME, `[userLogin].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[userLogin].[MSG].login data: email=${email}, pass=${pass}`)
     dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.pre`)
-    const userData = await validateLoginDB(email, pass)
-    dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.post.result=`, userData)
-    if(userData.success){
+    const userData: any = await validateLoginDB(email, pass)
+    dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.post.result=`, userData.result)
+    if(userData.success && userData.result != undefined){
         dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.se valido el login ok`)
+        dbgConsoleLog(FILENAME, `[userLogin].[MSG].getUserProjectsFromDB.pre.id=`, userData.result['id'])
+        const userProjects = await getUserProjectsFromDB(userData.result['id'])
+        dbgConsoleLog(FILENAME, `[userLogin].[MSG].getUserProjectsFromDB.post.userProjects=`, userProjects)
+        if(userProjects.success){
+            resp.result = {
+                id: userData.result['id'], 
+                email: userData.result['email'], 
+                usrName: userData.result['usrName'], 
+                plan: userData.result['plan'], 
+                expirationPlanDate: userData.result['expirationPlanDate'], 
+                registerDate: userData.result['registerDate'],
+                favList: userData.result['favList'],
+                projectList: userProjects.result
+            }
+        }else{
+            resp.result = userData.result
+        }
         resp.success = true
+    }else{
+        resp.result = userData.result
     }
-    resp.result = userData.result
     return resp
 }
 
