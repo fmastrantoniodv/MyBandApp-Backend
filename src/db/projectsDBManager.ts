@@ -46,7 +46,10 @@ export const getProjectByIdFromDB = async (id: string): Promise<DBResponse> => {
     const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[getProjectByIdFromDB].Init`)
     dbgConsoleLog(FILENAME, `[getProjectByIdFromDB].id=${id}`)
-    return await ProjectModel.findById(id).then((result: any) => {
+    return await ProjectModel.findById(id).populate({
+        path: 'channelList.sampleId',
+        model: 'Sample'
+    }).then((result: any) => {
         dbgConsoleLog(FILENAME, `[getProjectByIdFromDB].ProjectModel.result=`,result)
         if(result !== null){
             resp.success = true

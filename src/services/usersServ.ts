@@ -120,7 +120,6 @@ export const getUserFavList = async (userId: string): Promise<ServResponse>=> {
     dbgConsoleLog(FILENAME, `[getUserFavList].[MSG].userId=${userId}`)
     dbgConsoleLog(FILENAME, `[getUserFavList].[MSG].getFavouritesListDB.pre`)
     const userData = await getFavouritesListDB(userId)
-    dbgConsoleLog(FILENAME, `[getUserFavList].[MSG].getFavouritesListDB.post.result=`, userData)
     if(userData.success){
         dbgConsoleLog(FILENAME, `[getUserFavList].[MSG].getFavouritesListDB.se valido el login ok`)
         resp.success = true

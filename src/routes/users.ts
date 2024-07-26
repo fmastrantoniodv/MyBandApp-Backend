@@ -114,7 +114,6 @@ router.get('/getUserFavsList/:id', async (req, res) => {
         const userId = req.params.id
         dbgConsoleLog(FILENAME, `[GET]/getUserFavsList.pre`)
         const userDataRes = await usersServ.getUserFavList(parseDBObjectId(userId))
-        dbgConsoleLog(FILENAME, `[GET]/getUserFavsList.post.result=`, userDataRes)
         if(!userDataRes.success){
             res.status(400)
             var message = 'Hubo un error al intentar obtener los favoritos del usuario en la db' //Default

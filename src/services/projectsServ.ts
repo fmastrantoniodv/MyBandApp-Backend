@@ -1,4 +1,4 @@
-import { ProjectEntry, ProjectSave, ServResponse } from '../interfaces'
+import { ProjectEntry, ProjectSave, ServResponse, DBResponse } from '../interfaces'
 import { SoundListItem } from '../types';
 import { addProjectToDB, saveProjectToDB, deleteProjectDB, getProjectByIdFromDB, getUserProjectsFromDB } from '../db/projectsDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils';
@@ -31,18 +31,31 @@ export const createNewProject = async (userId: string, projectName: string): Pro
 export const saveProject = async (projectId: string, userId: string, projectName: string, totalDuration: number, channelList: Array<SoundListItem>): Promise<ServResponse> => {
     const resp: ServResponse = { success: false}
     dbgConsoleLog(FILENAME, `[saveProject].[MSG].Init`)
-    dbgConsoleLog(FILENAME, `[saveProject].[MSG].input params:userId=${userId}, projectName=${projectName}`)
+    dbgConsoleLog(FILENAME, `[saveProject].[MSG].input params:projectId=${projectId}, userId=${userId}, projectName=${projectName}, totalDuration=${totalDuration}, channelList=${channelList}`)
     var savedDate = new Date()
-    var updatedProject: ProjectSave = {
-        projectId: projectId,
-        userId: userId,
-        projectName: projectName,
-        savedDate: savedDate,
-        totalDuration: totalDuration,
-        channelList: channelList
+    var projectData
+    if(projectId === undefined){
+        var newProject: ProjectEntry = {
+            userId: userId,
+            projectName: projectName,
+            createdDate:savedDate,
+            savedDate: savedDate,
+            totalDuration: totalDuration,
+            channelList: channelList
+        }
+        projectData = await addProjectToDB(newProject)
+    }else{
+        var updatedProject: ProjectSave = {
+            projectId: projectId,
+            userId: userId,
+            projectName: projectName,
+            savedDate: savedDate,
+            totalDuration: totalDuration,
+            channelList: channelList
+        }
+        projectData = await saveProjectToDB(updatedProject)
     }
     dbgConsoleLog(FILENAME, `[saveProject].[MSG].saveProjectToDB.pre`)
-    const projectData = await saveProjectToDB(updatedProject)
     dbgConsoleLog(FILENAME, `[saveProject].[MSG].saveProjectToDB.post`)
     dbgConsoleLog(FILENAME, `[saveProject].[MSG].saveProjectToDB.projectData=`, projectData)
     if(projectData.success === true && projectData.result !== null){
@@ -75,13 +88,38 @@ export const getProjectById = async (projectId: string): Promise<ServResponse> =
     dbgConsoleLog(FILENAME, `[getProjectById].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[getProjectById].[MSG].input params:projectId=${projectId}`)
     dbgConsoleLog(FILENAME, `[getProjectById].[MSG].getProjectByIdFromDB.pre`)
-    const projectFromDB = await getProjectByIdFromDB(projectId)
-    if(projectFromDB.success && projectFromDB.result !== null){
+    const projectFromDB: DBResponse = await getProjectByIdFromDB(projectId)
+    if(projectFromDB.success && projectFromDB.result !== null && projectFromDB.result !== undefined ){
         //Set respuesta que se pudo agregar el usuario
         dbgConsoleLog(FILENAME, `[getProjectById].[MSG].Resp=Proyecto obtenido de la db`)
+        var projectInfo: any = projectFromDB.result
+        var channelListInfo: any = projectInfo['channelList']
+        dbgConsoleLog(FILENAME, `[getProjectById].[MSG].projectFromDB.projectInfo=`,projectInfo)
+        dbgConsoleLog(FILENAME, `[getProjectById].[MSG].projectFromDB.channelListInfo`,channelListInfo)
+        var channelList: Array<Object> = []
+        channelListInfo.map((channel: any) => {
+            channelList.push({            
+                channelConfig: channel.channelConfig,
+                collectionCode: channel.sampleId['collectionCode'],
+                duration: channel.sampleId['duration'],
+                id: channel.sampleId['id'],
+                sampleName: channel.sampleId['sampleName'],
+                tempo: channel.sampleId['tempo']
+            })
+        })
+        
+        dbgConsoleLog(FILENAME, `[getProjectById].[MSG].projectFromDB.channelList`,channelList)
+            
+        var ejemplo = {
+            ...projectInfo,
+            channelList: channelList
+        }
+        resp.result = ejemplo
         resp.success = true
+        dbgConsoleLog(FILENAME, `[getProjectById].[MSG].projectFromDB.resp=`,resp)
+    }else{
+        resp.result = projectFromDB.result
     }
-    resp.result = projectFromDB.result
     dbgConsoleLog(FILENAME, `[getProjectById].[MSG].getProjectByIdFromDB.post.result=`, projectFromDB)
     return resp
 }
