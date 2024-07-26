@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
-const sampleSchema = require('./Samples')
 
 const userSchema = new Schema({
     email: String,
@@ -21,6 +20,8 @@ userSchema.set('toJSON', {
 })
 
 userSchema.index({ usrName: 1}, { unique: true })
+userSchema.index({ email: 1}, { unique: true })
+
 const UserModel = model('User', userSchema)
 
 module.exports = UserModel

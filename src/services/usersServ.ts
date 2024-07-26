@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 import { UserEntry , User, PlanType } from '../types'
 import { calculateExpirationDate } from '../utils'
 import { ServResponse } from '../interfaces';
@@ -5,21 +6,31 @@ import { changeUserPlanDB, validateLoginDB, changeUserPassDB, getFavouritesListD
 import { getUserProjectsFromDB } from '../db/projectsDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
+
 console.log('####Init userServ#######')
+
+async function encryptPassword(password: string) {
+    const saltRounds = 10
+    const hashedPassword = await bcrypt.hash(password, saltRounds)
+    return hashedPassword
+}
 
 export const addNewUser = async ( newUserEntry: UserEntry ): Promise<ServResponse>  => {
     const resp: ServResponse = { success: false }
     dbgConsoleLog(FILENAME, `[addNewUser].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[addNewUser].[MSG].user data entry:`,newUserEntry)
+    const hashedPass = await encryptPassword(newUserEntry.password)
+    dbgConsoleLog(FILENAME, `[addNewUser].[MSG].hashedPass=`,hashedPass)
     var registerDate = new Date()
     var newUser: User = {
         email: newUserEntry.email,
         usrName: newUserEntry.usrName,
-        password: newUserEntry.password,
+        password: hashedPass,
         plan: newUserEntry.plan,
         expirationPlanDate: calculateExpirationDate(newUserEntry.plan, registerDate),
         registerDate: registerDate
     }
+    dbgConsoleLog(FILENAME, `[addNewUser].[MSG].addUserToDB.newUser=`,newUser)
     dbgConsoleLog(FILENAME, `[addNewUser].[MSG].addUserToDB.pre`)
     const resAddUser = await addUserToDB(newUser)
     dbgConsoleLog(FILENAME, `[addNewUser].[MSG].addUserToDB.post`)
@@ -41,9 +52,15 @@ export const userLogin = async (email: string, pass: string): Promise<ServRespon
     dbgConsoleLog(FILENAME, `[userLogin].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[userLogin].[MSG].login data: email=${email}, pass=${pass}`)
     dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.pre`)
-    const userData: any = await validateLoginDB(email, pass)
+    const userData: any = await validateLoginDB(email)
     dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.post.result=`, userData.result)
     if(userData.success && userData.result != undefined){
+        const match = await bcrypt.compare(pass, userData.result.password)
+        if(!match){
+            resp.success = false
+            resp.result = 'INVALID_MAIL_PASSWORD'
+            return resp
+        }
         dbgConsoleLog(FILENAME, `[userLogin].[MSG].validateLoginDB.se valido el login ok`)
         dbgConsoleLog(FILENAME, `[userLogin].[MSG].getUserProjectsFromDB.pre.id=`, userData.result['id'])
         const userProjects = await getUserProjectsFromDB(userData.result['id'])

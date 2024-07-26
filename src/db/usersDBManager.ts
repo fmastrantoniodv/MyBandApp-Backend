@@ -44,11 +44,11 @@ export const changeUserPlanDB = async (id: string, newPlan: PlanType): Promise<D
     })
 };
 
-export const validateLoginDB = async (email: string, pass: string): Promise<DBResponse> => {
+export const validateLoginDB = async (email: string): Promise<DBResponse> => {
     const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[validateLoginDB].Init`)
     dbgConsoleLog(FILENAME, `[validateLoginDB].UserModel.find.pre`)
-    return await UserModel.find({email: email, password: pass}).populate('favList').then((result: any) => {
+    return await UserModel.find({email: email}).populate('favList').then((result: any) => {
         dbgConsoleLog(FILENAME, `[validateLoginDB].UserModel.result=`,result[0])
         if(result[0] === undefined){
             dbgConsoleLog(FILENAME, `[validateLoginDB].UserModel.credenciales invalidas`)
