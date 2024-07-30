@@ -109,7 +109,7 @@ router.get('/plan/:plan', async (req, res) => {
 
 router.post('/addCollection', async (req, res) => {
     try{
-        const { collectionCode, collectionName, plan, sampleList, tags } = req.body
+        const { collectionCode, collectionName, plan, sampleList, tags, templateId, templateName } = req.body
         resHeaderConfig(res)
         dbgConsoleLog(FILENAME, `[POST]/addCollection.REQ=`, req.body)
         dbgConsoleLog(FILENAME, `[POST]/addCollection.getSamplesIdList.pre`)
@@ -126,6 +126,12 @@ router.post('/addCollection', async (req, res) => {
             sampleList: samplesIdList.result,
             tags: tags
         }
+
+        if(templateId != undefined){
+            newCollectionEntry.templateId = parseDBObjectId(templateId)
+            newCollectionEntry.templateName = parseStringFromRequest(templateName, 1, 100)
+        }
+
         dbgConsoleLog(FILENAME, `[POST]/addCollection.createCollection.pre.newCollectionEntry=`, newCollectionEntry)
         const result = await collectionsServ.createCollection(newCollectionEntry)
         dbgConsoleLog(FILENAME, `[POST]/addCollection.createCollection.post.result=${result}`)

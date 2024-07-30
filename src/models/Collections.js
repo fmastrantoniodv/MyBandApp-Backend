@@ -6,6 +6,8 @@ const collectionSchema = new Schema({
     collectionName: String,
     uploadDate: String,
     plan: String,
+    templateId: { type: Schema.Types.ObjectId, ref: 'Project', required: false },
+    templateName: String,
     sampleList: [{ type: Schema.Types.ObjectId, ref: 'Sample', required: true }],
     tags: [{ type: String, required: false}]
 })

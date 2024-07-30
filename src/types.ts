@@ -65,6 +65,8 @@ export type Collection = {
     collectionName: string,
     uploadDate: Date,
     plan: PlanType
+    templateId?: string,
+    templateName?: string,
     tags: Array<string>
 }
 
