@@ -32,6 +32,7 @@ export const saveProject = async (projectId: string, userId: string, projectName
     const resp: ServResponse = { success: false}
     dbgConsoleLog(FILENAME, `[saveProject].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[saveProject].[MSG].input params:projectId=${projectId}, userId=${userId}, projectName=${projectName}, totalDuration=${totalDuration}, channelList=${channelList}`)
+    channelList.map(value => dbgConsoleLog(FILENAME, `[saveProject].[MSG].channelListItem`, value))
     var savedDate = new Date()
     var projectData
     if(projectId === undefined){
@@ -97,21 +98,26 @@ export const getProjectById = async (projectId: string): Promise<ServResponse> =
         dbgConsoleLog(FILENAME, `[getProjectById].[MSG].projectFromDB.projectInfo=`,projectInfo)
         dbgConsoleLog(FILENAME, `[getProjectById].[MSG].projectFromDB.channelListInfo`,channelListInfo)
         var channelList: Array<Object> = []
-        channelListInfo.map((channel: any) => {
-            channelList.push({            
-                channelConfig: channel.channelConfig,
-                collectionCode: channel.sampleId['collectionCode'],
-                duration: channel.sampleId['duration'],
-                id: channel.sampleId['id'],
-                sampleName: channel.sampleId['sampleName'],
-                tempo: channel.sampleId['tempo']
+        try {
+            
+            channelListInfo.map((channel: any) => {
+                channelList.push({            
+                    channelConfig: channel.channelConfig,
+                    collectionCode: channel.sampleId['collectionCode'],
+                    duration: channel.sampleId['duration'],
+                    id: channel.sampleId['id'],
+                    sampleName: channel.sampleId['sampleName'],
+                    tempo: channel.sampleId['tempo']
+                })
             })
-        })
-        
+            
+        } catch (error) {
+            console.error(error)
+        }
         dbgConsoleLog(FILENAME, `[getProjectById].[MSG].projectFromDB.channelList`,channelList)
             
         var ejemplo = {
-            ...projectInfo,
+            ...projectInfo.toJSON(),
             channelList: channelList
         }
         resp.result = ejemplo
