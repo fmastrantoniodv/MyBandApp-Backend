@@ -18,6 +18,7 @@ const projectSchema = new Schema({
     createdDate: String,
     savedDate: String,
     totalDuration: Number,
+    tempo: Number,
     channelList: [channelListItem]
 })
 

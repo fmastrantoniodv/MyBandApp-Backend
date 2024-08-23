@@ -51,14 +51,15 @@ router.post('/create', async (req, res) => {
 router.post('/save', async (req, res) => {
     dbgConsoleLog(FILENAME, `[POST]/save.REQ=`, req.body)
     try {
-        const { projectId, userId, projectName, totalDuration, channelList } = req.body
+        const { projectId, userId, projectName, totalDuration, channelList, tempo } = req.body
         dbgConsoleLog(FILENAME, `[POST]/save.saveProject.pre`)
         const projectSaved = await projectsServ.saveProject(
             projectId, 
             parseDBObjectId(userId), 
             parseStringFromRequest(projectName, 1, 100),
             parseNumberFromRequest(totalDuration, 0, 999999),
-            parseChannelList(channelList)
+            parseChannelList(channelList),
+            parseNumberFromRequest(tempo, 0, 999)
             )
         dbgConsoleLog(FILENAME, `[POST]/save.saveProject.post.result=`, projectSaved)
         if(!projectSaved.success){

@@ -47,7 +47,8 @@ export type ProjectInfo = {
     projectName: string,
     createdDate: Date,
     savedDate: Date,
-    totalDuration: number
+    totalDuration: Number,
+    tempo: Number
 }
 
 export type ProjectInfoSave = Omit<ProjectInfo, 'createdDate'>

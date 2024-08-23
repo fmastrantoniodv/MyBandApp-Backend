@@ -75,6 +75,7 @@ export const parseNumberFromRequest = (num: number, minNumber: number, maxNumber
     console.log('num='+num+', minNumber='+minNumber+', maxNumber='+maxNumber)
     console.log('num.length='+num.toString().length)
     if(!isNumber(num) || num < minNumber || num > maxNumber){
+        console.log(`${num} isn't num or < ${minNumber} or > ${maxNumber}`)
         throw setThrowError('INPUT_VALIDATION', 'Incorrect format or missing number')
     }
     return num

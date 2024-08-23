@@ -3,6 +3,7 @@ import { SoundListItem } from '../types';
 import { addProjectToDB, saveProjectToDB, deleteProjectDB, getProjectByIdFromDB, getUserProjectsFromDB } from '../db/projectsDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils';
 
+const tempoDefault = 110
 const FILENAME = getStackFileName()
 
 export const createNewProject = async (userId: string, projectName: string): Promise<ServResponse> => {
@@ -15,7 +16,8 @@ export const createNewProject = async (userId: string, projectName: string): Pro
         projectName: projectName,
         createdDate: createdDate,
         savedDate: createdDate,
-        totalDuration: 0
+        totalDuration: 0,
+        tempo: tempoDefault
     }
     dbgConsoleLog(FILENAME, `[createNewProject].[MSG].addProjectToDB.pre`)
     const projectData = await addProjectToDB(newProjectEntry)
@@ -28,7 +30,7 @@ export const createNewProject = async (userId: string, projectName: string): Pro
     return projectData
 }
 
-export const saveProject = async (projectId: string, userId: string, projectName: string, totalDuration: number, channelList: Array<SoundListItem>): Promise<ServResponse> => {
+export const saveProject = async (projectId: string, userId: string, projectName: string, totalDuration: number, channelList: Array<SoundListItem>, tempo: number): Promise<ServResponse> => {
     const resp: ServResponse = { success: false}
     dbgConsoleLog(FILENAME, `[saveProject].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[saveProject].[MSG].input params:projectId=${projectId}, userId=${userId}, projectName=${projectName}, totalDuration=${totalDuration}, channelList=${channelList}`)
@@ -42,6 +44,7 @@ export const saveProject = async (projectId: string, userId: string, projectName
             createdDate:savedDate,
             savedDate: savedDate,
             totalDuration: totalDuration,
+            tempo: tempo,
             channelList: channelList
         }
         projectData = await addProjectToDB(newProject)
@@ -52,6 +55,7 @@ export const saveProject = async (projectId: string, userId: string, projectName
             projectName: projectName,
             savedDate: savedDate,
             totalDuration: totalDuration,
+            tempo: tempo,
             channelList: channelList
         }
         projectData = await saveProjectToDB(updatedProject)

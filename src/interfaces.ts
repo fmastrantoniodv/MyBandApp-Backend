@@ -11,6 +11,7 @@ export interface ProjectEntry extends ProjectInfo {
 
 export interface ProjectSave extends ProjectInfoSave {
     projectId: string,
+    tempo: Number,
     channelList?: Array<SoundListItem>
 }
 
