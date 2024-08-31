@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
+const { User } = require('./User.js')
+const { Collection } = require('./Collections.js')
 
 const sampleSchema = new Schema({
     sampleName: String,
@@ -7,6 +9,14 @@ const sampleSchema = new Schema({
     duration: Number,
     tempo: Number,
 })
+
+sampleSchema.virtual('collectionInfo', {
+    ref: 'Collection',
+    localField: 'collectionCode',
+    foreignField: 'collectionCode',
+    justOne: true
+  });
+  
 
 sampleSchema.set('toJSON', {
     transform: (document, returnedObject) => {

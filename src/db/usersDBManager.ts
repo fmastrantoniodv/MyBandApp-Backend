@@ -92,14 +92,23 @@ export const getFavouritesListDB = async (userId: string): Promise<DBResponse> =
     const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[getFavouritesList].Init`)
     dbgConsoleLog(FILENAME, `[getFavouritesList].UserModel.findById.pre`)
-    await UserModel.findById(userId).populate('favList').then((result: any) => {
+    await UserModel.findById(userId).populate({
+        path: 'favList',
+        populate: {
+          path: 'collectionInfo', 
+          select: 'collectionName', 
+        }
+      }).then((result: any) => {
         dbgConsoleLog(FILENAME, `[getFavouritesListDB].UserModel.findById.result=`,result)
         if(result === null){
             dbgConsoleLog(FILENAME, `[getFavouritesListDB].UserModel.findById.No se encontro user`)
             resp.result = 'USR_NOT_FOUND'
         }else{
             resp.success = true
-            resp.result = result.favList
+            resp.result = result.favList.map((sample: any) => ({
+                ...sample.toJSON(), 
+                collectionName: sample.collectionInfo?.collectionName
+              }));
         }
         return resp
     }).catch((err: any) => {
