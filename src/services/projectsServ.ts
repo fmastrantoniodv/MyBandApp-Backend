@@ -103,7 +103,6 @@ export const getProjectById = async (projectId: string): Promise<ServResponse> =
         dbgConsoleLog(FILENAME, `[getProjectById].[MSG].projectFromDB.channelListInfo`,channelListInfo)
         var channelList: Array<Object> = []
         try {
-            
             channelListInfo.map((channel: any) => {
                 channelList.push({            
                     channelConfig: channel.channelConfig,
@@ -115,8 +114,10 @@ export const getProjectById = async (projectId: string): Promise<ServResponse> =
                 })
             })
             
-        } catch (error) {
-            console.error(error)
+        } catch (error: any) {
+            resp.result = 'PARSE_DATA_ERROR'
+            resp.success = false
+            return resp
         }
         dbgConsoleLog(FILENAME, `[getProjectById].[MSG].projectFromDB.channelList`,channelList)
             
