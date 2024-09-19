@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const connectionString = 'mongodb+srv://MyBandApp-Frankie:070793bsas@mybandappcluster.l8yireb.mongodb.net/?retryWrites=true&w=majority&appName=MyBandAppCluster'
 const { dbgConsoleLog, getStackFileName } = require('../utils')
 const FILENAME = getStackFileName()
 
@@ -7,6 +6,7 @@ const connectToDatabase = async () => {
     try {
         dbgConsoleLog(FILENAME, `[connectToDatabase].Init`)
         dbgConsoleLog(FILENAME, `[connectToDatabase].preConnect`)
+        const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}/?retryWrites=true&w=majority&appName=${process.env.DB_APP_NAME}`
         checkConnection(mongoose.connection)
         await mongoose.connect(connectionString)
         checkConnection(mongoose.connection)
