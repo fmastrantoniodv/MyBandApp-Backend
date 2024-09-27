@@ -1,4 +1,4 @@
 # Node.js
 node_modules/
 .env
-.mba-back.log
+mba-back.log

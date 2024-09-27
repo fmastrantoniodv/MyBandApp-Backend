@@ -4,7 +4,6 @@ import { dbgConsoleLog, getStackFileName } from '../utils'
 import { checkExistsAndSaveToDB } from '../db/samplesDBManager'
 import { ServResponse } from '../interfaces'
 const FILENAME = getStackFileName()
-console.log('####Init samplesServ#######')
 
 export const addNewSample = async ( newSampleEntry: SampleEntry ): Promise<boolean>  => {
     dbgConsoleLog(FILENAME, `[addNewSample].[MSG].Init`)
@@ -39,17 +38,3 @@ export const getSamplesIdList = async (sampleList: Array<SampleEntry>): Promise<
     resp.result = samplesExistRes.result
     return resp
 }
-
-/*
-export const getSampleByID = (collectionId: string,sampleId: string): Sample | undefined => {
-
-    const collection = collectionsLibrary.find(value => value.collectionId === collectionId)
-    console.log(collection)
-    if(collection === undefined) return collection
-
-    const resSample = collection.sampleList.find(value=> value.sampleId === sampleId)
-    console.log(resSample)
-    
-    return resSample
-}
-*/

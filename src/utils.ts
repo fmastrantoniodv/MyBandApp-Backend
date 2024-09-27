@@ -4,7 +4,6 @@ import { logWriter } from './logger'
 const isNumber = (num: number): boolean => {
     return typeof num === 'number'
 }
-
 const isString = (str: string): boolean => { 
     return typeof str === 'string'
 }
@@ -51,7 +50,7 @@ const isChannelConfigType = (channelConfig: ChannelConfig): channelConfig is Cha
 }
 
 export const parseChannelList = (channelList: Array<SoundListItem>): Array<SoundListItem> =>{
-    console.log('channelList', channelList)
+    dbgConsoleLog(getStackFileName(),'[parseChannelList].channelList=', channelList)
     channelList.forEach((channel: SoundListItem)=>{
         if(!isChannelListItemType(channel)){            
             throw setThrowError('INPUT_VALIDATION', 'Incorrect format data from channelList')
@@ -61,8 +60,7 @@ export const parseChannelList = (channelList: Array<SoundListItem>): Array<Sound
 }
 
 export const parseStringFromRequest = (str: string, minChars: number, maxChars: number): string => {
-    console.log('str='+str+', minChars='+minChars+', maxChars='+maxChars)
-    console.log('str.length='+str.length)
+    dbgConsoleLog(getStackFileName(), '[parseStringFromRequest].str='+str+', minChars='+minChars+', maxChars='+maxChars+', str.length='+str.length)
     if(!isString(str) || str.length < minChars || str.length > maxChars){
         throw setThrowError('INPUT_VALIDATION', 'Incorrect format or missing string')
     }
@@ -70,10 +68,9 @@ export const parseStringFromRequest = (str: string, minChars: number, maxChars: 
 }
 
 export const parseNumberFromRequest = (num: number, minNumber: number, maxNumber: number): number => {
-    console.log('num='+num+', minNumber='+minNumber+', maxNumber='+maxNumber)
-    console.log('num.length='+num.toString().length)
+    dbgConsoleLog(getStackFileName(),'num='+num+', minNumber='+minNumber+', maxNumber='+maxNumber+' num.length='+num.toString().length)
     if(!isNumber(num) || num < minNumber || num > maxNumber){
-        console.log(`${num} isn't num or < ${minNumber} or > ${maxNumber}`)
+        dbgConsoleLog(getStackFileName(), `${num} isn't num or < ${minNumber} or > ${maxNumber}`)
         throw setThrowError('INPUT_VALIDATION', 'Incorrect format or missing number')
     }
     return num
@@ -161,7 +158,7 @@ export const getStackFileName = () => {
 
 export const getScopePlan = (plan: PlanType) => {    
     const planList: Array<string> = (process.env.ACTIVE_PLAN_LIST || '').split(',')
-    console.log('###############PLANLIST=', planList)
+    dbgConsoleLog(getStackFileName(), `[getScopePlan].plan input param=${plan}, planList=`, planList)
     const indexPlan = planList.indexOf(plan);
     if (indexPlan === -1) {
       return [];

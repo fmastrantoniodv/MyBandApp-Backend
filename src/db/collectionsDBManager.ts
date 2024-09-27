@@ -49,7 +49,6 @@ export const getCollectionsByPlanFromDB = async (plan: PlanType): Promise<DBResp
     const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[getCollectionsByPlanFromDB].CollectionModel.find.pre`)
     var planScope = getScopePlan(plan)
-    console.log(`######################planScope=${planScope}###################################`)
     return await CollectionModel.find({ plan: { $in: planScope } }).populate('sampleList').then((res: any)=>{
         dbgConsoleLog(FILENAME, `[getCollectionsByPlanFromDB].CollectionModel.find.res=`, res)
         if(res === null){

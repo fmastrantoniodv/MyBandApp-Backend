@@ -2,7 +2,7 @@ import express from 'express'
 import path from 'path'
 import * as collectionsServ from '../services/collectionsServ'
 import * as samplesServ from '../services/samplesServ'
-import {parseStringFromRequest, parsePlanType, resHeaderConfig, parseDBObjectId, dbgConsoleLog, getStackFileName} from '../utils'
+import {parseStringFromRequest, parsePlanType, resHeaderConfig, parseDBObjectId, dbgConsoleLog, getStackFileName, errorConsoleLog} from '../utils'
 import { CollectionItemEntry } from '../interfaces'
 
 const router = express.Router()
@@ -48,9 +48,9 @@ router.get('/src/:collectionCode', async (req, res) => {
         res.sendFile(audioPath, headerOpts, (err) => {
             if (err) {
               if (res.headersSent) {
-                console.error('Error al enviar el archivo después de que los encabezados fueron enviados:', err);
+                errorConsoleLog(FILENAME, 'Error al enviar el archivo después de que los encabezados fueron enviados:', err);
               } else {
-                console.error('Error al enviar el archivo:', err);
+                errorConsoleLog(FILENAME, 'Error al enviar el archivo:', err);
                 if (err.name === 'ECANCELED') {
                   res.status(408).send('La solicitud fue cancelada por el cliente');
                 } else {
@@ -141,7 +141,7 @@ router.post('/addCollection', async (req, res) => {
             return res.status(400).send(result.result)
         }
     }catch (e: any) {
-        console.error(`[${FILENAME}].[ERROR]./addCollection.error=${e.message}`)
+        errorConsoleLog(FILENAME,`/addCollection.error=${e.message}`)
         return res.status(500).send("Error interno")
     }
 })

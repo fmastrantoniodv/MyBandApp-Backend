@@ -7,8 +7,6 @@ import { getUserProjectsFromDB } from '../db/projectsDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 
-console.log('####Init userServ#######')
-
 async function encryptPassword(password: string) {
     const saltRounds = 10
     const hashedPassword = await bcrypt.hash(password, saltRounds)

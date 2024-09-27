@@ -9,12 +9,11 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const portEnv: number = parseInt(process.env.PORT || '3000');
+const portEnv: number = parseInt(process.env.PORT || '3001');
 const FILENAME = getStackFileName()
 
 const app = express()
 app.use(express.json())
-dbgConsoleLog(FILENAME, `App will running in port=${portEnv}`)
 
 app.use('/api/project', projectsRouter)
 app.use('/api/collections', collectionsRouter)

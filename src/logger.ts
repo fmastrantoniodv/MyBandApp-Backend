@@ -6,7 +6,7 @@ export const logWriter = (type: string, stackFilename: string, msgToPrint: strin
             winston.format.simple()
         ),
         transports: [
-            new winston.transports.Console(),
+            //new winston.transports.Console(),
             new winston.transports.File({
                 filename: 'mba-back.log',
                 level: 'info'
