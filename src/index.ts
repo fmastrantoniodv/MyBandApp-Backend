@@ -6,6 +6,7 @@ import users from './routes/users'
 import samples from './routes/samples'
 import { dbgConsoleLog, getStackFileName } from './utils';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 const portEnv: number = parseInt(process.env.PORT || '3000');
@@ -13,7 +14,6 @@ const FILENAME = getStackFileName()
 
 const app = express()
 app.use(express.json())
-
 dbgConsoleLog(FILENAME, `App will running in port=${portEnv}`)
 
 app.use('/api/project', projectsRouter)

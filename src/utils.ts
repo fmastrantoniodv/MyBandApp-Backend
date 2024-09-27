@@ -1,5 +1,5 @@
 import { ChannelConfig, PlanType, SoundListItem, User } from "./types"
-const frontendEndpoint: string = (process.env.ALLOWED_DOMAINS || '')
+import { logWriter } from './logger'
 
 const isNumber = (num: number): boolean => {
     return typeof num === 'number'
@@ -117,6 +117,7 @@ export const parseDBObjectId = (str: string) => {
 }
 
 export const resHeaderConfig = (res: any) => {
+    const frontendEndpoint: string = (process.env.ALLOWED_DOMAINS || '')
     res.header("Access-Control-Allow-Origin", frontendEndpoint)
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
@@ -125,9 +126,17 @@ export const resHeaderConfig = (res: any) => {
 
 export const dbgConsoleLog = (location: string, message: string, obj?: Object) => {
     if(obj === undefined){
-        console.log(`[${new Date().toISOString()}].[${location}].[DBG].${message}`)
+        logWriter('info', location, message)
     }else{
-        console.log(`[${new Date().toISOString()}].[${location}].[DBG].${message}`, obj)
+        logWriter('info', location, message, obj)
+    }
+}
+
+export const errorConsoleLog = (location: string, message: string, obj?: Object) => {
+    if(obj === undefined){
+        logWriter('error', location, message)
+    }else{
+        logWriter('error', location, message, obj)
     }
 }
 

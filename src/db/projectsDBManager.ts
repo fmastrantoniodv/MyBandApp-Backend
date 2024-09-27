@@ -1,6 +1,6 @@
 const ProjectModel = require('../models/Projects')
 import { DBResponse, ProjectEntry, ProjectSave} from '../interfaces'
-import { dbgConsoleLog, getStackFileName } from '../utils';
+import { dbgConsoleLog, errorConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 
 export const saveProjectToDB = async (updatedProjectData: ProjectSave): Promise<DBResponse>  => {
@@ -17,7 +17,7 @@ export const saveProjectToDB = async (updatedProjectData: ProjectSave): Promise<
         }
         return resp
     }).catch((err:any)=>{
-        console.error(`${new Date()}.[${FILENAME}].[saveProjectToDB].[ERR].Error=`, err.message)
+        errorConsoleLog(FILENAME,`[saveProjectToDB].Error=${err.message}`)
         resp.success = false
         resp.result = err.message
         return resp
@@ -36,7 +36,7 @@ export const addProjectToDB = async (newProjectEntry: ProjectEntry): Promise<DBR
         return resp
     })
     .catch((err:any)=>{
-        console.error(`${new Date()}.[usersServ].[addUserToDB].[ERR].Error=`, err.message)
+        errorConsoleLog(FILENAME, `[usersServ].[addUserToDB].[ERR].Error=${err.message}`)
         resp.result = err.message
         return resp
     })
@@ -60,7 +60,7 @@ export const getProjectByIdFromDB = async (id: string): Promise<DBResponse> => {
         dbgConsoleLog(FILENAME, `[getProjectByIdFromDB].ProjectModel.resp=`,resp)
         return resp
     }).catch((err: any) => {
-        console.error(`${new Date()}.[projectsServ].[getProjectByIdFromDB].[ERR].ProjectModel.Find.catch`,err)
+        errorConsoleLog(FILENAME, `[projectsServ].[getProjectByIdFromDB].ProjectModel.Find.catch error=`,err)
         resp.result = err.message
         dbgConsoleLog(FILENAME, `[getProjectByIdFromDB].ProjectModel.catch.resp=`,resp)
         return resp
@@ -82,7 +82,7 @@ export const deleteProjectDB = async (projectToDelete: Object): Promise<DBRespon
         return resp
     })
     .catch((err:any)=>{
-        console.error(`${new Date()}.[${FILENAME}].[deleteProjectDB].[ERR].findOneAndDelete.Error=`, err.message)
+        errorConsoleLog(FILENAME, `[deleteProjectDB].[ERR].findOneAndDelete.Error=${err.message}`)
         resp.result = err.message
         dbgConsoleLog(FILENAME, `[deleteProjectDB].ProjectModel.findOneAndDelete.catch.resp=`,resp)
         return resp
@@ -113,7 +113,7 @@ export const getUserProjectsFromDB = async (userId: string): Promise<DBResponse>
         dbgConsoleLog(FILENAME, `[getUserProjectsFromDB].ProjectModel.resp=`,resp)
         return resp
     }).catch((err: any) => {
-        console.error(`${new Date()}.[projectsServ].[getUserProjectsFromDB].[ERR].ProjectModel.Find.catch`,err)
+        errorConsoleLog(FILENAME, `[projectsServ].[getUserProjectsFromDB].[ERR].ProjectModel.Find.catch error=`, err)
         resp.result = err.message
         dbgConsoleLog(FILENAME, `[getUserProjectsFromDB].ProjectModel.catch.resp=`,resp)
         return resp

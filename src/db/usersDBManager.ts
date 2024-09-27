@@ -1,7 +1,7 @@
 const UserModel = require('../models/User.js')
 import { PlanType, User } from '../types'
 import { DBResponse } from '../interfaces'
-import { dbgConsoleLog, getStackFileName } from '../utils';
+import { dbgConsoleLog, errorConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 
 export const changeUserPassDB = async (email: string, password: string, newPass: string): Promise<DBResponse> => {
@@ -18,7 +18,7 @@ export const changeUserPassDB = async (email: string, password: string, newPass:
         }
         return resp
     }).catch((err: any)=>{
-        console.error(`${new Date()}.[changeUserPassDB].UserModel.findOneAndUpdate.error=`, err.message);
+        errorConsoleLog(FILENAME, `[changeUserPassDB].UserModel.findOneAndUpdate.error=${err.message}`);
         resp.result = err.name
         return resp
     })    
@@ -38,7 +38,7 @@ export const changeUserPlanDB = async (id: string, newPlan: PlanType): Promise<D
         }
         return resp
     }).catch((err: any)=>{
-        console.error(`${new Date()}.[changeUserPlanDB].UserModel.findByIdAndUpdate.error=`, err.message);
+        errorConsoleLog(FILENAME, `[changeUserPlanDB].UserModel.findByIdAndUpdate.error=${err.message}`);
         resp.result = err.name
         return resp
     })
@@ -59,7 +59,7 @@ export const validateLoginDB = async (email: string): Promise<DBResponse> => {
         }
         return resp
     }).catch((err: any) => {
-        console.error(`${new Date()}.[validateLoginDB].[ERR].UserModel.Find.catch`,err)
+        errorConsoleLog(FILENAME, `[validateLoginDB].UserModel.Find.catch error=`,err)
         resp.result = err.name
         return resp
     })
@@ -76,7 +76,7 @@ export const addUserToDB = async (newUser: User): Promise<DBResponse> => {
         resp.success = true
     })
     .catch((err:any)=>{
-        console.error(`${new Date()}.[addUserToDB].[ERR].Error.message=`, err.message)
+        errorConsoleLog(FILENAME, `[addUserToDB].Error.message=${err.message}`)
         //catcheo el error especifico de indice duplicado y manejo la respuesta de "usuario existente"
         if(err.errorResponse.code === 11000){
             resp.result = 'USR_EXIST'    
@@ -112,7 +112,7 @@ export const getFavouritesListDB = async (userId: string): Promise<DBResponse> =
         }
         return resp
     }).catch((err: any) => {
-        console.error(`${new Date()}.[getFavouritesListDB].[ERR].UserModel.findById.catch`,err)
+        errorConsoleLog(FILENAME, `[getFavouritesListDB].UserModel.findById.catch error=`,err)
         resp.result = err.name
         return resp
     })
@@ -143,7 +143,7 @@ export const updateUserFavsDB = async (userId: string, sampleId: string, action:
         }
         return resp
     }).catch((err: any)=>{
-        console.error(`${new Date()}.[updateUserFavsDB].UserModel.findByIdAndUpdate.error=`, err.message);
+        errorConsoleLog(FILENAME, `[updateUserFavsDB].UserModel.findByIdAndUpdate.error=${err.message}`);
         resp.result = err.name
         return resp
     })

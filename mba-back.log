@@ -1,0 +1,23 @@
+info: [2024-09-27T17:19:06.678Z].[index.ts].App will running in port=3001
+info: [2024-09-27T17:19:06.683Z].[index.ts].Server running on port 3001
+info: [2024-09-27T17:19:06.684Z].[index.ts].connectToDatabase.pre
+info: [2024-09-27T17:19:06.685Z].[mongo.js].[connectToDatabase].Init
+info: [2024-09-27T17:19:06.686Z].[mongo.js].[connectToDatabase].preConnect
+error: [2024-09-27T17:19:07.146Z].[mongo.js].[connectToDatabase].Error to connect database= bad auth : Authentication failed. {"code":8000,"codeName":"AtlasError","connectionGeneration":0,"errorResponse":{"code":8000,"codeName":"AtlasError","errmsg":"bad auth : Authentication failed.","ok":0},"ok":0,"stack":"MongoServerError: bad auth : Authentication failed.\n    at Connection.sendCommand (C:\\Users\\Frankie\\Documents\\MyBandAPP\\MyBandApp-Back\\node_modules\\mongodb\\src\\cmap\\connection.ts:525:17)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at Connection.command (C:\\Users\\Frankie\\Documents\\MyBandAPP\\MyBandApp-Back\\node_modules\\mongodb\\src\\cmap\\connection.ts:608:22)\n    at executeScram (C:\\Users\\Frankie\\Documents\\MyBandAPP\\MyBandApp-Back\\node_modules\\mongodb\\src\\cmap\\auth\\scram.ts:113:20)\n    at ScramSHA1.auth (C:\\Users\\Frankie\\Documents\\MyBandAPP\\MyBandApp-Back\\node_modules\\mongodb\\src\\cmap\\auth\\scram.ts:60:12)\n    at performInitialHandshake (C:\\Users\\Frankie\\Documents\\MyBandAPP\\MyBandApp-Back\\node_modules\\mongodb\\src\\cmap\\connect.ts:157:7)\n    at connect (C:\\Users\\Frankie\\Documents\\MyBandAPP\\MyBandApp-Back\\node_modules\\mongodb\\src\\cmap\\connect.ts:43:5)"}
+info: [2024-09-27T17:19:07.161Z].[index.ts].connectToDatabase.post
+info: [2024-09-27T17:19:38.672Z].[index.ts].App will running in port=3001
+info: [2024-09-27T17:19:38.678Z].[index.ts].Server running on port 3001
+info: [2024-09-27T17:19:38.679Z].[index.ts].connectToDatabase.pre
+info: [2024-09-27T17:19:38.680Z].[mongo.js].[connectToDatabase].Init
+info: [2024-09-27T17:19:38.681Z].[mongo.js].[connectToDatabase].preConnect
+info: [2024-09-27T17:19:39.281Z].[index.ts].connectToDatabase.post
+info: [2024-09-27T17:19:39.280Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2024-09-27T17:23:52.947Z].[index.ts].App will running in port=3001
+info: [2024-09-27T17:23:52.952Z].[index.ts].Server running on port 3001
+info: [2024-09-27T17:23:52.953Z].[index.ts].connectToDatabase.pre
+info: [2024-09-27T17:23:52.954Z].[mongo.js].[connectToDatabase].Init
+info: [2024-09-27T17:23:52.955Z].[mongo.js].[connectToDatabase].preConnect
+info: [2024-09-27T17:23:52.956Z].[mongo.js].[checkConnection].state=disconnect
+info: [2024-09-27T17:23:53.573Z].[mongo.js].[checkConnection].state=connect
+info: [2024-09-27T17:23:53.574Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2024-09-27T17:23:53.575Z].[index.ts].connectToDatabase.post

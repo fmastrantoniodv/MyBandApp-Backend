@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { dbgConsoleLog, getStackFileName } = require('../utils')
+const { dbgConsoleLog, getStackFileName, errorConsoleLog } = require('../utils')
 const FILENAME = getStackFileName()
 
 const connectToDatabase = async () => {
@@ -12,26 +12,26 @@ const connectToDatabase = async () => {
         checkConnection(mongoose.connection)
         dbgConsoleLog(FILENAME, `[connectToDatabase].[MSG]=Database connected`)
     } catch (error) {
-        console.error(`[${FILENAME}].[connectToDatabase].[ERR].Error to connect database=`, error);
+        errorConsoleLog(FILENAME, `[connectToDatabase].Error to connect database=`, error);
     }
 }
 
 const checkConnection = (dbConnection) => {
     switch (dbConnection.readyState) {
         case 0:
-            console.log('Desconectado');
+            dbgConsoleLog(FILENAME, '[checkConnection].state=disconnect');
             break;
         case 1:
-            console.log('Conectado');
+            dbgConsoleLog(FILENAME, '[checkConnection].state=connect');
             break;
         case 2:
-            console.log('Conectando');
+            dbgConsoleLog(FILENAME, '[checkConnection].state=connecting');
             break;
         case 3:
-            console.log('Desconectando');
+            dbgConsoleLog(FILENAME, '[checkConnection].state=disconnecting');
             break;
         default:
-            console.log('Estado desconocido');
+            dbgConsoleLog(FILENAME, '[checkConnection].state=unknow');
     }
 };
 

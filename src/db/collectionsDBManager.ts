@@ -1,7 +1,7 @@
 const CollectionModel = require('../models/Collections')
 import { PlanType } from '../types';
 import { CollectionItemEntry, DBResponse} from '../interfaces'
-import { dbgConsoleLog, getStackFileName, getScopePlan } from '../utils';
+import { dbgConsoleLog, getStackFileName, getScopePlan, errorConsoleLog } from '../utils';
 const FILENAME = getStackFileName()
 
 export const addNewCollectionToDB = async (newCollectionEntry: CollectionItemEntry): Promise<DBResponse> => {
@@ -16,7 +16,7 @@ export const addNewCollectionToDB = async (newCollectionEntry: CollectionItemEnt
         return resp
     })
     .catch((err:any)=>{
-        console.error(`${new Date()}.[collectionsServ].[addUserToDB].[ERR].Error=`, err.message)
+        errorConsoleLog(FILENAME, `[collectionsServ].[addUserToDB].Error=${err.message}`)
         resp.result = err.name
         return resp
     })
@@ -38,7 +38,7 @@ export const getCollectionByIDFromDB = async (collectionId: string): Promise<DBR
         return resp
     })
     .catch((err:any)=>{
-        console.error(`${new Date()}.[collectionsServ].[getCollectionByIDFromDB].[ERR].Error=`, err.message)
+        errorConsoleLog(FILENAME, `[collectionsServ].[getCollectionByIDFromDB].Error=${err.message}`)
         resp.success = false
         resp.result = err.message
         return resp
@@ -62,7 +62,7 @@ export const getCollectionsByPlanFromDB = async (plan: PlanType): Promise<DBResp
         return resp
     })
     .catch((err:any)=>{
-        console.error(`${new Date()}.[collectionsServ].[getCollectionsByPlanFromDB].[ERR].Error=`, err.message)
+        errorConsoleLog(FILENAME, `[collectionsServ].[getCollectionsByPlanFromDB].Error=${err.message}`)
         resp.success = false
         resp.result = err.message
         return resp
@@ -85,7 +85,7 @@ export const getAllCollectionsFromDB = async (): Promise<DBResponse> =>{
         return resp
     })
     .catch((err:any)=>{
-        console.error(`${new Date()}.[collectionsServ].[getAllCollectionsFromDB].[ERR].Error=`, err.message)
+        errorConsoleLog(FILENAME, `[collectionsServ].[getAllCollectionsFromDB].Error=`, err.message)
         resp.success = false
         resp.result = err.message
         return resp
