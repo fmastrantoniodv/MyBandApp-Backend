@@ -1,11 +1,12 @@
 const {connectToDatabase, closeDatabaseConnection} = require('./db/mongo.js');
-import express from 'express'
+import express, { Response, NextFunction } from 'express'
 import projectsRouter from './routes/projects'
 import collectionsRouter from './routes/collections'
 import users from './routes/users'
 import samples from './routes/samples'
 import { dbgConsoleLog, getStackFileName } from './utils';
 import dotenv from 'dotenv';
+import { v4 as uuidv4 } from 'uuid';
 
 dotenv.config();
 
@@ -15,6 +16,15 @@ const FILENAME = getStackFileName()
 const app = express()
 app.use(express.json())
 
+// Middleware para asignar un identificador único a cada request
+app.use((req: any, res: Response, next: NextFunction) => {
+    const requestId = uuidv4();
+    req['requestId'] = requestId;      
+    console.log(`Request ID: ${requestId}`);
+    dbgConsoleLog(FILENAME, `req['requestId']=${req['requestId']}, req info=`, res.req.rawHeaders)
+    next();
+  });
+  
 app.use('/api/project', projectsRouter)
 app.use('/api/collections', collectionsRouter)
 app.use('/api/users', users)

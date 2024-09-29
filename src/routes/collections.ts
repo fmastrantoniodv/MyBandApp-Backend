@@ -31,20 +31,20 @@ router.get('/', async (_req, res) => {
 
 router.get('/src/:collectionCode', async (req, res) => {
     try {
-        dbgConsoleLog(FILENAME, `.[get].[MSG].Init`)
-        dbgConsoleLog(FILENAME, `.[get].[MSG].collectionCode=`, req.params.collectionCode)
+        dbgConsoleLog(FILENAME, `[get].[MSG].Init`)
+        dbgConsoleLog(FILENAME, `[get].[MSG].collectionCode=`, req.params.collectionCode)
         const collectionCode = req.params.collectionCode
         const firstPath = path.resolve('./src')
         const audioPath = `${firstPath}/collections/${collectionCode}/avatar.png`
         
-        dbgConsoleLog(FILENAME, `.[get].[MSG].audioPath=${audioPath}`)
+        dbgConsoleLog(FILENAME, `[get].[MSG].audioPath=${audioPath}`)
         const headerOpts = {
           headers: {
             "x-timestamp": Date.now(),
             "x-sent": true
           }
         };
-        dbgConsoleLog(FILENAME, `.[get].[MSG].sendFile.pre`)
+        dbgConsoleLog(FILENAME, `[get].[MSG].sendFile.pre`)
         res.sendFile(audioPath, headerOpts, (err) => {
             if (err) {
               if (res.headersSent) {
@@ -58,9 +58,9 @@ router.get('/src/:collectionCode', async (req, res) => {
                 }
               }
             }
-            dbgConsoleLog(FILENAME, `.[get].[MSG].sendFile.se devuelve archivo=`,audioPath)
+            dbgConsoleLog(FILENAME, `[get].[MSG].sendFile.se devuelve archivo=`,audioPath)
           });
-          dbgConsoleLog(FILENAME, `.[get].[MSG].sendFile.post`)
+          dbgConsoleLog(FILENAME, `[get].[MSG].sendFile.post`)
     } catch (error) {
         throw new Error('No se pudo obtener la imagen')
     }

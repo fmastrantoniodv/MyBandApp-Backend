@@ -11,22 +11,22 @@ router.use(cors())
 
 router.get('/:collectionId/:sampleName', async (req, res) => {
     try {
-        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].Init`)
-        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].sampleName=`, req.params.sampleName)
-        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].collectionId=`, req.params.collectionId)
+        dbgConsoleLog(FILENAME, `[samples].[get].[MSG].Init`)
+        dbgConsoleLog(FILENAME, `[samples].[get].[MSG].sampleName=`, req.params.sampleName)
+        dbgConsoleLog(FILENAME, `[samples].[get].[MSG].collectionId=`, req.params.collectionId)
         const collectionId = req.params.collectionId
         const filename = parseStringFromRequest(req.params.sampleName, 1, 100);
         const firstPath = path.resolve('./src')
         const audioPath = `${firstPath}/collections/${collectionId}/${collectionId+'_'+filename.toUpperCase().replace(' ','_')}.mp3`
         
-        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].filename=${filename}, audioPath=${audioPath}`)
+        dbgConsoleLog(FILENAME, `[samples].[get].[MSG].filename=${filename}, audioPath=${audioPath}`)
         const headerOpts = {
           headers: {
             "x-timestamp": Date.now(),
             "x-sent": true
           }
         };
-        dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].sendFile.pre`)
+        dbgConsoleLog(FILENAME, `[samples].[get].[MSG].sendFile.pre`)
         res.sendFile(audioPath, headerOpts, (err) => {
             if (err) {
               if (res.headersSent) {
@@ -40,9 +40,9 @@ router.get('/:collectionId/:sampleName', async (req, res) => {
                 }
               }
             }
-            dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].sendFile.se devuelve archivo=`,audioPath)
+            dbgConsoleLog(FILENAME, `[samples].[get].[MSG].sendFile.se devuelve archivo=`,audioPath)
           });
-          dbgConsoleLog(FILENAME, `.[samples].[get].[MSG].sendFile.post`)
+          dbgConsoleLog(FILENAME, `[samples].[get].[MSG].sendFile.post`)
     } catch (error) {
         throw new Error('No se pudo obtener el audio')
     }
@@ -63,24 +63,5 @@ router.post('/addSample', async (req, res)=>{
     res.status(400).send(e.message)
   }
 })
-/*
-//#### Get sample by id
-router.get('/:collectionId/:sampleId', (req, res) => {
-  try {
-      const { collectionId, sampleId } = req.params
-      dbgConsoleLog(FILENAME, `[GET]/collectionId=${collectionId}/sampleId=${sampleId}.Init`)
-      resHeaderConfig(res)
-      const resSample = collectionsServ.getSampleByID(parseDBObjectId(req.params.collectionId), parseDBObjectId(req.params.sampleId))
-      if(resSample === undefined){
-          res.send("No se encontró ningun sample con ese ID")
-      }else{
-          res.send(resSample)
-      }
-  } catch (e: any) {
-      res.status(400).send(e.message)
-  }
-  
-})
-*/
 
 export default router
