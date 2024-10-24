@@ -4,14 +4,14 @@ import { DBResponse } from '../interfaces'
 import { dbgConsoleLog, errorConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 
-export const changeUserPassDB = async (email: string, password: string, newPass: string): Promise<DBResponse> => {
+export const changeUserPassDB = async (email: string, newPass: string): Promise<DBResponse> => {
     const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[changeUserPassDB].Init`)
-    dbgConsoleLog(FILENAME, `[changeUserPassDB].email=${email}, password=${password}, newPass=${newPass},`)
-    return await UserModel.findOneAndUpdate({ email, password }, {password: newPass}, { new: true }).then((result: any)=>{
+    dbgConsoleLog(FILENAME, `[changeUserPassDB].email=${email}, newPass=${newPass}`)
+    return await UserModel.findOneAndUpdate({ email }, {password: newPass}, { new: true }).then((result: any)=>{
         dbgConsoleLog(FILENAME, `[changeUserPassDB].UserModel.findOneAndUpdate.userUpdated=`,result)
         if(result === null){
-            resp.result = 'INVALID_MAIL_PASSWORD'
+            resp.result = 'INVALID_MAIL'
         }else{
             resp.success = true
             resp.result = result

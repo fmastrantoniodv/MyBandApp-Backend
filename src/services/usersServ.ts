@@ -103,7 +103,21 @@ export const changePass = async (email: string, password: string, newPass: strin
     dbgConsoleLog(FILENAME, `[changePass].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[changePass].[MSG].req data: email=${email}, password=${password}, newPass=${newPass}`)
     dbgConsoleLog(FILENAME, `[changePass].[MSG].changeUserPassDB.pre`)
-    const resultUpdate = await changeUserPassDB(email, password, newPass)
+    dbgConsoleLog(FILENAME, `[changePass].[MSG].validateLoginDB.pre`)
+    const userData: any = await validateLoginDB(email)
+    dbgConsoleLog(FILENAME, `[changePass].[MSG].validateLoginDB.post.result=`, userData.result)
+    if(userData.success && userData.result != undefined){
+        const match = await bcrypt.compare(password, userData.result.password)
+        if(!match){
+            resp.success = false
+            resp.result = 'INVALID_MAIL_PASSWORD'
+            return resp
+        }
+        dbgConsoleLog(FILENAME, `[changePass].[MSG].validateLoginDB.se valido el login ok`)
+    }
+    const hashedNewPass = await encryptPassword(newPass)
+    dbgConsoleLog(FILENAME, `[addNewUser].[MSG].hashedNewPass=`,hashedNewPass)
+    const resultUpdate = await changeUserPassDB(email, hashedNewPass)
     dbgConsoleLog(FILENAME, `[changePass].[MSG].changeUserPassDB.post.result=`, resultUpdate)
     if(resultUpdate.success){
         resp.success = true
