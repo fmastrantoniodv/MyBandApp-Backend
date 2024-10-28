@@ -102,7 +102,6 @@ export const changePass = async (email: string, password: string, newPass: strin
     const resp: ServResponse = { success: false }
     dbgConsoleLog(FILENAME, `[changePass].[MSG].Init`)
     dbgConsoleLog(FILENAME, `[changePass].[MSG].req data: email=${email}, password=${password}, newPass=${newPass}`)
-    dbgConsoleLog(FILENAME, `[changePass].[MSG].changeUserPassDB.pre`)
     dbgConsoleLog(FILENAME, `[changePass].[MSG].validateLoginDB.pre`)
     const userData: any = await validateLoginDB(email)
     dbgConsoleLog(FILENAME, `[changePass].[MSG].validateLoginDB.post.result=`, userData.result)

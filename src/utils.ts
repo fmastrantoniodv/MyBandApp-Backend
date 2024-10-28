@@ -167,3 +167,7 @@ export const getScopePlan = (plan: PlanType) => {
     return planList.slice(0, indexPlan+1);
   }
   
+export const generateVerificationCode = () =>{
+    return Math.floor(10000000 + Math.random() * 90000000); // Genera un número entre 10000000 y 99999999
+  }
+  

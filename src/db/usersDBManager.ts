@@ -1,7 +1,7 @@
 const UserModel = require('../models/User.js')
 import { PlanType, User } from '../types'
 import { DBResponse } from '../interfaces'
-import { dbgConsoleLog, errorConsoleLog, getStackFileName } from '../utils';
+import { dbgConsoleLog, errorConsoleLog, generateVerificationCode, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
 
 export const changeUserPassDB = async (email: string, newPass: string): Promise<DBResponse> => {
@@ -144,6 +144,33 @@ export const updateUserFavsDB = async (userId: string, sampleId: string, action:
         return resp
     }).catch((err: any)=>{
         errorConsoleLog(FILENAME, `[updateUserFavsDB].UserModel.findByIdAndUpdate.error=${err.message}`);
+        resp.result = err.name
+        return resp
+    })
+}
+
+export const saveVerifyCodeDB = async (email: string): Promise<DBResponse> => {
+    const resp: DBResponse = { success: false }
+    dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].Init`)
+    dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].generate code & expirationTime`)
+    const code = generateVerificationCode()
+    const expirationTime = Date.now() + 10 * 60 * 1000; // 10 minutos desde ahora
+    dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].code=${code}, expirationTime=${expirationTime}`)
+    dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].UserModel.updateOne.pre`)
+    return await UserModel.updateOne(
+        { email: email },
+        { verificationCode: code, verificationExpires: expirationTime }
+      ).then((result: any)=>{
+        dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].UserModel.updateOne.post result=`, result)
+        if(result === null){
+            resp.result = 'USR_NOT_FOUND'
+        }else{
+            resp.success = true
+            resp.result = result
+        }
+        return resp
+    }).catch((err: any)=>{
+        errorConsoleLog(FILENAME, `[saveVerifyCodeDB].UserModel.updateOne.error=${err.message}`);
         resp.result = err.name
         return resp
     })

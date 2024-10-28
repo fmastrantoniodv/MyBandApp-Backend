@@ -8,7 +8,9 @@ const userSchema = new Schema({
     plan: String,
     expirationPlanDate: Date,
     registerDate: Date,
-    favList: [{ type: Schema.Types.ObjectId, ref: 'Sample', required: true }]
+    favList: [{ type: Schema.Types.ObjectId, ref: 'Sample', required: true }],
+    verificationCode: Number,
+    verificationExpires: Date
 })
 
 userSchema.set('toJSON', {

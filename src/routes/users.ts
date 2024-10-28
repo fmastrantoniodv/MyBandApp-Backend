@@ -2,6 +2,7 @@ import express from 'express'
 import * as usersServ from '../services/usersServ'
 import {parsePlanType, parseStringFromRequest, parseDBObjectId, dbgConsoleLog, getStackFileName, catchErrorResponse, setErrorResponse} from '../utils'
 import { UserEntry } from '../types'
+import * as mailSenderServ from '../services/mailSenderServ'
 
 const FILENAME = getStackFileName()
 const router = express.Router()
@@ -102,6 +103,30 @@ router.post('/changePass', async (req, res) => {
             setErrorResponse(res, userDataRes.result , message)
         }else{
             res.status(200).send("Se actualizó la password con exito")
+        }
+    }catch(e: any){
+        catchErrorResponse(res, e)
+    }
+})
+
+router.post('/sendCodeToMail', async (req, res) => {
+    dbgConsoleLog(FILENAME, `[POST]/sendCodeToMail.REQ=`, req.body)
+    try{
+        const { email } = req.body
+        dbgConsoleLog(FILENAME, `[POST]/sendCodeToMail.sendVerificationCode.pre`)
+        const sendMailRes = await mailSenderServ.sendVerificationCode(
+            parseStringFromRequest(email, 5, 150)
+        )
+        dbgConsoleLog(FILENAME, `[POST]/sendCodeToMail.sendVerificationCode.post.result=`, sendMailRes)
+        if(!sendMailRes.success){
+            res.status(400)
+            var message = 'Error al enviar mail' //Default
+            if(sendMailRes.result === 'INVALID_MAIL'){
+                message = 'El mail no está registrado'
+            }
+            setErrorResponse(res, sendMailRes.result , message)
+        }else{
+            res.status(200).send("Se envió el código al mail")
         }
     }catch(e: any){
         catchErrorResponse(res, e)
