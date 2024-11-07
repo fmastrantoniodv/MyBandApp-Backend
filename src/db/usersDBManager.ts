@@ -154,7 +154,7 @@ export const saveVerifyCodeDB = async (email: string): Promise<DBResponse> => {
     dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].Init`)
     dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].generate code & expirationTime`)
     const code = generateVerificationCode()
-    const expirationTime = Date.now() + 10 * 60 * 1000; // 10 minutos desde ahora
+    const expirationTime = Date.now() + 10 * 60 * 1000;
     dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].code=${code}, expirationTime=${expirationTime}`)
     dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].UserModel.updateOne.pre`)
     return await UserModel.updateOne(
@@ -166,7 +166,7 @@ export const saveVerifyCodeDB = async (email: string): Promise<DBResponse> => {
             resp.result = 'USR_NOT_FOUND'
         }else{
             resp.success = true
-            resp.result = result
+            resp.result = code.toString()
         }
         return resp
     }).catch((err: any)=>{
