@@ -2,7 +2,6 @@ import { saveVerifyCodeDB } from '../db/usersDBManager';
 import { DBResponse, ServResponse } from '../interfaces';
 import { dbgConsoleLog, errorConsoleLog, getStackFileName } from '../utils'
 const FILENAME = getStackFileName()
-//const nodemailer = require('nodemailer');
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -18,14 +17,14 @@ export const sendVerificationCode = async (email: string): Promise<ServResponse>
     const createAndSaveVerifyCode: DBResponse = await saveVerifyCodeDB(email)
     dbgConsoleLog(FILENAME, `[sendVerificationCode].saveVerifyCodeDB.result=${createAndSaveVerifyCode.result}`)
     if(!createAndSaveVerifyCode.success){
+      errorConsoleLog(FILENAME, `[sendVerificationCode].error=${createAndSaveVerifyCode.result}`)
       resp.result = createAndSaveVerifyCode.result
       return resp
     } 
-    //dbgConsoleLog(FILENAME, `[sendVerificationCode].Create transport`)
     const msg = {
       to: email, 
       from: 'franco.mastrantonio@davinci.edu.ar',
-      subject: 'Código de verificacion - MyBanddApp',
+      subject: 'MyBanddApp - Código de verificación',
       html: `<strong>Tu código de verificación es: ${createAndSaveVerifyCode.result}</strong>`,
     }
     dbgConsoleLog(FILENAME, `[sendVerificationCode].msg=`, msg)
@@ -44,37 +43,6 @@ export const sendVerificationCode = async (email: string): Promise<ServResponse>
         resp.result = `ERROR_SEND_MAIL`
         errorConsoleLog(FILENAME, `[sendVerificationCode].error=`, error)
       })
-
-      /**
-    const transporter = nodemailer.createTransport({
-    service: 'gmail', // o cualquier servicio de email
-    auth: {
-      user: '',
-      pass: '',
-    },
-  });
-
-  dbgConsoleLog(FILENAME, `[sendVerificationCode].Set mailOptions`)
-  const mailOptions = {
-    to: email,
-    from: 'no-reply@my-band-app.com',
-    subject: 'Código de verificación',
-  //  text: `Tu código de verificación es: ${code}. Este código expirará en 10 minutos.`,
-    text: `Tu código de verificación es: NNNNNNNN. Este código expirará en 10 minutos.`,
-  };
-  try {
-    dbgConsoleLog(FILENAME, `[sendVerificationCode].sendMail.pre`)
-    var sendMailResult = await transporter.sendMail(mailOptions);
-    dbgConsoleLog(FILENAME, `[sendVerificationCode].sendMail.result=`, sendMailResult)
-    resp.success = true
-    resp.result = `Se envió el correo a ${email}`  
-  } catch (error: any) {
-    dbgConsoleLog(FILENAME, `[sendVerificationCode].sendMail.errorResult=`, error)
-    console.error(error)
-    resp.result = `ERROR_SEND_MAIL`  
-  }
-  */
-  
   dbgConsoleLog(FILENAME, `[sendVerificationCode].result=`, resp)
   return resp
 }

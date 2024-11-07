@@ -162,7 +162,7 @@ export const saveVerifyCodeDB = async (email: string): Promise<DBResponse> => {
         { verificationCode: code, verificationExpires: expirationTime }
       ).then((result: any)=>{
         dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].UserModel.updateOne.post result=`, result)
-        if(result === null){
+        if(result === null || result.matchedCount < 1){
             resp.result = 'USR_NOT_FOUND'
         }else{
             resp.success = true
