@@ -154,7 +154,7 @@ export const saveVerifyCodeDB = async (email: string): Promise<DBResponse> => {
     dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].Init`)
     dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].generate code & expirationTime`)
     const code = generateVerificationCode()
-    const expirationTime = Date.now() + 10 * 60 * 1000;
+    const expirationTime = Date.now() + 60 * 60 * 1000; //1hour
     dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].code=${code}, expirationTime=${expirationTime}`)
     dbgConsoleLog(FILENAME, `[saveVerifyCodeDB].UserModel.updateOne.pre`)
     return await UserModel.updateOne(
@@ -171,6 +171,34 @@ export const saveVerifyCodeDB = async (email: string): Promise<DBResponse> => {
         return resp
     }).catch((err: any)=>{
         errorConsoleLog(FILENAME, `[saveVerifyCodeDB].UserModel.updateOne.error=${err.message}`);
+        resp.result = err.name
+        return resp
+    })
+}
+
+export const validateVerifyCodeDB = async (email: string, verifyCode: number): Promise<DBResponse> => {
+    const resp: DBResponse = { success: false }
+    dbgConsoleLog(FILENAME, `[validateVerifyCodeDB].Init`)
+    dbgConsoleLog(FILENAME, `[validateVerifyCodeDB].verifyCode=${verifyCode}, email=${email}`)
+    dbgConsoleLog(FILENAME, `[validateVerifyCodeDB].UserModel.updateOne.pre`)
+    return await UserModel.findOneAndUpdate(
+        { email: email, verificationCode: verifyCode },
+        { $unset: { verificationCode: "", verificationExpires: "" } },
+        { new: false })
+        .then((result: any)=>{
+        dbgConsoleLog(FILENAME, `[validateVerifyCodeDB].UserModel.findOneAndUpdate.post result=`, result)
+        if(result === null){
+            resp.result = 'VERIFY_EMAIL_FALSE'
+        }else if(result.verificationExpires <= new Date()){
+            resp.result = 'VERIFY_CODE_EXPIRATED'
+        }else{
+            resp.success = true
+            resp.result = result
+        }
+
+        return resp
+    }).catch((err: any)=>{
+        errorConsoleLog(FILENAME, `[validateVerifyCodeDB].UserModel.findOneAndUpdate.error=${err.message}`);
         resp.result = err.name
         return resp
     })

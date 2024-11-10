@@ -1,6 +1,6 @@
 import express from 'express'
 import * as usersServ from '../services/usersServ'
-import {parsePlanType, parseStringFromRequest, parseDBObjectId, dbgConsoleLog, getStackFileName, catchErrorResponse, setErrorResponse} from '../utils'
+import {parsePlanType, parseStringFromRequest, parseDBObjectId, dbgConsoleLog, getStackFileName, catchErrorResponse, setErrorResponse, parseNumberFromRequest} from '../utils'
 import { UserEntry } from '../types'
 import * as mailSenderServ from '../services/mailSenderServ'
 
@@ -127,6 +127,33 @@ router.post('/sendCodeToMail', async (req, res) => {
             setErrorResponse(res, sendMailRes.result , message)
         }else{
             res.status(200).send("Se envió el código al mail")
+        }
+    }catch(e: any){
+        catchErrorResponse(res, e)
+    }
+})
+
+router.post('/validateCode', async (req, res) => {
+    dbgConsoleLog(FILENAME, `[POST]/sendCodeToMail.REQ=`, req.body)
+    try{
+        const { email, verificationCode } = req.body
+        dbgConsoleLog(FILENAME, `[POST]/sendCodeToMail.validateCodeForgotPass.pre`)
+        const validateCodeResp = await usersServ.validateCodeForgotPass(
+            parseStringFromRequest(email, 5, 150),
+            parseNumberFromRequest(verificationCode, 9999999, 100000000)
+        )
+        dbgConsoleLog(FILENAME, `[POST]/sendCodeToMail.validateCodeForgotPass.post.result=`, validateCodeResp)
+        if(!validateCodeResp.success){
+            res.status(400)
+            var message = validateCodeResp.result;
+            if(validateCodeResp.result === 'CODE_ERROR'){
+                message = 'Código erroneo'
+            }else if(validateCodeResp.result === 'VERIFY_CODE_EXPIRATED'){
+                message = 'Código expirado'
+            }
+            setErrorResponse(res, validateCodeResp.result , message)
+        }else{
+            res.status(200).send(validateCodeResp.result)
         }
     }catch(e: any){
         catchErrorResponse(res, e)

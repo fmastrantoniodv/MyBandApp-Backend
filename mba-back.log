@@ -214,3 +214,311 @@ info: [2024-11-07T22:28:03.434Z].[mongo.js].[checkConnection].state=disconnect
 info: [2024-11-07T22:28:04.183Z].[mongo.js].[checkConnection].state=connect
 info: [2024-11-07T22:28:04.183Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
 info: [2024-11-07T22:28:04.184Z].[index.ts].connectToDatabase.post
+info: [2024-11-10T14:09:34.589Z].[index.ts].connectToDatabase.pre
+info: [2024-11-10T14:09:34.587Z].[index.ts].Server running on port 3001
+info: [2024-11-10T14:09:34.590Z].[mongo.js].[connectToDatabase].Init
+info: [2024-11-10T14:09:34.590Z].[mongo.js].[connectToDatabase].preConnect
+info: [2024-11-10T14:09:34.591Z].[mongo.js].[checkConnection].state=disconnect
+info: [2024-11-10T14:09:35.296Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2024-11-10T14:09:35.295Z].[mongo.js].[checkConnection].state=connect
+info: [2024-11-10T14:09:35.296Z].[index.ts].connectToDatabase.post
+info: [2024-11-10T14:09:55.559Z].[index.ts].req['requestId']=3f1aceb4-afad-4f81-93b9-649f0775035a, req info= {"0":"content-length","1":"32","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:09:55.561Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankie@gmail.com"}
+info: [2024-11-10T14:09:55.562Z].[users.ts].[POST]/sendCodeToMail.sendVerificationCode.pre
+info: [2024-11-10T14:09:55.563Z].[utils.ts].[parseStringFromRequest].str=frankie@gmail.com, minChars=5, maxChars=150, str.length=17
+info: [2024-11-10T14:09:55.564Z].[mailSenderServ.ts].[sendVerificationCode].Init
+info: [2024-11-10T14:09:55.564Z].[mailSenderServ.ts].[sendVerificationCode].saveVerifyCodeDB.pre
+info: [2024-11-10T14:09:55.565Z].[usersDBManager.ts].[saveVerifyCodeDB].Init
+info: [2024-11-10T14:09:55.566Z].[usersDBManager.ts].[saveVerifyCodeDB].generate code & expirationTime
+info: [2024-11-10T14:09:55.566Z].[usersDBManager.ts].[saveVerifyCodeDB].code=36103038, expirationTime=1731251395566
+info: [2024-11-10T14:09:55.567Z].[usersDBManager.ts].[saveVerifyCodeDB].UserModel.updateOne.pre
+info: [2024-11-10T14:09:55.636Z].[usersDBManager.ts].[saveVerifyCodeDB].UserModel.updateOne.post result= {"acknowledged":true,"matchedCount":1,"modifiedCount":1,"upsertedCount":0,"upsertedId":null}
+info: [2024-11-10T14:09:55.637Z].[mailSenderServ.ts].[sendVerificationCode].saveVerifyCodeDB.result=36103038
+info: [2024-11-10T14:09:55.637Z].[mailSenderServ.ts].[sendVerificationCode].msg= {"from":"franco.mastrantonio@davinci.edu.ar","html":"<strong>Tu código de verificación es: 36103038</strong>","subject":"MyBanddApp - Código de verificación","to":"frankie@gmail.com"}
+info: [2024-11-10T14:09:56.606Z].[mailSenderServ.ts].[sendVerificationCode].Email sent.res.statusCode=202
+info: [2024-11-10T14:09:56.607Z].[mailSenderServ.ts].[sendVerificationCode].result= {"result":"Se envió el correo a frankie@gmail.com","success":true}
+info: [2024-11-10T14:09:56.607Z].[users.ts].[POST]/sendCodeToMail.sendVerificationCode.post.result= {"result":"Se envió el correo a frankie@gmail.com","success":true}
+info: [2024-11-10T14:10:04.997Z].[index.ts].req['requestId']=d5873d80-e708-4d6f-92c9-712cbe3d57aa, req info= {"0":"content-length","1":"35","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:10:04.998Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com"}
+info: [2024-11-10T14:10:05.000Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:10:05.000Z].[mailSenderServ.ts].[sendVerificationCode].Init
+info: [2024-11-10T14:10:04.999Z].[users.ts].[POST]/sendCodeToMail.sendVerificationCode.pre
+info: [2024-11-10T14:10:05.001Z].[mailSenderServ.ts].[sendVerificationCode].saveVerifyCodeDB.pre
+info: [2024-11-10T14:10:05.002Z].[usersDBManager.ts].[saveVerifyCodeDB].generate code & expirationTime
+info: [2024-11-10T14:10:05.003Z].[usersDBManager.ts].[saveVerifyCodeDB].code=75659497, expirationTime=1731251405002
+info: [2024-11-10T14:10:05.001Z].[usersDBManager.ts].[saveVerifyCodeDB].Init
+info: [2024-11-10T14:10:05.004Z].[usersDBManager.ts].[saveVerifyCodeDB].UserModel.updateOne.pre
+info: [2024-11-10T14:10:05.051Z].[usersDBManager.ts].[saveVerifyCodeDB].UserModel.updateOne.post result= {"acknowledged":true,"matchedCount":0,"modifiedCount":0,"upsertedCount":0,"upsertedId":null}
+info: [2024-11-10T14:10:05.051Z].[mailSenderServ.ts].[sendVerificationCode].saveVerifyCodeDB.result=USR_NOT_FOUND
+error: [2024-11-10T14:10:05.052Z].[mailSenderServ.ts].[sendVerificationCode].error=USR_NOT_FOUND
+info: [2024-11-10T14:10:05.053Z].[users.ts].[POST]/sendCodeToMail.sendVerificationCode.post.result= {"result":"USR_NOT_FOUND","success":false}
+info: [2024-11-10T14:12:00.476Z].[index.ts].req['requestId']=bfee7c40-578a-4728-87d4-01c7260b3325, req info= {"0":"Host","1":"localhost:3001","10":"Origin","11":"http://localhost:3000","12":"User-Agent","13":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36","14":"Sec-Fetch-Mode","15":"cors","16":"Sec-Fetch-Site","17":"same-site","18":"Sec-Fetch-Dest","19":"empty","2":"Connection","20":"Referer","21":"http://localhost:3000/","22":"Accept-Encoding","23":"gzip, deflate, br, zstd","24":"Accept-Language","25":"es-ES,es;q=0.9","3":"keep-alive","4":"Accept","5":"*/*","6":"Access-Control-Request-Method","7":"POST","8":"Access-Control-Request-Headers","9":"content-type"}
+info: [2024-11-10T14:12:00.479Z].[index.ts].req['requestId']=c0a452ca-0e4a-45d1-8602-296036458cf0, req info= {"0":"Host","1":"localhost:3001","10":"Accept","11":"application/json, text/plain, */*","12":"sec-ch-ua","13":"\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"","14":"Content-Type","15":"application/json","16":"sec-ch-ua-mobile","17":"?0","18":"Origin","19":"http://localhost:3000","2":"Connection","20":"Sec-Fetch-Site","21":"same-site","22":"Sec-Fetch-Mode","23":"cors","24":"Sec-Fetch-Dest","25":"empty","26":"Referer","27":"http://localhost:3000/","28":"Accept-Encoding","29":"gzip, deflate, br, zstd","3":"keep-alive","30":"Accept-Language","31":"es-ES,es;q=0.9","4":"Content-Length","5":"89","6":"sec-ch-ua-platform","7":"\"Windows\"","8":"User-Agent","9":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+info: [2024-11-10T14:12:00.480Z].[users.ts].[POST]/register.REQ= {"email":"frankiemdj@gmail.com","password":"admin123","plan":"pro","usrName":"Frankie M"}
+info: [2024-11-10T14:12:00.480Z].[utils.ts].[parseStringFromRequest].str=Frankie M, minChars=1, maxChars=30, str.length=9
+info: [2024-11-10T14:12:00.481Z].[utils.ts].[parseStringFromRequest].str=admin123, minChars=8, maxChars=250, str.length=8
+info: [2024-11-10T14:12:00.482Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=1, maxChars=100, str.length=20
+info: [2024-11-10T14:12:00.483Z].[users.ts].[POST]/register.addNewUser.pre
+info: [2024-11-10T14:12:00.484Z].[usersServ.ts].[addNewUser].[MSG].Init
+info: [2024-11-10T14:12:00.485Z].[usersServ.ts].[addNewUser].[MSG].user data entry: {"email":"frankiemdj@gmail.com","password":"admin123","plan":"pro","usrName":"Frankie M"}
+info: [2024-11-10T14:12:00.537Z].[usersServ.ts].[addNewUser].[MSG].hashedPass=
+info: [2024-11-10T14:12:00.538Z].[usersServ.ts].[addNewUser].[MSG].addUserToDB.newUser= {"email":"frankiemdj@gmail.com","expirationPlanDate":"2025-11-10T14:12:00.538Z","password":"$2b$10$/tiKTPi/N3N9pCH9k5mKSuB8nxaMudYGZ3oTUS8VvXj9dMbsR08YO","plan":"pro","registerDate":"2024-11-10T14:12:00.538Z","usrName":"Frankie M"}
+info: [2024-11-10T14:12:00.539Z].[usersServ.ts].[addNewUser].[MSG].addUserToDB.pre
+info: [2024-11-10T14:12:00.539Z].[usersDBManager.ts].[addUserToDB].Init
+info: [2024-11-10T14:12:00.543Z].[usersDBManager.ts].[addUserToDB].UserModel.save.pre
+info: [2024-11-10T14:12:00.609Z].[usersDBManager.ts].[addUserToDB].UserModel.save.res= {"$__":{"$versionError":null,"activePaths":{"paths":{},"states":{"default":{},"modify":{}}},"backup":{"activePaths":{"default":{"_id":true,"favList":true},"modify":{"email":true,"expirationPlanDate":true,"password":true,"plan":true,"registerDate":true,"usrName":true}},"validationError":null},"cachedRequired":{},"inserting":true,"op":null,"saveOptions":null,"savedState":{},"saving":null,"validating":null},"$isNew":false,"_doc":{"__v":0,"_id":"6730bf3054aa1d3adb06f1d4","email":"frankiemdj@gmail.com","expirationPlanDate":"2025-11-10T14:12:00.538Z","favList":[],"password":"$2b$10$/tiKTPi/N3N9pCH9k5mKSuB8nxaMudYGZ3oTUS8VvXj9dMbsR08YO","plan":"pro","registerDate":"2024-11-10T14:12:00.538Z","usrName":"Frankie M"}}
+info: [2024-11-10T14:12:00.610Z].[usersDBManager.ts].[addUserToDB].UserModel.save.post
+info: [2024-11-10T14:12:00.611Z].[usersServ.ts].[addNewUser].[MSG].addUserToDB.post
+info: [2024-11-10T14:12:00.611Z].[usersServ.ts].[addNewUser].[MSG].addUserToDB.resAddUser=[object Object]
+info: [2024-11-10T14:12:00.611Z].[usersServ.ts].[addNewUser].[MSG].Resp=Usuario agregado a la db
+info: [2024-11-10T14:12:00.612Z].[users.ts].[POST]/register.addNewUser.post.result= {"result":{"email":"frankiemdj@gmail.com","expirationPlanDate":"2025-11-10T14:12:00.538Z","favList":[],"id":"6730bf3054aa1d3adb06f1d4","password":"$2b$10$/tiKTPi/N3N9pCH9k5mKSuB8nxaMudYGZ3oTUS8VvXj9dMbsR08YO","plan":"pro","registerDate":"2024-11-10T14:12:00.538Z","usrName":"Frankie M"},"success":true}
+info: [2024-11-10T14:12:07.898Z].[index.ts].req['requestId']=fdbde5fd-9094-4829-8d5d-b883b6de9d78, req info= {"0":"Host","1":"localhost:3001","10":"Origin","11":"http://localhost:3000","12":"User-Agent","13":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36","14":"Sec-Fetch-Mode","15":"cors","16":"Sec-Fetch-Site","17":"same-site","18":"Sec-Fetch-Dest","19":"empty","2":"Connection","20":"Referer","21":"http://localhost:3000/","22":"Accept-Encoding","23":"gzip, deflate, br, zstd","24":"Accept-Language","25":"es-ES,es;q=0.9","3":"keep-alive","4":"Accept","5":"*/*","6":"Access-Control-Request-Method","7":"POST","8":"Access-Control-Request-Headers","9":"content-type"}
+info: [2024-11-10T14:12:07.900Z].[index.ts].req['requestId']=f6d9dbb9-c697-4bb6-856e-d9e7b4fb6d21, req info= {"0":"Host","1":"localhost:3001","10":"Accept","11":"application/json, text/plain, */*","12":"sec-ch-ua","13":"\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"","14":"Content-Type","15":"application/json","16":"sec-ch-ua-mobile","17":"?0","18":"Origin","19":"http://localhost:3000","2":"Connection","20":"Sec-Fetch-Site","21":"same-site","22":"Sec-Fetch-Mode","23":"cors","24":"Sec-Fetch-Dest","25":"empty","26":"Referer","27":"http://localhost:3000/","28":"Accept-Encoding","29":"gzip, deflate, br, zstd","3":"keep-alive","30":"Accept-Language","31":"es-ES,es;q=0.9","4":"Content-Length","5":"54","6":"sec-ch-ua-platform","7":"\"Windows\"","8":"User-Agent","9":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+info: [2024-11-10T14:12:07.902Z].[users.ts].[POST]/login.REQ= {"email":"frankiemdj@gmail.com","password":"admin123"}
+info: [2024-11-10T14:12:07.903Z].[users.ts].[POST]/login.userLogin.pre
+info: [2024-11-10T14:12:07.903Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:12:07.905Z].[usersServ.ts].[userLogin].[MSG].Init
+info: [2024-11-10T14:12:07.904Z].[utils.ts].[parseStringFromRequest].str=admin123, minChars=8, maxChars=250, str.length=8
+info: [2024-11-10T14:12:07.905Z].[usersServ.ts].[userLogin].[MSG].login data: email=frankiemdj@gmail.com, pass=admin123
+info: [2024-11-10T14:12:07.906Z].[usersServ.ts].[userLogin].[MSG].validateLoginDB.pre
+info: [2024-11-10T14:12:07.906Z].[usersDBManager.ts].[validateLoginDB].Init
+info: [2024-11-10T14:12:07.907Z].[usersDBManager.ts].[validateLoginDB].UserModel.find.pre
+info: [2024-11-10T14:12:07.959Z].[usersDBManager.ts].[validateLoginDB].UserModel.result= {"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","email":"init","expirationPlanDate":"init","favList":"init","password":"init","plan":"init","registerDate":"init","usrName":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"email":true,"expirationPlanDate":true,"favList":true,"password":true,"plan":true,"registerDate":true,"usrName":true}}},"populated":{"favList":{"options":{"_childDocs":[],"_docs":{"6730bf3054aa1d3adb06f1d4":[]},"_queryProjection":null,"path":"favList"},"value":[]}},"skipId":true},"$isNew":false,"_doc":{"__v":0,"_id":"6730bf3054aa1d3adb06f1d4","email":"frankiemdj@gmail.com","expirationPlanDate":"2025-11-10T14:12:00.538Z","favList":[],"password":"$2b$10$/tiKTPi/N3N9pCH9k5mKSuB8nxaMudYGZ3oTUS8VvXj9dMbsR08YO","plan":"pro","registerDate":"2024-11-10T14:12:00.538Z","usrName":"Frankie M"}}
+info: [2024-11-10T14:12:07.960Z].[usersServ.ts].[userLogin].[MSG].validateLoginDB.post.result= {"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","email":"init","expirationPlanDate":"init","favList":"init","password":"init","plan":"init","registerDate":"init","usrName":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"email":true,"expirationPlanDate":true,"favList":true,"password":true,"plan":true,"registerDate":true,"usrName":true}}},"populated":{"favList":{"options":{"_childDocs":[],"_docs":{"6730bf3054aa1d3adb06f1d4":[]},"_queryProjection":null,"path":"favList"},"value":[]}},"skipId":true},"$isNew":false,"_doc":{"__v":0,"_id":"6730bf3054aa1d3adb06f1d4","email":"frankiemdj@gmail.com","expirationPlanDate":"2025-11-10T14:12:00.538Z","favList":[],"password":"$2b$10$/tiKTPi/N3N9pCH9k5mKSuB8nxaMudYGZ3oTUS8VvXj9dMbsR08YO","plan":"pro","registerDate":"2024-11-10T14:12:00.538Z","usrName":"Frankie M"}}
+info: [2024-11-10T14:12:08.012Z].[usersServ.ts].[userLogin].[MSG].validateLoginDB.se valido el login ok
+info: [2024-11-10T14:12:08.013Z].[usersServ.ts].[userLogin].[MSG].getUserProjectsFromDB.pre.id=
+info: [2024-11-10T14:12:08.014Z].[projectsDBManager.ts].[getUserProjectsFromDB].Init
+info: [2024-11-10T14:12:08.014Z].[projectsDBManager.ts].[getUserProjectsFromDB].id=6730bf3054aa1d3adb06f1d4
+info: [2024-11-10T14:12:08.085Z].[projectsDBManager.ts].[getUserProjectsFromDB].ProjectModel.result=
+info: [2024-11-10T14:12:08.085Z].[projectsDBManager.ts].[getUserProjectsFromDB].ProjectModel.resp= {"result":[],"success":true}
+info: [2024-11-10T14:12:08.086Z].[usersServ.ts].[userLogin].[MSG].getUserProjectsFromDB.post.userProjects= {"result":[],"success":true}
+info: [2024-11-10T14:12:08.100Z].[collections.ts].[GET]/plan=pro.Init
+info: [2024-11-10T14:12:08.097Z].[index.ts].req['requestId']=253835c0-ea9e-4866-be55-3c3076551e75, req info= {"0":"Host","1":"localhost:3001","10":"sec-ch-ua","11":"\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"","12":"sec-ch-ua-mobile","13":"?0","14":"Origin","15":"http://localhost:3000","16":"Sec-Fetch-Site","17":"same-site","18":"Sec-Fetch-Mode","19":"cors","2":"Connection","20":"Sec-Fetch-Dest","21":"empty","22":"Referer","23":"http://localhost:3000/","24":"Accept-Encoding","25":"gzip, deflate, br, zstd","26":"Accept-Language","27":"es-ES,es;q=0.9","28":"If-None-Match","29":"W/\"a37-kH42l7ismCjkOoPDojXJ0+fUCdY\"","3":"keep-alive","4":"sec-ch-ua-platform","5":"\"Windows\"","6":"User-Agent","7":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36","8":"Accept","9":"application/json, text/plain, */*"}
+info: [2024-11-10T14:12:08.101Z].[collections.ts].[GET]/plan=pro.getCollections.pre
+info: [2024-11-10T14:12:08.103Z].[collectionsServ.ts].[getCollections].getCollectionsByPlanFromDB.pre
+info: [2024-11-10T14:12:08.103Z].[collectionsServ.ts].[getCollections].plan=pro
+info: [2024-11-10T14:12:08.102Z].[collectionsServ.ts].[getCollections].Init
+info: [2024-11-10T14:12:08.104Z].[collectionsDBManager.ts].[getCollectionsByPlanFromDB].CollectionModel.find.pre
+info: [2024-11-10T14:12:08.105Z].[utils.ts].[getScopePlan].plan input param=pro, planList= {"0":"free","1":"trial","2":"pro","3":"admin"}
+info: [2024-11-10T14:12:08.110Z].[index.ts].req['requestId']=9bf3951d-15b6-4e3d-b36a-3d8f2d4ca348, req info= {"0":"Host","1":"localhost:3001","10":"sec-ch-ua","11":"\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"","12":"sec-ch-ua-mobile","13":"?0","14":"Origin","15":"http://localhost:3000","16":"Sec-Fetch-Site","17":"same-site","18":"Sec-Fetch-Mode","19":"cors","2":"Connection","20":"Sec-Fetch-Dest","21":"empty","22":"Referer","23":"http://localhost:3000/","24":"Accept-Encoding","25":"gzip, deflate, br, zstd","26":"Accept-Language","27":"es-ES,es;q=0.9","3":"keep-alive","4":"sec-ch-ua-platform","5":"\"Windows\"","6":"User-Agent","7":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36","8":"Accept","9":"application/json, text/plain, */*"}
+info: [2024-11-10T14:12:08.111Z].[projects.ts].[GET]/getUserProjects/=6730bf3054aa1d3adb06f1d4
+info: [2024-11-10T14:12:08.112Z].[projects.ts].[GET]/getUserProjects.getUserProjects.pre
+info: [2024-11-10T14:12:08.113Z].[projectsServ.ts].[getUserProjects].[MSG].Init
+info: [2024-11-10T14:12:08.113Z].[projectsServ.ts].[getUserProjects].[MSG].input params:userId=6730bf3054aa1d3adb06f1d4
+info: [2024-11-10T14:12:08.115Z].[projectsDBManager.ts].[getUserProjectsFromDB].id=6730bf3054aa1d3adb06f1d4
+info: [2024-11-10T14:12:08.114Z].[projectsServ.ts].[getUserProjects].[MSG].getProjectByIdFromDB.pre
+info: [2024-11-10T14:12:08.115Z].[projectsDBManager.ts].[getUserProjectsFromDB].Init
+info: [2024-11-10T14:12:08.162Z].[projectsDBManager.ts].[getUserProjectsFromDB].ProjectModel.result=
+info: [2024-11-10T14:12:08.163Z].[projectsDBManager.ts].[getUserProjectsFromDB].ProjectModel.resp= {"result":[],"success":true}
+info: [2024-11-10T14:12:08.163Z].[projectsServ.ts].[getUserProjects].[MSG].Resp=Proyecto/s obtenido de la db
+info: [2024-11-10T14:12:08.164Z].[projectsServ.ts].[getUserProjects].[MSG].getProjectByIdFromDB.post.result= {"result":[],"success":true}
+info: [2024-11-10T14:12:08.164Z].[projects.ts].[GET]/getUserProjects.getUserProjects.post
+info: [2024-11-10T14:12:08.211Z].[collectionsDBManager.ts].[getCollectionsByPlanFromDB].CollectionModel.find.res= {"0":{"collectionCode":"CONGA_VOL_1","collectionName":"Conga Hits Volumen 1","id":"6664b7a6775df7509ed3faf8","plan":"free","sampleList":[{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faef","sampleName":"Bongos","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf0","sampleName":"Kick","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf1","sampleName":"Guitarra Riff","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf2","sampleName":"Bass Rythm","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf3","sampleName":"Shaker","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf4","sampleName":"Bass Sub","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf5","sampleName":"Toms","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf6","sampleName":"Hi Hats","tempo":120}],"tags":["CONGA","SALSA","KICK"],"uploadDate":"Sat Jun 08 2024 16:57:25 GMT-0300 (hora estándar de Argentina)"},"1":{"collectionCode":"TRAP_VOL_1","collectionName":"Trap Volumen 1","id":"66a83fdcc2c5fef411a2ef64","plan":"trial","sampleList":[{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef5d","sampleName":"808","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef5e","sampleName":"ARPEGIO","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef5f","sampleName":"GLASSCUP FX","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef60","sampleName":"KICK","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef61","sampleName":"REVERSE PAD","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef62","sampleName":"VOICE FX","tempo":90}],"tags":["TRAP","808","HIP HOP","PAD"],"templateId":"66a2f47021b7fff34ab17780","templateName":"Trap vol 1","uploadDate":"Mon Jul 29 2024 22:20:28 GMT-0300 (hora estándar de Argentina)"},"2":{"collectionCode":"test","collectionName":"test BPM","id":"66c52092eb611372600a7782","plan":"free","sampleList":[{"collectionCode":"test","duration":170000,"id":"66c52092eb611372600a777f","sampleName":"808","tempo":100},{"collectionCode":"test","duration":170000,"id":"66c52092eb611372600a7780","sampleName":"909","tempo":120}],"tags":["Test","808","909"],"uploadDate":"Tue Aug 20 2024 20:02:42 GMT-0300 (hora estándar de Argentina)"}}
+info: [2024-11-10T14:12:08.214Z].[collectionsServ.ts].[getCollections].result= {"result":[{"collectionCode":"CONGA_VOL_1","collectionName":"Conga Hits Volumen 1","id":"6664b7a6775df7509ed3faf8","plan":"free","sampleList":[{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faef","sampleName":"Bongos","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf0","sampleName":"Kick","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf1","sampleName":"Guitarra Riff","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf2","sampleName":"Bass Rythm","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf3","sampleName":"Shaker","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf4","sampleName":"Bass Sub","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf5","sampleName":"Toms","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf6","sampleName":"Hi Hats","tempo":120}],"tags":["CONGA","SALSA","KICK"],"uploadDate":"Sat Jun 08 2024 16:57:25 GMT-0300 (hora estándar de Argentina)"},{"collectionCode":"TRAP_VOL_1","collectionName":"Trap Volumen 1","id":"66a83fdcc2c5fef411a2ef64","plan":"trial","sampleList":[{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef5d","sampleName":"808","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef5e","sampleName":"ARPEGIO","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef5f","sampleName":"GLASSCUP FX","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef60","sampleName":"KICK","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef61","sampleName":"REVERSE PAD","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef62","sampleName":"VOICE FX","tempo":90}],"tags":["TRAP","808","HIP HOP","PAD"],"templateId":"66a2f47021b7fff34ab17780","templateName":"Trap vol 1","uploadDate":"Mon Jul 29 2024 22:20:28 GMT-0300 (hora estándar de Argentina)"},{"collectionCode":"test","collectionName":"test BPM","id":"66c52092eb611372600a7782","plan":"free","sampleList":[{"collectionCode":"test","duration":170000,"id":"66c52092eb611372600a777f","sampleName":"808","tempo":100},{"collectionCode":"test","duration":170000,"id":"66c52092eb611372600a7780","sampleName":"909","tempo":120}],"tags":["Test","808","909"],"uploadDate":"Tue Aug 20 2024 20:02:42 GMT-0300 (hora estándar de Argentina)"}],"success":true}
+info: [2024-11-10T14:12:08.214Z].[collectionsServ.ts].[getCollections].getCollectionsByPlanFromDB.post
+info: [2024-11-10T14:12:08.217Z].[collections.ts].[GET]/plan=pro.getCollections.post
+info: [2024-11-10T14:12:08.217Z].[collections.ts].[GET]/plan=pro.resCollection= {"result":[{"collectionCode":"CONGA_VOL_1","collectionName":"Conga Hits Volumen 1","id":"6664b7a6775df7509ed3faf8","plan":"free","sampleList":[{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faef","sampleName":"Bongos","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf0","sampleName":"Kick","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf1","sampleName":"Guitarra Riff","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf2","sampleName":"Bass Rythm","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf3","sampleName":"Shaker","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf4","sampleName":"Bass Sub","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf5","sampleName":"Toms","tempo":120},{"collectionCode":"CONGA_VOL_1","duration":354,"id":"6664b7a5775df7509ed3faf6","sampleName":"Hi Hats","tempo":120}],"tags":["CONGA","SALSA","KICK"],"uploadDate":"Sat Jun 08 2024 16:57:25 GMT-0300 (hora estándar de Argentina)"},{"collectionCode":"TRAP_VOL_1","collectionName":"Trap Volumen 1","id":"66a83fdcc2c5fef411a2ef64","plan":"trial","sampleList":[{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef5d","sampleName":"808","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef5e","sampleName":"ARPEGIO","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef5f","sampleName":"GLASSCUP FX","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef60","sampleName":"KICK","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef61","sampleName":"REVERSE PAD","tempo":90},{"collectionCode":"TRAP_VOL_1","duration":170000,"id":"66a83fdcc2c5fef411a2ef62","sampleName":"VOICE FX","tempo":90}],"tags":["TRAP","808","HIP HOP","PAD"],"templateId":"66a2f47021b7fff34ab17780","templateName":"Trap vol 1","uploadDate":"Mon Jul 29 2024 22:20:28 GMT-0300 (hora estándar de Argentina)"},{"collectionCode":"test","collectionName":"test BPM","id":"66c52092eb611372600a7782","plan":"free","sampleList":[{"collectionCode":"test","duration":170000,"id":"66c52092eb611372600a777f","sampleName":"808","tempo":100},{"collectionCode":"test","duration":170000,"id":"66c52092eb611372600a7780","sampleName":"909","tempo":120}],"tags":["Test","808","909"],"uploadDate":"Tue Aug 20 2024 20:02:42 GMT-0300 (hora estándar de Argentina)"}],"success":true}
+info: [2024-11-10T14:12:08.230Z].[index.ts].req['requestId']=03880279-5ace-4a48-aa63-b9b1ccecd5d0, req info= {"0":"Host","1":"localhost:3001","10":"sec-ch-ua-mobile","11":"?0","12":"Accept","13":"image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8","14":"Sec-Fetch-Site","15":"same-site","16":"Sec-Fetch-Mode","17":"no-cors","18":"Sec-Fetch-Dest","19":"image","2":"Connection","20":"Referer","21":"http://localhost:3000/","22":"Accept-Encoding","23":"gzip, deflate, br, zstd","24":"Accept-Language","25":"es-ES,es;q=0.9","26":"If-None-Match","27":"W/\"18fd7-190d7b016dc\"","28":"If-Modified-Since","29":"Sun, 21 Jul 2024 23:46:00 GMT","3":"keep-alive","4":"sec-ch-ua-platform","5":"\"Windows\"","6":"User-Agent","7":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36","8":"sec-ch-ua","9":"\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""}
+info: [2024-11-10T14:12:08.232Z].[collections.ts].[get].[MSG].Init
+info: [2024-11-10T14:12:08.233Z].[collections.ts].[get].[MSG].collectionCode=
+info: [2024-11-10T14:12:08.234Z].[collections.ts].[get].[MSG].audioPath=C:\Users\Frankie\Documents\MyBandAPP\MyBandApp-Back\src/collections/CONGA_VOL_1/avatar.png
+info: [2024-11-10T14:12:08.235Z].[collections.ts].[get].[MSG].sendFile.pre
+info: [2024-11-10T14:12:08.236Z].[collections.ts].[get].[MSG].sendFile.post
+info: [2024-11-10T14:12:08.238Z].[index.ts].req['requestId']=8130b7bb-03f2-45bd-9e6e-5be68d867473, req info= {"0":"Host","1":"localhost:3001","10":"sec-ch-ua-mobile","11":"?0","12":"Accept","13":"image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8","14":"Sec-Fetch-Site","15":"same-site","16":"Sec-Fetch-Mode","17":"no-cors","18":"Sec-Fetch-Dest","19":"image","2":"Connection","20":"Referer","21":"http://localhost:3000/","22":"Accept-Encoding","23":"gzip, deflate, br, zstd","24":"Accept-Language","25":"es-ES,es;q=0.9","26":"If-None-Match","27":"W/\"11a51-190d7aeeed2\"","28":"If-Modified-Since","29":"Sun, 21 Jul 2024 23:44:44 GMT","3":"keep-alive","4":"sec-ch-ua-platform","5":"\"Windows\"","6":"User-Agent","7":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36","8":"sec-ch-ua","9":"\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""}
+info: [2024-11-10T14:12:08.239Z].[collections.ts].[get].[MSG].Init
+info: [2024-11-10T14:12:08.239Z].[collections.ts].[get].[MSG].collectionCode=
+info: [2024-11-10T14:12:08.240Z].[collections.ts].[get].[MSG].audioPath=C:\Users\Frankie\Documents\MyBandAPP\MyBandApp-Back\src/collections/TRAP_VOL_1/avatar.png
+info: [2024-11-10T14:12:08.241Z].[collections.ts].[get].[MSG].sendFile.pre
+info: [2024-11-10T14:12:08.242Z].[collections.ts].[get].[MSG].sendFile.post
+info: [2024-11-10T14:12:08.243Z].[index.ts].req['requestId']=5a4228f6-6891-4c54-bccc-59ef5cdd0cee, req info= {"0":"Host","1":"localhost:3001","10":"sec-ch-ua-mobile","11":"?0","12":"Accept","13":"image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8","14":"Sec-Fetch-Site","15":"same-site","16":"Sec-Fetch-Mode","17":"no-cors","18":"Sec-Fetch-Dest","19":"image","2":"Connection","20":"Referer","21":"http://localhost:3000/","22":"Accept-Encoding","23":"gzip, deflate, br, zstd","24":"Accept-Language","25":"es-ES,es;q=0.9","3":"keep-alive","4":"sec-ch-ua-platform","5":"\"Windows\"","6":"User-Agent","7":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36","8":"sec-ch-ua","9":"\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""}
+info: [2024-11-10T14:12:08.244Z].[collections.ts].[get].[MSG].Init
+info: [2024-11-10T14:12:08.245Z].[collections.ts].[get].[MSG].collectionCode=
+info: [2024-11-10T14:12:08.245Z].[collections.ts].[get].[MSG].audioPath=C:\Users\Frankie\Documents\MyBandAPP\MyBandApp-Back\src/collections/test/avatar.png
+info: [2024-11-10T14:12:08.245Z].[collections.ts].[get].[MSG].sendFile.pre
+info: [2024-11-10T14:12:08.246Z].[collections.ts].[get].[MSG].sendFile.post
+error: [2024-11-10T14:12:08.249Z].[collections.ts].Error al enviar el archivo: ENOENT: no such file or directory, stat 'C:\Users\Frankie\Documents\MyBandAPP\MyBandApp-Back\src\collections\test\avatar.png' {"code":"ENOENT","errno":-4058,"expose":false,"path":"C:\\Users\\Frankie\\Documents\\MyBandAPP\\MyBandApp-Back\\src\\collections\\test\\avatar.png","stack":"Error: ENOENT: no such file or directory, stat 'C:\\Users\\Frankie\\Documents\\MyBandAPP\\MyBandApp-Back\\src\\collections\\test\\avatar.png'","status":404,"statusCode":404,"syscall":"stat"}
+info: [2024-11-10T14:12:08.251Z].[collections.ts].[get].[MSG].sendFile.se devuelve archivo=
+info: [2024-11-10T14:12:08.253Z].[collections.ts].[get].[MSG].sendFile.se devuelve archivo=
+info: [2024-11-10T14:12:08.253Z].[collections.ts].[get].[MSG].sendFile.se devuelve archivo=
+info: [2024-11-10T14:12:16.799Z].[index.ts].req['requestId']=a0aa4aed-e0a2-4ac4-9bcd-36b7077fb7e6, req info= {"0":"content-length","1":"35","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:12:16.800Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com"}
+info: [2024-11-10T14:12:16.800Z].[users.ts].[POST]/sendCodeToMail.sendVerificationCode.pre
+info: [2024-11-10T14:12:16.801Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:12:16.802Z].[mailSenderServ.ts].[sendVerificationCode].saveVerifyCodeDB.pre
+info: [2024-11-10T14:12:16.802Z].[mailSenderServ.ts].[sendVerificationCode].Init
+info: [2024-11-10T14:12:16.803Z].[usersDBManager.ts].[saveVerifyCodeDB].Init
+info: [2024-11-10T14:12:16.803Z].[usersDBManager.ts].[saveVerifyCodeDB].generate code & expirationTime
+info: [2024-11-10T14:12:16.804Z].[usersDBManager.ts].[saveVerifyCodeDB].code=93453630, expirationTime=1731251536803
+info: [2024-11-10T14:12:16.804Z].[usersDBManager.ts].[saveVerifyCodeDB].UserModel.updateOne.pre
+info: [2024-11-10T14:12:16.855Z].[usersDBManager.ts].[saveVerifyCodeDB].UserModel.updateOne.post result= {"acknowledged":true,"matchedCount":1,"modifiedCount":1,"upsertedCount":0,"upsertedId":null}
+info: [2024-11-10T14:12:16.856Z].[mailSenderServ.ts].[sendVerificationCode].msg= {"from":"franco.mastrantonio@davinci.edu.ar","html":"<strong>Tu código de verificación es: 93453630</strong>","subject":"MyBanddApp - Código de verificación","to":"frankiemdj@gmail.com"}
+info: [2024-11-10T14:12:16.855Z].[mailSenderServ.ts].[sendVerificationCode].saveVerifyCodeDB.result=93453630
+info: [2024-11-10T14:12:17.921Z].[mailSenderServ.ts].[sendVerificationCode].Email sent.res.statusCode=202
+info: [2024-11-10T14:12:17.922Z].[mailSenderServ.ts].[sendVerificationCode].result= {"result":"Se envió el correo a frankiemdj@gmail.com","success":true}
+info: [2024-11-10T14:12:17.922Z].[users.ts].[POST]/sendCodeToMail.sendVerificationCode.post.result= {"result":"Se envió el correo a frankiemdj@gmail.com","success":true}
+info: [2024-11-10T14:12:42.155Z].[index.ts].req['requestId']=02a2e500-bb9b-40cf-825f-8c2ed128ec2b, req info= {"0":"content-length","1":"65","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:12:42.157Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com","verificationCode":93453630}
+info: [2024-11-10T14:12:42.158Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:12:42.157Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.pre
+info: [2024-11-10T14:12:42.160Z].[utils.ts].num=93453630, minNumber=8, maxNumber=8 num.length=8
+info: [2024-11-10T14:12:42.161Z].[utils.ts].93453630 isn't num or < 8 or > 8
+info: [2024-11-10T14:13:17.620Z].[index.ts].Server running on port 3001
+info: [2024-11-10T14:13:17.623Z].[index.ts].connectToDatabase.pre
+info: [2024-11-10T14:13:17.623Z].[mongo.js].[connectToDatabase].Init
+info: [2024-11-10T14:13:17.624Z].[mongo.js].[connectToDatabase].preConnect
+info: [2024-11-10T14:13:17.625Z].[mongo.js].[checkConnection].state=disconnect
+info: [2024-11-10T14:13:18.311Z].[mongo.js].[checkConnection].state=connect
+info: [2024-11-10T14:13:18.312Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2024-11-10T14:13:18.313Z].[index.ts].connectToDatabase.post
+info: [2024-11-10T14:13:24.463Z].[index.ts].req['requestId']=3e308dce-0370-4ad7-84b0-c1f8727e8ba5, req info= {"0":"content-length","1":"65","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:13:24.465Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com","verificationCode":93453630}
+info: [2024-11-10T14:13:24.466Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.pre
+info: [2024-11-10T14:13:24.467Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:13:24.467Z].[utils.ts].num=93453630, minNumber=7, maxNumber=8 num.length=8
+info: [2024-11-10T14:13:24.468Z].[utils.ts].93453630 isn't num or < 7 or > 8
+info: [2024-11-10T14:13:54.738Z].[index.ts].Server running on port 3001
+info: [2024-11-10T14:13:54.741Z].[index.ts].connectToDatabase.pre
+info: [2024-11-10T14:13:54.741Z].[mongo.js].[connectToDatabase].Init
+info: [2024-11-10T14:13:54.742Z].[mongo.js].[connectToDatabase].preConnect
+info: [2024-11-10T14:13:54.743Z].[mongo.js].[checkConnection].state=disconnect
+info: [2024-11-10T14:13:55.299Z].[mongo.js].[checkConnection].state=connect
+info: [2024-11-10T14:13:55.299Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2024-11-10T14:13:55.300Z].[index.ts].connectToDatabase.post
+info: [2024-11-10T14:13:57.732Z].[index.ts].req['requestId']=80748520-4331-4d83-ae9d-abf468dee275, req info= {"0":"content-length","1":"65","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:13:57.734Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com","verificationCode":93453630}
+info: [2024-11-10T14:13:57.734Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.pre
+info: [2024-11-10T14:13:57.735Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:13:57.736Z].[utils.ts].num=93453630, minNumber=7, maxNumber=9 num.length=8
+info: [2024-11-10T14:13:57.737Z].[utils.ts].93453630 isn't num or < 7 or > 9
+info: [2024-11-10T14:16:24.444Z].[index.ts].connectToDatabase.pre
+info: [2024-11-10T14:16:24.441Z].[index.ts].Server running on port 3001
+info: [2024-11-10T14:16:24.445Z].[mongo.js].[connectToDatabase].Init
+info: [2024-11-10T14:16:24.446Z].[mongo.js].[connectToDatabase].preConnect
+info: [2024-11-10T14:16:24.447Z].[mongo.js].[checkConnection].state=disconnect
+info: [2024-11-10T14:16:25.199Z].[mongo.js].[checkConnection].state=connect
+info: [2024-11-10T14:16:25.199Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2024-11-10T14:16:25.200Z].[index.ts].connectToDatabase.post
+info: [2024-11-10T14:16:31.615Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com","verificationCode":93453630}
+info: [2024-11-10T14:16:31.613Z].[index.ts].req['requestId']=59c74291-df77-49bf-9611-d2254d6da6a1, req info= {"0":"content-length","1":"65","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:16:31.616Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.pre
+info: [2024-11-10T14:16:31.618Z].[utils.ts].num=93453630, minNumber=9999999, maxNumber=100000000 num.length=8
+info: [2024-11-10T14:16:31.617Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:16:31.619Z].[usersServ.ts].[validateCodeForgotPass].[MSG].Init
+info: [2024-11-10T14:16:31.619Z].[usersServ.ts].[validateCodeForgotPass].[MSG].req data: email=frankiemdj@gmail.com, verifyCode=93453630
+info: [2024-11-10T14:16:31.619Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.pre
+info: [2024-11-10T14:16:31.620Z].[usersDBManager.ts].[validateVerifyCodeDB].Init
+info: [2024-11-10T14:16:31.621Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.updateOne.pre
+info: [2024-11-10T14:16:31.620Z].[usersDBManager.ts].[validateVerifyCodeDB].verifyCode=93453630, email=frankiemdj@gmail.com
+info: [2024-11-10T14:16:31.679Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.findOneAndUpdate.post result= {"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","email":"init","expirationPlanDate":"init","favList":"init","password":"init","plan":"init","registerDate":"init","usrName":"init","verificationCode":"init","verificationExpires":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"email":true,"expirationPlanDate":true,"favList":true,"password":true,"plan":true,"registerDate":true,"usrName":true,"verificationCode":true,"verificationExpires":true}}},"skipId":true},"$isNew":false,"_doc":{"__v":0,"_id":"6730bf3054aa1d3adb06f1d4","email":"frankiemdj@gmail.com","expirationPlanDate":"2025-11-10T14:12:00.538Z","favList":[],"password":"$2b$10$/tiKTPi/N3N9pCH9k5mKSuB8nxaMudYGZ3oTUS8VvXj9dMbsR08YO","plan":"pro","registerDate":"2024-11-10T14:12:00.538Z","usrName":"Frankie M","verificationCode":93453630,"verificationExpires":"2024-11-10T15:12:16.803Z"}}
+info: [2024-11-10T14:16:31.680Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.post.result= {"result":{"email":"frankiemdj@gmail.com","expirationPlanDate":"2025-11-10T14:12:00.538Z","favList":[],"id":"6730bf3054aa1d3adb06f1d4","password":"$2b$10$/tiKTPi/N3N9pCH9k5mKSuB8nxaMudYGZ3oTUS8VvXj9dMbsR08YO","plan":"pro","registerDate":"2024-11-10T14:12:00.538Z","usrName":"Frankie M","verificationCode":93453630,"verificationExpires":"2024-11-10T15:12:16.803Z"},"success":true}
+info: [2024-11-10T14:16:31.682Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.post.result= {"result":"Validación ok","success":true}
+info: [2024-11-10T14:18:25.521Z].[index.ts].req['requestId']=3a59dc8f-b35a-468c-85b0-b04a49cdb272, req info= {"0":"content-length","1":"65","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:18:25.522Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com","verificationCode":93453630}
+info: [2024-11-10T14:18:25.523Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.pre
+info: [2024-11-10T14:18:25.523Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:18:25.524Z].[usersServ.ts].[validateCodeForgotPass].[MSG].Init
+info: [2024-11-10T14:18:25.524Z].[utils.ts].num=93453630, minNumber=9999999, maxNumber=100000000 num.length=8
+info: [2024-11-10T14:18:25.525Z].[usersServ.ts].[validateCodeForgotPass].[MSG].req data: email=frankiemdj@gmail.com, verifyCode=93453630
+info: [2024-11-10T14:18:25.525Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.pre
+info: [2024-11-10T14:18:25.527Z].[usersDBManager.ts].[validateVerifyCodeDB].Init
+info: [2024-11-10T14:18:25.527Z].[usersDBManager.ts].[validateVerifyCodeDB].verifyCode=93453630, email=frankiemdj@gmail.com
+info: [2024-11-10T14:18:25.528Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.updateOne.pre
+info: [2024-11-10T14:18:25.574Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.findOneAndUpdate.post result=
+info: [2024-11-10T14:18:25.575Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.post.result= {"result":"VERIFY_EMAIL_FALSE","success":false}
+info: [2024-11-10T14:18:25.576Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.post.result= {"result":"Código erroneo","success":false}
+info: [2024-11-10T14:19:08.231Z].[index.ts].connectToDatabase.pre
+info: [2024-11-10T14:19:08.229Z].[index.ts].Server running on port 3001
+info: [2024-11-10T14:19:08.232Z].[mongo.js].[connectToDatabase].Init
+info: [2024-11-10T14:19:08.232Z].[mongo.js].[connectToDatabase].preConnect
+info: [2024-11-10T14:19:08.233Z].[mongo.js].[checkConnection].state=disconnect
+info: [2024-11-10T14:19:08.969Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2024-11-10T14:19:08.968Z].[mongo.js].[checkConnection].state=connect
+info: [2024-11-10T14:19:08.969Z].[index.ts].connectToDatabase.post
+info: [2024-11-10T14:19:11.535Z].[index.ts].req['requestId']=c404b0ad-d5a3-41d2-9cab-b554107c7572, req info= {"0":"content-length","1":"65","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:19:11.537Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com","verificationCode":93453630}
+info: [2024-11-10T14:19:11.538Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.pre
+info: [2024-11-10T14:19:11.539Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:19:11.540Z].[utils.ts].num=93453630, minNumber=9999999, maxNumber=100000000 num.length=8
+info: [2024-11-10T14:19:11.540Z].[usersServ.ts].[validateCodeForgotPass].[MSG].Init
+info: [2024-11-10T14:19:11.541Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.pre
+info: [2024-11-10T14:19:11.541Z].[usersServ.ts].[validateCodeForgotPass].[MSG].req data: email=frankiemdj@gmail.com, verifyCode=93453630
+info: [2024-11-10T14:19:11.542Z].[usersDBManager.ts].[validateVerifyCodeDB].Init
+info: [2024-11-10T14:19:11.542Z].[usersDBManager.ts].[validateVerifyCodeDB].verifyCode=93453630, email=frankiemdj@gmail.com
+info: [2024-11-10T14:19:11.543Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.updateOne.pre
+info: [2024-11-10T14:19:11.598Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.findOneAndUpdate.post result=
+info: [2024-11-10T14:19:11.598Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.post.result= {"result":"VERIFY_EMAIL_FALSE","success":false}
+info: [2024-11-10T14:19:11.599Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.post.result= {"result":"Código erroneo","success":false}
+info: [2024-11-10T14:20:40.599Z].[index.ts].Server running on port 3001
+info: [2024-11-10T14:20:40.601Z].[index.ts].connectToDatabase.pre
+info: [2024-11-10T14:20:40.602Z].[mongo.js].[connectToDatabase].Init
+info: [2024-11-10T14:20:40.603Z].[mongo.js].[connectToDatabase].preConnect
+info: [2024-11-10T14:20:40.604Z].[mongo.js].[checkConnection].state=disconnect
+info: [2024-11-10T14:20:41.425Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2024-11-10T14:20:41.425Z].[mongo.js].[checkConnection].state=connect
+info: [2024-11-10T14:20:41.426Z].[index.ts].connectToDatabase.post
+info: [2024-11-10T14:24:35.497Z].[index.ts].Server running on port 3001
+info: [2024-11-10T14:24:35.499Z].[index.ts].connectToDatabase.pre
+info: [2024-11-10T14:24:35.500Z].[mongo.js].[connectToDatabase].Init
+info: [2024-11-10T14:24:35.500Z].[mongo.js].[connectToDatabase].preConnect
+info: [2024-11-10T14:24:35.501Z].[mongo.js].[checkConnection].state=disconnect
+info: [2024-11-10T14:24:36.101Z].[mongo.js].[checkConnection].state=connect
+info: [2024-11-10T14:24:36.102Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2024-11-10T14:24:36.102Z].[index.ts].connectToDatabase.post
+info: [2024-11-10T14:24:42.008Z].[index.ts].req['requestId']=0b61d5d4-c9b1-49ea-9124-2f8d27f750b1, req info= {"0":"content-length","1":"65","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:24:42.009Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com","verificationCode":93453630}
+info: [2024-11-10T14:24:42.010Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.pre
+info: [2024-11-10T14:24:42.011Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:24:42.012Z].[utils.ts].num=93453630, minNumber=9999999, maxNumber=100000000 num.length=8
+info: [2024-11-10T14:24:42.013Z].[usersServ.ts].[validateCodeForgotPass].[MSG].Init
+info: [2024-11-10T14:24:42.013Z].[usersServ.ts].[validateCodeForgotPass].[MSG].req data: email=frankiemdj@gmail.com, verifyCode=93453630
+info: [2024-11-10T14:24:42.014Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.pre
+info: [2024-11-10T14:24:42.015Z].[usersDBManager.ts].[validateVerifyCodeDB].Init
+info: [2024-11-10T14:24:42.015Z].[usersDBManager.ts].[validateVerifyCodeDB].verifyCode=93453630, email=frankiemdj@gmail.com
+info: [2024-11-10T14:24:42.015Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.updateOne.pre
+info: [2024-11-10T14:24:42.074Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.findOneAndUpdate.post result=
+info: [2024-11-10T14:24:42.075Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.post.result= {"result":"VERIFY_EMAIL_FALSE","success":false}
+info: [2024-11-10T14:24:42.075Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.post.result= {"result":"CODE_ERROR","success":false}
+info: [2024-11-10T14:24:49.872Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com"}
+info: [2024-11-10T14:24:49.870Z].[index.ts].req['requestId']=c20185ae-75ac-4657-9792-7d3e2bd7047e, req info= {"0":"content-length","1":"35","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:24:49.872Z].[users.ts].[POST]/sendCodeToMail.sendVerificationCode.pre
+info: [2024-11-10T14:24:49.873Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:24:49.873Z].[mailSenderServ.ts].[sendVerificationCode].Init
+info: [2024-11-10T14:24:49.874Z].[mailSenderServ.ts].[sendVerificationCode].saveVerifyCodeDB.pre
+info: [2024-11-10T14:24:49.874Z].[usersDBManager.ts].[saveVerifyCodeDB].Init
+info: [2024-11-10T14:24:49.875Z].[usersDBManager.ts].[saveVerifyCodeDB].generate code & expirationTime
+info: [2024-11-10T14:24:49.875Z].[usersDBManager.ts].[saveVerifyCodeDB].code=69515136, expirationTime=1731252289875
+info: [2024-11-10T14:24:49.876Z].[usersDBManager.ts].[saveVerifyCodeDB].UserModel.updateOne.pre
+info: [2024-11-10T14:24:49.929Z].[usersDBManager.ts].[saveVerifyCodeDB].UserModel.updateOne.post result= {"acknowledged":true,"matchedCount":1,"modifiedCount":1,"upsertedCount":0,"upsertedId":null}
+info: [2024-11-10T14:24:49.930Z].[mailSenderServ.ts].[sendVerificationCode].saveVerifyCodeDB.result=69515136
+info: [2024-11-10T14:24:49.930Z].[mailSenderServ.ts].[sendVerificationCode].msg= {"from":"franco.mastrantonio@davinci.edu.ar","html":"<strong>Tu código de verificación es: 69515136</strong>","subject":"MyBanddApp - Código de verificación","to":"frankiemdj@gmail.com"}
+info: [2024-11-10T14:24:50.894Z].[mailSenderServ.ts].[sendVerificationCode].result= {"result":"Se envió el correo a frankiemdj@gmail.com","success":true}
+info: [2024-11-10T14:24:50.893Z].[mailSenderServ.ts].[sendVerificationCode].Email sent.res.statusCode=202
+info: [2024-11-10T14:24:50.895Z].[users.ts].[POST]/sendCodeToMail.sendVerificationCode.post.result= {"result":"Se envió el correo a frankiemdj@gmail.com","success":true}
+info: [2024-11-10T14:24:54.231Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com","verificationCode":93453630}
+info: [2024-11-10T14:24:54.230Z].[index.ts].req['requestId']=d14c5955-466f-46c6-9602-c117bacc1000, req info= {"0":"content-length","1":"65","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:24:54.232Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.pre
+info: [2024-11-10T14:24:54.233Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:24:54.234Z].[usersServ.ts].[validateCodeForgotPass].[MSG].req data: email=frankiemdj@gmail.com, verifyCode=93453630
+info: [2024-11-10T14:24:54.233Z].[utils.ts].num=93453630, minNumber=9999999, maxNumber=100000000 num.length=8
+info: [2024-11-10T14:24:54.234Z].[usersServ.ts].[validateCodeForgotPass].[MSG].Init
+info: [2024-11-10T14:24:54.235Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.pre
+info: [2024-11-10T14:24:54.235Z].[usersDBManager.ts].[validateVerifyCodeDB].Init
+info: [2024-11-10T14:24:54.236Z].[usersDBManager.ts].[validateVerifyCodeDB].verifyCode=93453630, email=frankiemdj@gmail.com
+info: [2024-11-10T14:24:54.237Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.updateOne.pre
+info: [2024-11-10T14:24:54.283Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.findOneAndUpdate.post result=
+info: [2024-11-10T14:24:54.284Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.post.result= {"result":"VERIFY_EMAIL_FALSE","success":false}
+info: [2024-11-10T14:24:54.284Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.post.result= {"result":"CODE_ERROR","success":false}
+info: [2024-11-10T14:28:33.588Z].[index.ts].req['requestId']=e6a09659-a44a-4c66-883c-a9028243e9b1, req info= {"0":"content-length","1":"65","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"accept-encoding","3":"gzip, deflate, br","4":"Accept","5":"*/*","6":"User-Agent","7":"Thunder Client (https://www.thunderclient.com)","8":"Content-Type","9":"application/json"}
+info: [2024-11-10T14:28:33.589Z].[users.ts].[POST]/sendCodeToMail.REQ= {"email":"frankiemdj@gmail.com","verificationCode":69515136}
+info: [2024-11-10T14:28:33.590Z].[utils.ts].[parseStringFromRequest].str=frankiemdj@gmail.com, minChars=5, maxChars=150, str.length=20
+info: [2024-11-10T14:28:33.589Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.pre
+info: [2024-11-10T14:28:33.591Z].[utils.ts].num=69515136, minNumber=9999999, maxNumber=100000000 num.length=8
+info: [2024-11-10T14:28:33.591Z].[usersServ.ts].[validateCodeForgotPass].[MSG].Init
+info: [2024-11-10T14:28:33.591Z].[usersServ.ts].[validateCodeForgotPass].[MSG].req data: email=frankiemdj@gmail.com, verifyCode=69515136
+info: [2024-11-10T14:28:33.592Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.pre
+info: [2024-11-10T14:28:33.592Z].[usersDBManager.ts].[validateVerifyCodeDB].Init
+info: [2024-11-10T14:28:33.593Z].[usersDBManager.ts].[validateVerifyCodeDB].verifyCode=69515136, email=frankiemdj@gmail.com
+info: [2024-11-10T14:28:33.593Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.updateOne.pre
+info: [2024-11-10T14:28:33.646Z].[usersDBManager.ts].[validateVerifyCodeDB].UserModel.findOneAndUpdate.post result= {"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","email":"init","expirationPlanDate":"init","favList":"init","password":"init","plan":"init","registerDate":"init","usrName":"init","verificationCode":"init","verificationExpires":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"email":true,"expirationPlanDate":true,"favList":true,"password":true,"plan":true,"registerDate":true,"usrName":true,"verificationCode":true,"verificationExpires":true}}},"skipId":true},"$isNew":false,"_doc":{"__v":0,"_id":"6730bf3054aa1d3adb06f1d4","email":"frankiemdj@gmail.com","expirationPlanDate":"2025-11-10T14:12:00.538Z","favList":[],"password":"$2b$10$/tiKTPi/N3N9pCH9k5mKSuB8nxaMudYGZ3oTUS8VvXj9dMbsR08YO","plan":"pro","registerDate":"2024-11-10T14:12:00.538Z","usrName":"Frankie M","verificationCode":69515136,"verificationExpires":"2024-11-10T10:24:49.875Z"}}
+info: [2024-11-10T14:28:33.647Z].[usersServ.ts].[validateCodeForgotPass].[MSG].validateVerifyCodeDB.post.result= {"result":"VERIFY_CODE_EXPIRATED","success":false}
+info: [2024-11-10T14:28:33.648Z].[users.ts].[POST]/sendCodeToMail.validateCodeForgotPass.post.result= {"result":"VERIFY_CODE_EXPIRATED","success":false}

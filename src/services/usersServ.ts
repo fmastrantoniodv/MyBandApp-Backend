@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 import { UserEntry , User, PlanType } from '../types'
 import { calculateExpirationDate } from '../utils'
 import { ServResponse } from '../interfaces';
-import { changeUserPlanDB, validateLoginDB, changeUserPassDB, getFavouritesListDB, addUserToDB, updateUserFavsDB } from '../db/usersDBManager'
+import { changeUserPlanDB, validateLoginDB, changeUserPassDB, getFavouritesListDB, addUserToDB, updateUserFavsDB, validateVerifyCodeDB } from '../db/usersDBManager'
 import { getUserProjectsFromDB } from '../db/projectsDBManager'
 import { dbgConsoleLog, getStackFileName } from '../utils';
 const FILENAME = getStackFileName()
@@ -155,6 +155,24 @@ export const updateFav = async (userId: string, sampleId: string, action: string
         }
     }else{
         resp.result = resultUpdate.result
+    }
+    return resp
+}
+
+export const validateCodeForgotPass = async (email: string, verifyCode: number): Promise<ServResponse> => {
+    const resp: ServResponse = { success: false }
+    dbgConsoleLog(FILENAME, `[validateCodeForgotPass].[MSG].Init`)
+    dbgConsoleLog(FILENAME, `[validateCodeForgotPass].[MSG].req data: email=${email}, verifyCode=${verifyCode}`)
+    dbgConsoleLog(FILENAME, `[validateCodeForgotPass].[MSG].validateVerifyCodeDB.pre`)
+    const resultVerify = await validateVerifyCodeDB(email, verifyCode)
+    dbgConsoleLog(FILENAME, `[validateCodeForgotPass].[MSG].validateVerifyCodeDB.post.result=`, resultVerify)
+    if(resultVerify.success){
+        resp.success = true
+        resp.result = 'Validación ok'
+    }else if(resultVerify.result === 'VERIFY_CODE_EXPIRATED'){
+        resp.result = "VERIFY_CODE_EXPIRATED"
+    }else{
+        resp.result = "CODE_ERROR"
     }
     return resp
 }
