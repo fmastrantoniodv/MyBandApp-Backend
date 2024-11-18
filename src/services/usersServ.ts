@@ -125,6 +125,22 @@ export const changePass = async (email: string, password: string, newPass: strin
     return resp
 }
 
+export const updatePass = async (email: string, newPass: string): Promise<ServResponse>=>{
+    const resp: ServResponse = { success: false }
+    dbgConsoleLog(FILENAME, `[updatePass].[MSG].Init`)
+    dbgConsoleLog(FILENAME, `[updatePass].[MSG].req data: email=${email}, newPass=${newPass}`)
+    const hashedNewPass = await encryptPassword(newPass)
+    dbgConsoleLog(FILENAME, `[updatePass].[MSG].hashedNewPass=`,hashedNewPass)
+    const resultUpdate = await changeUserPassDB(email, hashedNewPass)
+    dbgConsoleLog(FILENAME, `[updatePass].[MSG].changeUserPassDB.post.result=`, resultUpdate)
+    if(resultUpdate.success){
+        resp.success = true
+    }
+    resp.result = resultUpdate.result
+    return resp
+}
+
+
 export const getUserFavList = async (userId: string): Promise<ServResponse>=> {
     const resp: ServResponse = { success: false }
     dbgConsoleLog(FILENAME, `[getUserFavList].[MSG].Init`)

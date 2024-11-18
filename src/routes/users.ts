@@ -160,6 +160,28 @@ router.post('/validateCode', async (req, res) => {
     }
 })
 
+router.post('/updatePass', async (req, res) => {
+    dbgConsoleLog(FILENAME, `[POST]/updatePass.REQ=`, req.body)
+    try{
+        const { email, newPass } = req.body
+        dbgConsoleLog(FILENAME, `[POST]/updatePass.updatePass.pre`)
+        const userDataRes = await usersServ.updatePass(
+            parseStringFromRequest(email, 5, 150), 
+            parseStringFromRequest(newPass, 8, 150)
+        )
+        dbgConsoleLog(FILENAME, `[POST]/updatePass.updatePass.post.result=`, userDataRes)
+        if(!userDataRes.success){
+            res.status(400)
+            var message = 'Hubo un error al intentar actualizar la password del usuario en la db' //Default
+            setErrorResponse(res, userDataRes.result , message)
+        }else{
+            res.status(200).send("Se actualizó la password con exito")
+        }
+    }catch(e: any){
+        catchErrorResponse(res, e)
+    }
+})
+
 router.get('/getUserFavsList/:id', async (req, res) => {
     dbgConsoleLog(FILENAME, `[GET]/getUserFavsList.REQ=`, req.params)
     try{

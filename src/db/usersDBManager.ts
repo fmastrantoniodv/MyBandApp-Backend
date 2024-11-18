@@ -8,7 +8,9 @@ export const changeUserPassDB = async (email: string, newPass: string): Promise<
     const resp: DBResponse = { success: false }
     dbgConsoleLog(FILENAME, `[changeUserPassDB].Init`)
     dbgConsoleLog(FILENAME, `[changeUserPassDB].email=${email}, newPass=${newPass}`)
-    return await UserModel.findOneAndUpdate({ email }, {password: newPass}, { new: true }).then((result: any)=>{
+    return await UserModel.findOneAndUpdate({ email }, 
+        { password: newPass, $unset: { verificationCode: "", verificationExpires: "" } },
+        { new: true }).then((result: any)=>{
         dbgConsoleLog(FILENAME, `[changeUserPassDB].UserModel.findOneAndUpdate.userUpdated=`,result)
         if(result === null){
             resp.result = 'INVALID_MAIL'
@@ -183,7 +185,7 @@ export const validateVerifyCodeDB = async (email: string, verifyCode: number): P
     dbgConsoleLog(FILENAME, `[validateVerifyCodeDB].UserModel.updateOne.pre`)
     return await UserModel.findOneAndUpdate(
         { email: email, verificationCode: verifyCode },
-        { $unset: { verificationCode: "", verificationExpires: "" } },
+        //{ $unset: { verificationCode: "", verificationExpires: "" } },
         { new: false })
         .then((result: any)=>{
         dbgConsoleLog(FILENAME, `[validateVerifyCodeDB].UserModel.findOneAndUpdate.post result=`, result)
