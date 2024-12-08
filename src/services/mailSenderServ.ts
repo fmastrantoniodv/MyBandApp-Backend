@@ -6,8 +6,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const sgMail = require('@sendgrid/mail')
-console.log(`process.env=`,process.env)
-console.log(`sendgrid_api_key=${process.env.SENDGRID_API_KEY}`)
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 export const sendVerificationCode = async (email: string): Promise<ServResponse> =>{

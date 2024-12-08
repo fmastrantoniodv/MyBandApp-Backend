@@ -122,6 +122,7 @@ export const resHeaderConfig = (res: any) => {
 }
 
 export const dbgConsoleLog = (location: string, message: string, obj?: Object) => {
+    process.env.DB_USER
     if(obj === undefined){
         logWriter('info', location, message)
     }else{

@@ -15,6 +15,10 @@ const FILENAME = getStackFileName()
 
 const app = express()
 app.use(express.json())
+const defaultRouter = express.Router()
+defaultRouter.get('/', (_req, res)=>{
+    res.status(200).json({ "MyBandApp-version": "V1"})
+})
 
 // Middleware para asignar un identificador único a cada request
 app.use((req: any, res: Response, next: NextFunction) => {
@@ -24,11 +28,14 @@ app.use((req: any, res: Response, next: NextFunction) => {
     dbgConsoleLog(FILENAME, `req['requestId']=${req['requestId']}, req info=`, res.req.rawHeaders)
     next();
   });
-  
+
+app.use('/', defaultRouter)  
 app.use('/api/project', projectsRouter)
 app.use('/api/collections', collectionsRouter)
 app.use('/api/users', users)
 app.use('/api/samples', samples)
+
+
 
 app.listen(portEnv, async () =>{
     dbgConsoleLog(FILENAME, `Server running on port ${portEnv}`)
@@ -51,7 +58,7 @@ process.on('SIGTERM', () => {
     process.exit(0);
 });
 
-// Manejador para errores no capturados
+// Error default
 process.on('uncaughtException', (err) => {
     dbgConsoleLog(FILENAME, 'Uncaught Exception:', err);
     closeDatabaseConnection();

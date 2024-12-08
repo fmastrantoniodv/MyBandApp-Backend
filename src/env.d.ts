@@ -7,6 +7,7 @@ declare namespace NodeJS {
       DB_APP_NAME: string;
       ALLOWED_DOMAINS: string;
       ACTIVE_PLAN_LIST: string;
+      SENDGRID_API_KEY: string;
     }
   }
   
