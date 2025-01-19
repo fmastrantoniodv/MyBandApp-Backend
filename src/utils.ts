@@ -167,7 +167,20 @@ export const getScopePlan = (plan: PlanType) => {
     // Retornar todos los elementos con un índice menor al índice de referencia
     return planList.slice(0, indexPlan+1);
   }
-  
+
+export const getPlanListParam = () => {
+    try {
+        const planList: Array<string> = (process.env.PLAN_LIST || '').split('|')
+        var arrayPlanList: Array<Object> = new Array();
+        planList.forEach((value: string) => {
+            arrayPlanList.push(JSON.parse(value))
+        })
+        return arrayPlanList
+    } catch (error) {
+        return 'ERROR'
+    }    
+}
+
 export const generateVerificationCode = () =>{
     return Math.floor(10000000 + Math.random() * 90000000); // Genera un número entre 10000000 y 99999999
   }

@@ -1,0 +1,329 @@
+info: [2025-01-19T21:26:20.086Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:26:20.083Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:26:20.087Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:26:20.088Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:26:20.089Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:26:20.744Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:26:20.745Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:26:20.745Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:29:17.162Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:29:17.165Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:29:17.166Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:29:17.166Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:29:17.167Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:29:18.092Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:29:18.093Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:29:18.094Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:29:19.960Z].[index.ts].req['requestId']=2b24deb4-0e96-4603-8c12-ac218ffb4190, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"74cebdeeb83e78b35cdc43201a3b93fd-16f2245995573a8a","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=74cebdeeb83e78b35cdc43201a3b93fd"}
+info: [2025-01-19T21:29:19.961Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:29:19.962Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:29:53.037Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:29:53.040Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:29:53.041Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:29:53.042Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:29:53.042Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:29:53.628Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:29:53.629Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:29:53.629Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:29:54.433Z].[index.ts].req['requestId']=a2e167ae-4656-4cae-8ffb-1cb4d8b9a9f8, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"df8c8de74593f57d8dad222fce5f680c-089a56f72483b63d","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=df8c8de74593f57d8dad222fce5f680c"}
+info: [2025-01-19T21:29:54.435Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:29:54.436Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:29:54.436Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:31:52.295Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:31:52.298Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:31:52.299Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:31:52.299Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:31:52.300Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:31:52.961Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:31:52.962Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:31:52.963Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:31:55.964Z].[index.ts].req['requestId']=29d4ef5d-895e-4fc7-a094-5ff73c1932c7, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"31eb079f6ac4efb7dff4a309fd78e690-7eae5a028084f69a","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=31eb079f6ac4efb7dff4a309fd78e690"}
+info: [2025-01-19T21:31:55.966Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:31:55.967Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:31:55.967Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:32:19.461Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:32:19.464Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:32:19.465Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:32:19.465Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:32:19.466Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:32:20.026Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:32:20.027Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:32:20.028Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:32:22.664Z].[index.ts].req['requestId']=49a6977c-c456-449d-98c0-1cb09fea15fa, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"035bd575d938cf771edc57895f003131-d864dac161df89f4","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=035bd575d938cf771edc57895f003131"}
+info: [2025-01-19T21:32:22.666Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:32:22.667Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:32:22.667Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:32:48.196Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:32:48.199Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:32:48.200Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:32:48.200Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:32:48.201Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:32:48.741Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:32:48.742Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:32:48.742Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:32:55.372Z].[index.ts].req['requestId']=d24deaad-55cf-4505-aba6-2fb6a5d742ac, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"0fa92180726acaca6b71982d0346f834-d749dfb118c82422","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=0fa92180726acaca6b71982d0346f834"}
+info: [2025-01-19T21:32:55.374Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:32:55.375Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:32:55.375Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:33:36.622Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:33:36.625Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:33:36.625Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:33:36.626Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:33:36.627Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:33:37.313Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:33:37.314Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:33:37.315Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:33:40.038Z].[index.ts].req['requestId']=85707f7e-2c81-4e6d-9872-f97bba3f87be, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"11db769e76bf9418bdf33b6eff3cb09c-35c92aa76b45ee56","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=11db769e76bf9418bdf33b6eff3cb09c"}
+info: [2025-01-19T21:33:40.040Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:33:40.041Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:33:40.041Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:34:42.967Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:34:42.970Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:34:42.970Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:34:42.971Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:34:42.972Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:34:43.650Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:34:43.651Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:34:43.652Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:34:46.931Z].[index.ts].req['requestId']=3bc2d417-5b61-49b2-b510-13783bfa50aa, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"29e50d134de08212e54e4f024133f7d3-cd25d6386d5b2786","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=29e50d134de08212e54e4f024133f7d3"}
+info: [2025-01-19T21:34:46.933Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:34:46.933Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:34:46.934Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:38:00.686Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:38:00.689Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:38:00.689Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:38:00.690Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:38:00.691Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:38:01.347Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:38:01.348Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:38:01.348Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:41:12.202Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:41:12.209Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:41:12.209Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:41:12.210Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:41:12.211Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:41:13.004Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:41:13.005Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:41:13.006Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:41:17.463Z].[index.ts].req['requestId']=e76b9397-2e38-45c8-8415-b738804ca87f, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"7f1a79e9ffb8beb4e1edb2c2b32c4d5a-5146c740daa68110","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=7f1a79e9ffb8beb4e1edb2c2b32c4d5a"}
+info: [2025-01-19T21:41:17.464Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:41:17.465Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:41:17.466Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:41:33.398Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:41:33.401Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:41:33.401Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:41:33.402Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:41:33.403Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:41:33.988Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:41:33.989Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:41:33.989Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:41:36.617Z].[index.ts].req['requestId']=2ea3adc0-9a99-4859-a4cb-ab4609e62d7c, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"78a562a8adb3023b15283d800669bb7d-e40b1772c8952cf8","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=78a562a8adb3023b15283d800669bb7d"}
+info: [2025-01-19T21:41:36.619Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:41:36.620Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:41:36.620Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:43:37.564Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:43:37.567Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:43:37.568Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:43:37.568Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:43:37.569Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:43:38.358Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:43:38.359Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:43:38.360Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:43:40.038Z].[index.ts].req['requestId']=02758a22-3656-4430-ac71-10ca3e79a26a, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"4fd540d8f6e9474e341ae91a68c04954-3dd769e71e708e22","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=4fd540d8f6e9474e341ae91a68c04954"}
+info: [2025-01-19T21:43:40.040Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:43:40.041Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:43:40.042Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:44:07.030Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:44:07.033Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:44:07.034Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:44:07.035Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:44:07.036Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:44:07.649Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:44:07.650Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:44:07.650Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:44:11.921Z].[index.ts].req['requestId']=b033d282-1715-4fd8-b3f4-74916303a9aa, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"2f1ab89da3899ceaa7fe2856e8a773d9-98027b1ff9a82eba","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=2f1ab89da3899ceaa7fe2856e8a773d9"}
+info: [2025-01-19T21:44:11.924Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:44:11.923Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:44:11.924Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:46:42.237Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:46:42.240Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:46:42.240Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:46:42.241Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:46:42.242Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:46:43.044Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:46:43.043Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:46:43.045Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:46:45.189Z].[index.ts].req['requestId']=e58e8e6e-c622-44dd-8af7-d3cf2598c35b, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"fbfda289221ce84e8f040eada91ab008-41b6cf21fef8f260","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=fbfda289221ce84e8f040eada91ab008"}
+info: [2025-01-19T21:46:45.190Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:46:45.191Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:46:45.192Z].[utils.ts].[getScopePlan].plan input param=free, planList= {"0":"free","1":"trial","2":"pro","3":"admin"}
+info: [2025-01-19T21:46:45.192Z].[appConfigServ.ts].[getActivePlanList].[MSG].planScope= {"0":"free"}
+info: [2025-01-19T21:46:45.193Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:51:34.930Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:51:34.933Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:51:34.934Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:51:34.934Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:51:34.935Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:51:35.598Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:51:35.599Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:51:35.599Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:52:40.511Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:52:40.514Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:52:40.515Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:52:40.516Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:52:40.516Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:52:41.160Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:52:41.161Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:52:41.161Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:52:44.363Z].[index.ts].req['requestId']=657446b6-ee80-4b78-8b1c-8f9de7456059, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"23f87928c959a6cea0ec0494bd7b37a9-3a2751dc8de9ed5b","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=23f87928c959a6cea0ec0494bd7b37a9"}
+info: [2025-01-19T21:52:44.365Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:52:44.366Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:52:44.366Z].[utils.ts].[getScopePlan].plan input param=free, planList= {"0":"free","1":"trial","2":"pro","3":"admin"}
+info: [2025-01-19T21:52:44.367Z].[appConfigServ.ts].[getActivePlanList].[MSG].planScope= {"0":"free"}
+info: [2025-01-19T21:52:44.368Z].[utils.ts].[getPlanListParam].planList= {"0":"hola","1":"chau"}
+info: [2025-01-19T21:52:44.368Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:52:44.368Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonObject:
+info: [2025-01-19T21:55:29.693Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:55:29.696Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:55:29.697Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:55:29.698Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:55:29.698Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:55:30.369Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:55:30.370Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:55:30.371Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:55:33.990Z].[index.ts].req['requestId']=a065cd28-cc42-4b97-8e58-487e7bbc0efa, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"d20399837079f6e7ce3ef8d8747c4194-c24b97dbd1baec7a","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=d20399837079f6e7ce3ef8d8747c4194"}
+info: [2025-01-19T21:55:33.991Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:55:33.992Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:55:33.993Z].[utils.ts].[getScopePlan].plan input param=free, planList= {"0":"free","1":"trial","2":"pro","3":"admin"}
+info: [2025-01-19T21:55:33.993Z].[appConfigServ.ts].[getActivePlanList].[MSG].planScope= {"0":"free"}
+info: [2025-01-19T21:55:33.994Z].[utils.ts].[getPlanListParam].planList= {"0":"{ \"order\": 0","1":" \"label\": \"Free\"","10":" \"value\": \"pro\"","11":" \"price\": 10000.00","12":" \"description\": \"Mensual\" }","2":" \"value\": \"free\"","3":" \"price\": 0.00","4":" \"description\": null }|{ \"order\": 1","5":" \"label\": \"Trial\"","6":" \"value\": \"trial\"","7":" \"price\": 0.00","8":" \"description\": \"Por 1 mes\" }|{ \"order\": 2","9":" \"label\": \"Pro\" "}
+info: [2025-01-19T21:55:33.995Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:55:33.995Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonObject:
+info: [2025-01-19T21:56:15.470Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:56:15.473Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:56:15.474Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:56:15.475Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:56:15.475Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:56:16.033Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:56:16.034Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:56:16.034Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:56:17.298Z].[index.ts].req['requestId']=7473917e-c5ae-46f7-b0e2-712fa67ab660, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"72805ea9866cb7523b09f39f11e31b59-7b932e025d9cbd58","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=72805ea9866cb7523b09f39f11e31b59"}
+info: [2025-01-19T21:56:17.300Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:56:17.301Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:56:17.301Z].[utils.ts].[getScopePlan].plan input param=free, planList= {"0":"free","1":"trial","2":"pro","3":"admin"}
+info: [2025-01-19T21:56:17.302Z].[appConfigServ.ts].[getActivePlanList].[MSG].planScope= {"0":"free"}
+info: [2025-01-19T21:56:17.303Z].[utils.ts].[getPlanListParam].planList= {"0":"{ \"order\": 0, \"label\": \"Free\", \"value\": \"free\", \"price\": 0.00, \"description\": null }","1":"{ \"order\": 1, \"label\": \"Trial\", \"value\": \"trial\", \"price\": 0.00, \"description\": \"Por 1 mes\" }","2":"{ \"order\": 2, \"label\": \"Pro\" , \"value\": \"pro\", \"price\": 10000.00, \"description\": \"Mensual\" }"}
+info: [2025-01-19T21:56:17.303Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:56:17.303Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonObject:
+info: [2025-01-19T21:57:22.970Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:57:22.973Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:57:22.974Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:57:22.974Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:57:22.975Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:57:23.580Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:57:23.581Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:57:23.582Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:57:24.241Z].[index.ts].req['requestId']=bf301156-450c-4c06-ad01-7bf2bfa74642, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"46271197e1397e128b1a5258a4bfd19d-23fa01dbae0de91d","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=46271197e1397e128b1a5258a4bfd19d"}
+info: [2025-01-19T21:57:24.243Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:57:24.243Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:57:24.244Z].[utils.ts].[getScopePlan].plan input param=free, planList= {"0":"free","1":"trial","2":"pro","3":"admin"}
+info: [2025-01-19T21:57:24.245Z].[appConfigServ.ts].[getActivePlanList].[MSG].planScope= {"0":"free"}
+info: [2025-01-19T21:57:24.245Z].[utils.ts].[getPlanListParam].planList= {"0":"{ \"order\": 0, \"label\": \"Free\", \"value\": \"free\", \"price\": 0.00, \"description\": null }","1":"{ \"order\": 1, \"label\": \"Trial\", \"value\": \"trial\", \"price\": 0.00, \"description\": \"Por 1 mes\" }","2":"{ \"order\": 2, \"label\": \"Pro\" , \"value\": \"pro\", \"price\": 10000.00, \"description\": \"Mensual\" }"}
+info: [2025-01-19T21:57:24.246Z].[utils.ts].[getPlanListParam].planList.value=
+info: [2025-01-19T21:57:24.247Z].[utils.ts].[getPlanListParam].planList.value=
+info: [2025-01-19T21:57:24.247Z].[utils.ts].[getPlanListParam].planList.value=
+info: [2025-01-19T21:57:24.248Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:57:24.248Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonObject:
+info: [2025-01-19T21:57:50.929Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:57:50.933Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:57:50.933Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:57:50.934Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:57:50.935Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:57:51.491Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:57:51.493Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:57:51.493Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:57:53.752Z].[index.ts].req['requestId']=219c3070-4fed-4fb5-8c80-5f0f6b25b631, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"e1ccf447d01b856edf3999ddaa36674a-44e26af686b83894","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=e1ccf447d01b856edf3999ddaa36674a"}
+info: [2025-01-19T21:57:53.754Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:57:53.755Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:57:53.756Z].[utils.ts].[getScopePlan].plan input param=free, planList= {"0":"free","1":"trial","2":"pro","3":"admin"}
+info: [2025-01-19T21:57:53.757Z].[utils.ts].[getPlanListParam].planList= {"0":"{ \"order\": 0, \"label\": \"Free\", \"value\": \"free\", \"price\": 0.00, \"description\": null }","1":"{ \"order\": 1, \"label\": \"Trial\", \"value\": \"trial\", \"price\": 0.00, \"description\": \"Por 1 mes\" }","2":"{ \"order\": 2, \"label\": \"Pro\" , \"value\": \"pro\", \"price\": 10000.00, \"description\": \"Mensual\" }"}
+info: [2025-01-19T21:57:53.756Z].[appConfigServ.ts].[getActivePlanList].[MSG].planScope= {"0":"free"}
+info: [2025-01-19T21:57:53.758Z].[utils.ts].[getPlanListParam].planList.value=
+info: [2025-01-19T21:57:53.759Z].[utils.ts].[getPlanListParam].planList.value=
+info: [2025-01-19T21:57:53.759Z].[utils.ts].[getPlanListParam].planList.value=
+info: [2025-01-19T21:57:53.760Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:57:53.760Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonObject:
+info: [2025-01-19T21:58:22.980Z].[index.ts].Server running on port 3001
+info: [2025-01-19T21:58:22.983Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T21:58:22.984Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T21:58:22.984Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T21:58:22.985Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T21:58:23.611Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T21:58:23.612Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T21:58:23.612Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T21:58:24.553Z].[index.ts].req['requestId']=2542aedd-af92-46b8-9f05-fa7fd672232c, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"4391626669e742b29a4dfd60f448240f-0394ff1e732625c1","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=4391626669e742b29a4dfd60f448240f"}
+info: [2025-01-19T21:58:24.555Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T21:58:24.555Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T21:58:24.556Z].[utils.ts].[getScopePlan].plan input param=free, planList= {"0":"free","1":"trial","2":"pro","3":"admin"}
+info: [2025-01-19T21:58:24.556Z].[appConfigServ.ts].[getActivePlanList].[MSG].planScope= {"0":"free"}
+info: [2025-01-19T21:58:24.557Z].[utils.ts].[getPlanListParam].planList= {"0":"{ \"order\": 0, \"label\": \"Free\", \"value\": \"free\", \"price\": 0.00, \"description\": null }","1":"{ \"order\": 1, \"label\": \"Trial\", \"value\": \"trial\", \"price\": 0.00, \"description\": \"Por 1 mes\" }","2":"{ \"order\": 2, \"label\": \"Pro\" , \"value\": \"pro\", \"price\": 10000.00, \"description\": \"Mensual\" }"}
+info: [2025-01-19T21:58:24.558Z].[utils.ts].[getPlanListParam].planList.value=
+info: [2025-01-19T21:58:24.559Z].[utils.ts].[getPlanListParam].planList.value=
+info: [2025-01-19T21:58:24.560Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T21:58:24.560Z].[utils.ts].[getPlanListParam].planList.value=
+info: [2025-01-19T21:58:24.560Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonObject:
+info: [2025-01-19T22:00:02.529Z].[index.ts].Server running on port 3001
+info: [2025-01-19T22:00:02.532Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T22:00:02.533Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T22:00:02.534Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T22:00:02.534Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T22:00:03.166Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T22:00:03.167Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T22:00:03.167Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T22:00:04.444Z].[index.ts].req['requestId']=9f39cb61-85bd-4a34-9c7f-06e089faab6e, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"c4fe67e9a9415601c7b12754e341051b-5d47d7096d5d65a9","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=c4fe67e9a9415601c7b12754e341051b"}
+info: [2025-01-19T22:00:04.446Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T22:00:04.446Z].[appConfigServ.ts].[getActivePlanList].[MSG].Init
+info: [2025-01-19T22:00:04.447Z].[utils.ts].[getScopePlan].plan input param=free, planList= {"0":"free","1":"trial","2":"pro","3":"admin"}
+info: [2025-01-19T22:00:04.447Z].[appConfigServ.ts].[getActivePlanList].[MSG].planScope= {"0":"free"}
+info: [2025-01-19T22:00:04.448Z].[utils.ts].[getPlanListParam].planList= {"0":"{ \"order\": 0, \"label\": \"Free\", \"value\": \"free\", \"price\": 0.00, \"description\": null }","1":"{ \"order\": 1, \"label\": \"Trial\", \"value\": \"trial\", \"price\": 0.00, \"description\": \"Por 1 mes\" }","2":"{ \"order\": 2, \"label\": \"Pro\" , \"value\": \"pro\", \"price\": 10000.00, \"description\": \"Mensual\" }"}
+info: [2025-01-19T22:00:04.449Z].[utils.ts].[getPlanListParam].planList.value= {"description":null,"label":"Free","order":0,"price":0,"value":"free"}
+info: [2025-01-19T22:00:04.450Z].[utils.ts].[getPlanListParam].planList.value= {"description":"Por 1 mes","label":"Trial","order":1,"price":0,"value":"trial"}
+info: [2025-01-19T22:00:04.450Z].[utils.ts].[getPlanListParam].planList.value= {"description":"Mensual","label":"Pro","order":2,"price":10000,"value":"pro"}
+info: [2025-01-19T22:00:04.451Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonString:
+info: [2025-01-19T22:00:04.451Z].[appConfigServ.ts].[getActivePlanList].[MSG].myJsonObject:
+info: [2025-01-19T22:01:24.374Z].[index.ts].Server running on port 3001
+info: [2025-01-19T22:01:24.377Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T22:01:24.378Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T22:01:24.379Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T22:01:24.379Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T22:01:24.980Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T22:01:24.979Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T22:01:24.981Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T22:04:05.924Z].[index.ts].Server running on port 3001
+info: [2025-01-19T22:04:05.928Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T22:04:05.929Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T22:04:05.929Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T22:04:05.930Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T22:04:06.625Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T22:04:06.624Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T22:04:06.626Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T22:08:07.092Z].[index.ts].Server running on port 3001
+info: [2025-01-19T22:08:07.095Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T22:08:07.096Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T22:08:07.097Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T22:08:07.097Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T22:08:07.721Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T22:08:07.721Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T22:08:07.722Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T22:08:14.217Z].[index.ts].req['requestId']=431bdfc9-19c3-4a54-a6d4-ab43d15db58b, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"c4de613729156e4ce9fee2083461b7e9-94ee9501cb8b5607","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=c4de613729156e4ce9fee2083461b7e9"}
+info: [2025-01-19T22:08:14.219Z].[appConfig.ts].[appConfig].[get].[MSG].Init
+info: [2025-01-19T22:09:22.175Z].[index.ts].Server running on port 3001
+info: [2025-01-19T22:09:22.179Z].[index.ts].connectToDatabase.pre
+info: [2025-01-19T22:09:22.179Z].[mongo.js].[connectToDatabase].Init
+info: [2025-01-19T22:09:22.180Z].[mongo.js].[connectToDatabase].preConnect
+info: [2025-01-19T22:09:22.181Z].[mongo.js].[checkConnection].state=disconnect
+info: [2025-01-19T22:09:22.904Z].[mongo.js].[checkConnection].state=connect
+info: [2025-01-19T22:09:22.905Z].[mongo.js].[connectToDatabase].[MSG]=Database connected
+info: [2025-01-19T22:09:22.906Z].[index.ts].connectToDatabase.post
+info: [2025-01-19T22:09:25.239Z].[index.ts].req['requestId']=596fa9ec-7f68-4e4a-a8fd-db33ff74ca45, req info= {"0":"accept-encoding","1":"gzip, deflate, br","10":"Host","11":"localhost:3001","12":"Connection","13":"close","2":"Accept","3":"*/*","4":"User-Agent","5":"Thunder Client (https://www.thunderclient.com)","6":"sentry-trace","7":"f9eeb9dfecdaa9cc9cc871134f4ff47e-e56d7582f37dd822","8":"baggage","9":"sentry-environment=production,sentry-public_key=f6f0916e9af2bab10209b55d23c45635,sentry-trace_id=f9eeb9dfecdaa9cc9cc871134f4ff47e"}
+info: [2025-01-19T22:09:25.240Z].[appConfig.ts].[appConfig].[get].[MSG].Init

@@ -4,6 +4,7 @@ import projectsRouter from './routes/projects'
 import collectionsRouter from './routes/collections'
 import users from './routes/users'
 import samples from './routes/samples'
+import appConfig from './routes/appConfig'
 import { dbgConsoleLog, getStackFileName } from './utils';
 import dotenv from 'dotenv';
 import { v4 as uuidv4 } from 'uuid';
@@ -34,6 +35,7 @@ app.use('/api/project', projectsRouter)
 app.use('/api/collections', collectionsRouter)
 app.use('/api/users', users)
 app.use('/api/samples', samples)
+app.use('/api/appConfig', appConfig)
 
 
 
